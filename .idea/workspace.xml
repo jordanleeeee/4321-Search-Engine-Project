@@ -2,20 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d848cb69-fd9e-4a90-800e-ac0c5677ffdd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/000015.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/CURRENT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/IDENTITY" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/LOCK" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/LOG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/LOG.old.1586403434367039" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/MANIFEST-000014" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/OPTIONS-000014" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/OPTIONS-000017" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/InvertedIndex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4321project/spider/InvertedIndex.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/PageProperty.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4321project/spider/PageProperty.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/Spider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4321project/spider/Spider.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/WebInfoSeeker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4321project/spider/WebInfoSeeker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/000019.sst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/000021.sst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/000022.sst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/000023.sst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/000025.sst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/000027.sst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/000028.sst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/000029.sst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/000030.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/CURRENT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/IDENTITY" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/LOCK" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG.old.1586509407637042" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG.old.1586509439092592" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG.old.1586509439190298" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG.old.1586509543307175" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG.old.1586509543413717" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG.old.1586509624774845" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG.old.1586509624902300" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/MANIFEST-000026" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/OPTIONS-000026" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/OPTIONS-000032" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spider/InvertedIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/InvertedIndex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spider/PageProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/PageProperty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spider/Spider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/Spider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spider/WebInfoSeeker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/WebInfoSeeker.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,6 +77,19 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Spider">
+    <configuration name="InvertedIndex" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="spider.InvertedIndex" />
+      <module name="4321project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spider.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PageProperty" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="spider.PageProperty" />
       <module name="4321project" />
@@ -89,6 +119,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Spider" />
+        <item itemvalue="Application.InvertedIndex" />
         <item itemvalue="Application.PageProperty" />
       </list>
     </recent_temporary>
