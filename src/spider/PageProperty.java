@@ -12,7 +12,6 @@ public class PageProperty {
     PageProperty() throws RocksDBException {
         try {
             db = RocksDB.open(PATH);
-            db.createColumnFamily(new ColumnFamilyDescriptor("title".getBytes()));
             db.createColumnFamily(new ColumnFamilyDescriptor("url".getBytes()));
             db.createColumnFamily(new ColumnFamilyDescriptor("lastDateOfModification".getBytes()));
             db.createColumnFamily(new ColumnFamilyDescriptor("size".getBytes()));
@@ -21,7 +20,6 @@ public class PageProperty {
 
         List<ColumnFamilyDescriptor> colFamily = new Vector<>();
         colFamily.add(new ColumnFamilyDescriptor(RocksDB.DEFAULT_COLUMN_FAMILY, new ColumnFamilyOptions()));
-        colFamily.add(new ColumnFamilyDescriptor("title".getBytes(), new ColumnFamilyOptions()));
         colFamily.add(new ColumnFamilyDescriptor("url".getBytes(), new ColumnFamilyOptions()));
         colFamily.add(new ColumnFamilyDescriptor("lastDateOfModification".getBytes()));
         colFamily.add(new ColumnFamilyDescriptor("size".getBytes()));
@@ -37,6 +35,7 @@ public class PageProperty {
             return new String(db.get(handles.get(2), String.valueOf(id).getBytes()));
         } catch (RocksDBException e) {
             e.printStackTrace();
+            System.out.println("this should not happened");
             return null;
         }
     }
@@ -63,6 +62,7 @@ public class PageProperty {
             db.put(handles.get(2), Integer.toString(id).getBytes(), seeker.getLastModificationTime().getBytes());
             db.put(handles.get(3), Integer.toString(id).getBytes(), seeker.getPageSize().getBytes());
         } catch (RocksDBException e) {
+            System.out.println("this should not happened");
             e.printStackTrace();
         }
     }
@@ -84,7 +84,7 @@ public class PageProperty {
 
     public static void main(String[] args) throws RocksDBException {
         PageProperty fetcher = new PageProperty();
-        fetcher.clearDataBase();
+        //fetcher.clearDataBase();
         fetcher.printAll();
     }
 }

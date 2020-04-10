@@ -2,6 +2,7 @@ package spider;
 
 import org.rocksdb.RocksDBException;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 
@@ -25,7 +26,7 @@ public class Spider {
      * if a page is need to be fetch, fetch it and update pageProperty and indexer, and invertedIndex
      * fetch until the required number of page
      */
-    private void fetch() {
+    private void fetch(){
         Set<String> fetchedPage = new HashSet<>();
         int pageFetched = 0;
         Queue<String> queue = new LinkedList<>();
@@ -39,19 +40,20 @@ public class Spider {
                 if (fetchedPage.contains(site)) {
                     continue;
                 }
-                //ignore page that need login
+                //ignore page that need login to access
                 try{
                     var x = new URL(site).openStream();
                 } catch (Exception e) { continue; }
                 pageFetched++;
                 System.out.println(pageFetched +" handling " + site);
                 fetchedPage.add(site);
-                //todo update
+                //todo update page property
                 pageProperty.store(pageFetched, site);
                 //todo update indexer
                 /* sth */
                 //todo update inverted index
-                /* sth */
+                invertedIndex.store(pageFetched, site);
+
                 List<String> links = WebInfoSeeker.getChildLinks(site);
                 for (String link : links) {
                     if (!fetchedPage.contains(link)) {
@@ -66,10 +68,10 @@ public class Spider {
      * determine weather a page need to be fetched or not:
      * if not the local system: yes
      * if in the local system:
-     *      if previous update time is less then 1 day before: no
+     *      if previous update time is less then 1 day compare to now: no
      *      else: yes
      * @param url the url to the page
-     * @return trun if needed
+     * @return true if needed
      */
     private boolean needFetched(String url) {
         // todo if site is not in the inverted Index, return false
@@ -88,7 +90,7 @@ public class Spider {
     }
 
     public static void main(String[] args) throws RocksDBException {
-        Spider spider = new Spider("https://www.cse.ust.hk", 30);
+        Spider spider = new Spider("https://www.cse.ust.hk", 2);
         spider.fetch();
         System.out.println("page property contain");
         spider.pageProperty.printAll();

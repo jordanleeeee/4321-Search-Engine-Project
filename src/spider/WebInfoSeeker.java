@@ -6,6 +6,8 @@ import org.htmlparser.beans.StringBean;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.parser.ParserDelegator;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -21,6 +23,34 @@ class WebInfoSeeker {
         this.url = url;
     }
 
+    /**
+     * get all children links of the given url
+     * @param url link to the webpage
+     * @return list of children links
+     */
+    static List<String> getChildLinks(String url) {
+        List<String> links = new LinkedList<>();
+        LinkBean bean = new LinkBean();
+        bean.setURL(url);
+        URL[] urls = bean.getLinks();
+        for (URL link : urls) {
+            String l = link.toString();
+            // remove any junk suffix at the end of url
+
+            while (true) {
+                char lastChar = l.charAt(l.length() - 1);
+                if( (lastChar >= 'a' && lastChar <= 'z') ||
+                        (lastChar >= 'A' && lastChar <= 'Z') ||
+                        Character.isDigit(lastChar))   // last char is alphabet or a digit
+                    break;
+                else
+                    l = l.substring(0, l.length()-1);
+            }
+            links.add(l);
+        }
+        return links;
+    }
+
     String getTitle() {
         HTMLEditorKit htmlKit = new HTMLEditorKit();
         HTMLDocument htmlDoc = (HTMLDocument) htmlKit.createDefaultDocument();
@@ -30,6 +60,7 @@ class WebInfoSeeker {
                     htmlDoc.getReader(0), true);
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("this should not happened");
         }
         Object title = htmlDoc.getProperty("title");
         if (title == null) {
@@ -44,6 +75,7 @@ class WebInfoSeeker {
             link = new URL(url);
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            System.out.println("this should not happened");
         }
         URLConnection uCon = null;
         try {
@@ -51,6 +83,7 @@ class WebInfoSeeker {
             uCon = link.openConnection();
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("this should not happened");
         }
         assert uCon != null;
         uCon.setConnectTimeout(5000);   // 5 seconds
@@ -67,6 +100,7 @@ class WebInfoSeeker {
             link = new URL(url);
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            System.out.println("this should not happened");
         }
         HttpURLConnection httpCon = null;
         try {
@@ -74,6 +108,7 @@ class WebInfoSeeker {
             httpCon = (HttpURLConnection) link.openConnection();
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("this should not happened");
         }
 
         assert httpCon != null;
@@ -84,7 +119,7 @@ class WebInfoSeeker {
             return date + " bytes";
     }
 
-    String getWords() {
+    private String getWords() {
         StringBean bean = new StringBean();
         bean.setURL(url);
         bean.setLinks(false);
@@ -92,37 +127,41 @@ class WebInfoSeeker {
     }
 
     private String getTotalNumOfChar() {
-        StringBean bean = new StringBean();
-        bean.setURL(url);
-        bean.setLinks(false);
-        String contents = bean.getStrings();
+        String contents = getWords();
         contents = contents.replace("\n", "");
         return String.valueOf(contents.length());
     }
 
-    /**
-     * get all children links of the given url
-     * @param url link to the webpage
-     * @return list of children links
-     */
-    static List<String> getChildLinks(String url) {
-        List<String> links = new LinkedList<>();
-        LinkBean bean = new LinkBean();
-        bean.setURL(url);
-        URL[] urls = bean.getLinks();
-        for (URL link : urls) {
-            String l = link.toString();
-            while (true) {
-                char lastChar = l.charAt(l.length() - 1);
-                if( (lastChar >= 'a' && lastChar <= 'z') ||
-                        (lastChar >= 'A' && lastChar <= 'Z') ||
-                        Character.isDigit(lastChar))   // last char is alphabet or a digit
-                    break;
-                else
-                    l = l.substring(0, l.length()-1);
-            }
-            links.add(l);
+    Vector<String> getKeywords() {
+        String contents = getWords();
+        Vector<String> words = new Vector<>();
+        StringTokenizer st = new StringTokenizer(contents);
+        while (st.hasMoreTokens()) {
+            words.add(st.nextToken());
         }
-        return links;
+
+        Vector<String> Keywords = new Vector<>();
+        HashSet<String> stopWords = new HashSet<>();
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("stopwords.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                stopWords.add(line);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (String oneWord : words) {
+            String word = oneWord.toLowerCase();
+            if (!(stopWords.contains(word)) && word.length() >= 2 && !Keywords.contains(word)
+                    && word.matches("^[a-zA-Z]*$")) {
+                Keywords.addElement(word);
+            }
+        }
+        return Keywords;
     }
+
 }
