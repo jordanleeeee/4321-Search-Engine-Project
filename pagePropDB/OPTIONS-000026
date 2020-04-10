@@ -24,7 +24,7 @@
   allow_concurrent_memtable_write=true
   delayed_write_rate=16777216
   error_if_exists=false
-  create_if_missing=true
+  create_if_missing=false
   compaction_readahead_size=0
   create_missing_column_families=false
   new_table_reader_for_compaction_inputs=false
@@ -57,7 +57,7 @@
   manifest_preallocation_size=4194304
   write_thread_slow_yield_usec=3
   db_log_dir=
-  wal_dir=/Java/4321project/db
+  wal_dir=/Java/4321project/pagePropDB
   max_subcompactions=1
   WAL_size_limit_MB=0
   max_total_wal_size=0
