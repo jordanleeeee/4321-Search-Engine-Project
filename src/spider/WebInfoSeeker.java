@@ -21,7 +21,7 @@ class WebInfoSeeker {
         this.url = url;
     }
 
-    String fetchTitle() {
+    String getTitle() {
         HTMLEditorKit htmlKit = new HTMLEditorKit();
         HTMLDocument htmlDoc = (HTMLDocument) htmlKit.createDefaultDocument();
         HTMLEditorKit.Parser parser = new ParserDelegator();
@@ -31,31 +31,14 @@ class WebInfoSeeker {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return htmlDoc.getProperty("title").toString();
-    }
-
-    static List<String> getChildLinks(String url) {
-        List<String> links = new LinkedList<>();
-        LinkBean bean = new LinkBean();
-        bean.setURL(url);
-        URL[] urls = bean.getLinks();
-        for (URL link : urls) {
-            String l = link.toString();
-            while (true) {
-                char lastChar = l.charAt(l.length() - 1);
-                if( (lastChar >= 'a' && lastChar <= 'z') ||
-                        (lastChar >= 'A' && lastChar <= 'Z') ||
-                        Character.isDigit(lastChar))   // last char is alphabet or a digit
-                    break;
-                else
-                    l = l.substring(0, l.length()-1);
-            }
-            links.add(l);
+        Object title = htmlDoc.getProperty("title");
+        if (title == null) {
+            return "NoTitle";
         }
-        return links;
+        return title.toString();
     }
 
-    String fetchLastModificationTime() {
+    String getLastModificationTime() {
         URL link = null;
         try {
             link = new URL(url);
@@ -78,7 +61,7 @@ class WebInfoSeeker {
         return date;
     }
 
-    String fetchSize() {
+    String getPageSize() {
         URL link = null;
         try {
             link = new URL(url);
@@ -96,17 +79,50 @@ class WebInfoSeeker {
         assert httpCon != null;
         long date = httpCon.getContentLength();
         if (date == -1)
-            return extractNumOfWords() + " char";
+            return getTotalNumOfChar() + " char";
         else
             return date + " bytes";
     }
 
-    private String extractNumOfWords() {
+    String getWords() {
+        StringBean bean = new StringBean();
+        bean.setURL(url);
+        bean.setLinks(false);
+        return bean.getStrings();
+    }
+
+    private String getTotalNumOfChar() {
         StringBean bean = new StringBean();
         bean.setURL(url);
         bean.setLinks(false);
         String contents = bean.getStrings();
         contents = contents.replace("\n", "");
         return String.valueOf(contents.length());
+    }
+
+    /**
+     * get all children links of the given url
+     * @param url link to the webpage
+     * @return list of children links
+     */
+    static List<String> getChildLinks(String url) {
+        List<String> links = new LinkedList<>();
+        LinkBean bean = new LinkBean();
+        bean.setURL(url);
+        URL[] urls = bean.getLinks();
+        for (URL link : urls) {
+            String l = link.toString();
+            while (true) {
+                char lastChar = l.charAt(l.length() - 1);
+                if( (lastChar >= 'a' && lastChar <= 'z') ||
+                        (lastChar >= 'A' && lastChar <= 'Z') ||
+                        Character.isDigit(lastChar))   // last char is alphabet or a digit
+                    break;
+                else
+                    l = l.substring(0, l.length()-1);
+            }
+            links.add(l);
+        }
+        return links;
     }
 }

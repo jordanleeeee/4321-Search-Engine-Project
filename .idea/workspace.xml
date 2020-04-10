@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d848cb69-fd9e-4a90-800e-ac0c5677ffdd" name="Default Changelist" comment="" />
+    <list default="true" id="d848cb69-fd9e-4a90-800e-ac0c5677ffdd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/000015.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/CURRENT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/IDENTITY" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/LOCK" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/LOG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/LOG.old.1586403434367039" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/MANIFEST-000014" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/OPTIONS-000014" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/OPTIONS-000017" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/PageProperty.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4321project/spider/PageProperty.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/WebInfoSeeker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4321project/spider/WebInfoSeeker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spider/PageProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/PageProperty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spider/WebInfoSeeker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/WebInfoSeeker.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,12 +31,17 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1aHqvdzZDvaSLNeeInZecews9vX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="E:/package/htmlparser1_6/lib" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -38,7 +59,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Spider">
     <configuration name="PageProperty" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="spider.PageProperty" />
       <module name="4321project" />
@@ -52,8 +73,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Spider" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="spider.Spider" />
+      <module name="4321project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spider.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Spider" />
         <item itemvalue="Application.PageProperty" />
       </list>
     </recent_temporary>
@@ -70,5 +105,18 @@
       <updated>1586403098780</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
