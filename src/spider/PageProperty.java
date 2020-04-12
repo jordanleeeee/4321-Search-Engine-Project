@@ -5,11 +5,16 @@ import org.rocksdb.*;
 import java.util.*;
 
 public class PageProperty {
-    private final String PATH = "/Java/4321project/pagePropDB";
+    private static PageProperty INSTANCE = new PageProperty();
+    private final String PATH = "/Java/Spider/pagePropDB";
     private RocksDB db;
     private List<ColumnFamilyHandle> handles = new Vector<>();
 
-    PageProperty() throws RocksDBException {
+    static PageProperty getInstance() {
+        return INSTANCE;
+    }
+
+    private PageProperty(){
         try {
             db = RocksDB.open(PATH);
             db.createColumnFamily(new ColumnFamilyDescriptor("url".getBytes()));
@@ -18,16 +23,62 @@ public class PageProperty {
             db.close();
         } catch (RocksDBException ignored){ }
 
-        List<ColumnFamilyDescriptor> colFamily = new Vector<>();
-        colFamily.add(new ColumnFamilyDescriptor(RocksDB.DEFAULT_COLUMN_FAMILY, new ColumnFamilyOptions()));
-        colFamily.add(new ColumnFamilyDescriptor("url".getBytes(), new ColumnFamilyOptions()));
-        colFamily.add(new ColumnFamilyDescriptor("lastDateOfModification".getBytes()));
-        colFamily.add(new ColumnFamilyDescriptor("size".getBytes()));
-        db = RocksDB.open(new DBOptions(), PATH, colFamily, handles);
+        try {
+            List<ColumnFamilyDescriptor> colFamily = new Vector<>();
+            colFamily.add(new ColumnFamilyDescriptor(RocksDB.DEFAULT_COLUMN_FAMILY, new ColumnFamilyOptions()));
+            colFamily.add(new ColumnFamilyDescriptor("url".getBytes(), new ColumnFamilyOptions()));
+            colFamily.add(new ColumnFamilyDescriptor("lastDateOfModification".getBytes()));
+            colFamily.add(new ColumnFamilyDescriptor("size".getBytes()));
+            db = RocksDB.open(new DBOptions(), PATH, colFamily, handles);
+        } catch (RocksDBException e) {
+            e.printStackTrace();
+        }
     }
 
     public RocksDB getDb() {
         return db;
+    }
+
+    String getTitle(int id) {
+        try {
+            byte[] url = db.get(handles.get(0), String.valueOf(id).getBytes());
+            if (url == null) {
+                return null;
+            }
+            return new String(url);
+        } catch (RocksDBException e) {
+            e.printStackTrace();
+            System.out.println("this should not happened");
+            return null;
+        }
+    }
+
+    String getUrl(int id) {
+        try {
+            byte[] url = db.get(handles.get(1), String.valueOf(id).getBytes());
+            if (url == null) {
+                return null;
+            }
+            return new String(url);
+        } catch (RocksDBException e) {
+            e.printStackTrace();
+            System.out.println("this should not happened");
+            return null;
+        }
+    }
+
+    String getSize(int id) {
+        try {
+            byte[] url = db.get(handles.get(3), String.valueOf(id).getBytes());
+            if (url == null) {
+                return null;
+            }
+            return new String(url);
+        } catch (RocksDBException e) {
+            e.printStackTrace();
+            System.out.println("this should not happened");
+            return null;
+        }
     }
 
     String getLastModificationTime(int id) {
