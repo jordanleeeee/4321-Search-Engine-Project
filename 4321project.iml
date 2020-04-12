@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="org.rocksdb:rocksdbjni:5.15.10" level="project" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="com.google.guava:guava:28.1-jre" level="project" />
   </component>
 </module>

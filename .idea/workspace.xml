@@ -4,32 +4,39 @@
     <list default="true" id="d848cb69-fd9e-4a90-800e-ac0c5677ffdd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/InvertedIndex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4321project/spider/InvertedIndex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/PageProperty.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4321project/spider/PageProperty.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/Spider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4321project/spider/Spider.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/WebInfoSeeker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4321project/spider/WebInfoSeeker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/000019.sst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/000021.sst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/000022.sst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/000023.sst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/000025.sst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/000027.sst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/000028.sst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/000029.sst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/000030.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/CURRENT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/IDENTITY" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/LOCK" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG.old.1586509407637042" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG.old.1586509439092592" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG.old.1586509439190298" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG.old.1586509543307175" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG.old.1586509543413717" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG.old.1586509624774845" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG.old.1586509624902300" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/MANIFEST-000026" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/OPTIONS-000026" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/OPTIONS-000032" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageIDdb/000007.sst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageIDdb/000015.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageIDdb/CURRENT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageIDdb/IDENTITY" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageIDdb/LOG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageIDdb/LOG.old.1586531308945731" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageIDdb/LOG.old.1586531345138375" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageIDdb/LOG.old.1586531369093990" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageIDdb/LOG.old.1586531391284235" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageIDdb/MANIFEST-000014" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageIDdb/OPTIONS-000014" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageIDdb/OPTIONS-000017" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/000013.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/CURRENT" beforeDir="false" afterPath="$PROJECT_DIR$/pagePropDB/CURRENT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG" beforeDir="false" afterPath="$PROJECT_DIR$/pagePropDB/LOG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/MANIFEST-000012" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/OPTIONS-000012" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/OPTIONS-000015" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parentIDdb/000007.sst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parentIDdb/000015.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parentIDdb/CURRENT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parentIDdb/IDENTITY" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parentIDdb/LOG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parentIDdb/LOG.old.1586531309150149" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parentIDdb/LOG.old.1586531345399129" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parentIDdb/LOG.old.1586531369290540" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parentIDdb/LOG.old.1586531391432047" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parentIDdb/MANIFEST-000014" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parentIDdb/OPTIONS-000014" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parentIDdb/OPTIONS-000017" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spider/Indexer.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spider/InvertedIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/InvertedIndex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spider/PageProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/PageProperty.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spider/Spider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/Spider.java" afterDir="false" />
