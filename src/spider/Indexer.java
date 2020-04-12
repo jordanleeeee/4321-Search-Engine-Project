@@ -2,23 +2,24 @@ package spider;
 
 import org.rocksdb.*;
 
-import java.util.*;
 import com.google.common.collect.HashBiMap;
 
 enum IndexType {PageURLID, WordID, TitleID, ParentID}
 public class Indexer {
     private static Indexer INSTANCE = new Indexer();
-    private Set<String> fetchedPage = new HashSet<>();
     private RocksDB pageURLIDdb, wordIDdb, titleIDdb, parentIDdb;
     private Integer wordCount = 0, titleCount = 0, URLCount = 0;
-    HashBiMap<Integer, String> pageIndexer = HashBiMap.create();
-    HashBiMap<Integer, String> wordIndexer = HashBiMap.create();
-    HashBiMap<Integer, String> titleIndexer = HashBiMap.create();
+    private HashBiMap<Integer, String> pageIndexer = HashBiMap.create();
+    private HashBiMap<Integer, String> wordIndexer = HashBiMap.create();
+    private HashBiMap<Integer, String> titleIndexer = HashBiMap.create();
 
-    public static Indexer getInstance() {
+    static Indexer getInstance() {
         return INSTANCE;
     }
 
+    /**
+     * open all the database and place the record in hashBiMap and update the counters
+     */
     private Indexer(){
         Options options = new Options();
         options.setCreateIfMissing(true);
@@ -31,25 +32,18 @@ public class Indexer {
         } catch (RocksDBException e) {
             e.printStackTrace();
         }
+        addTitleBiMap();
+        addPageBiMap();
+        addWordBiMap();
     }
 
-    private void addPage(String url) {
-        //todo
-        //if page not in database, add it
-        try {
-            pageURLIDdb.put(Integer.toString(URLCount).getBytes(), url.getBytes());
-            updatePageBiMap(URLCount, url);
-            URLCount += 1;
-        } catch (RocksDBException e) {
-            e.printStackTrace();
-            System.out.println("Fail to add page");
-        }
-    }
+    ///////Page////////
 
-    private void addPageBiMap(int pageId, String url){
+    private void addPageBiMap(){
         RocksIterator iter = pageURLIDdb.newIterator();
         for (iter.seekToFirst(); iter.isValid(); iter.next()) {
-            pageIndexer.put(pageId, url);
+            updatePageBiMap(Integer.parseInt(new String(iter.key())), new String(iter.value()));
+            URLCount++;
         }
     }
 
@@ -57,6 +51,28 @@ public class Indexer {
         pageIndexer.put(pageId, url);
     }
 
+    private void addPage(String url) {
+        //todo
+        //if page not in database, add it
+        try {
+            URLCount += 1;
+            pageURLIDdb.put(Integer.toString(URLCount).getBytes(), url.getBytes());
+            updatePageBiMap(URLCount, url);
+        } catch (RocksDBException e) {
+            e.printStackTrace();
+            System.out.println("Fail to add page");
+        }
+    }
+
+    /**
+     * true:
+     *     get id from url, if no such id (a newly appeared link), make one for it
+     * false:
+     *      get id from url, if no such id, return -1
+     * @param url link
+     * @param addIfMissing boolean
+     * @return page id, -1 if no such page
+     */
     Integer searchIdByURL(String url, boolean addIfMissing) {
         if (!(pageIndexer.containsValue(url))){
             if (addIfMissing) {
@@ -70,54 +86,59 @@ public class Indexer {
         else return pageIndexer.inverse().get(url);
     }
 
-    private void addTitle(String title) {
-        //todo
-        //if title not in database, add it
+    ///////Title////////
+    void storeTitle(String title) {
         try {
-            if(searchIdByTitle(title) == titleCount) {
-                titleIDdb.put(Integer.toString(titleCount).getBytes(), title.getBytes());
-                updateTitleBiMap(titleCount, title);
-                titleCount += 1;
-            }
+            titleCount += 1;
+            titleIDdb.put(Integer.toString(titleCount).getBytes(), title.getBytes());
+            updateTitleBiMap(titleCount, title);
         } catch (RocksDBException e) {
             e.printStackTrace();
             System.out.println("Fail to add title");
         }
     }
 
-    private void addTitleBiMap(int titleID, String title){
+    private void addTitleBiMap(){
         RocksIterator iter = titleIDdb.newIterator();
         for (iter.seekToFirst(); iter.isValid(); iter.next()) {
-            titleIndexer.put(titleID, title);
+            updateTitleBiMap(Integer.parseInt(new String(iter.key())), new String((iter.value())));
+            titleCount++;
         }
     }
 
     private void updateTitleBiMap(int titleId, String title){
-        titleIndexer.put(titleId, title);
+        if (titleIndexer.containsValue(title)) {
+            titleCount--;
+        } else {
+            titleIndexer.put(titleId, title);
+        }
     }
 
     Integer searchIdByTitle(String title) {
-        if (!(titleIndexer.containsValue(title)))
-            return titleCount;
-        else return titleIndexer.inverse().get(title);
+        return titleIndexer.inverse().get(title);
     }
 
     String searchTitleById(int titleId) {
-        if (!(pageIndexer.containsKey(titleId)))
-            return null;
-        else return (String) titleIndexer.get(titleId);
+        return titleIndexer.get(titleId);
     }
 
+    ///////Word////////
     private void addWord(String word) {
-        //todo
-        //if word not in database, add it
         try {
+            wordCount += 1;
             wordIDdb.put(Integer.toString(wordCount).getBytes(), word.getBytes());
             updateWordBiMap(wordCount, word);
-            wordCount += 1;
         } catch (RocksDBException e) {
             e.printStackTrace();
             System.out.println("Fail to add word");
+        }
+    }
+
+    private void addWordBiMap(){
+        RocksIterator iter = wordIDdb.newIterator();
+        for (iter.seekToFirst(); iter.isValid(); iter.next()) {
+            updateWordBiMap(Integer.parseInt(new String(iter.key())), new String((iter.value())));
+            wordCount++;
         }
     }
 
@@ -134,24 +155,11 @@ public class Indexer {
     }
 
     String searchWordById(int wordId) {
-        if (!(wordIndexer.containsKey(wordId)))
-            return null;
-        else return (String) wordIndexer.get(wordId);
+        return wordIndexer.getOrDefault(wordId, null);
     }
 
-    public void store(int id, String url){
-        spider.WebInfoSeeker seeker = new spider.WebInfoSeeker(url);
-        try {
-            pageURLIDdb.put(Integer.toString(id).getBytes(), url.getBytes());
-            titleIDdb.put(Integer.toString(id).getBytes(), seeker.getTitle().getBytes());
-        } catch (RocksDBException e) {
-            System.out.println("Indexer store error");
-            e.printStackTrace();
-        }
-    }
-
-
-    private void printAll(IndexType situation) {
+    //////////others///////////////////
+    void printAll(IndexType situation) {
         if (situation == IndexType.PageURLID) {
             RocksIterator iter = pageURLIDdb.newIterator();
             for (iter.seekToFirst(); iter.isValid(); iter.next()) {
@@ -184,12 +192,11 @@ public class Indexer {
         }
     }
 
-    public static void main(String[] args) throws RocksDBException {
-        Indexer indexer = new Indexer();
-        indexer.store(0, "https://www.cse.ust.hk");
-        indexer.printAll(IndexType.PageURLID);
-        indexer.printAll(IndexType.WordID);
-        indexer.printAll(IndexType.TitleID);
-        indexer.printAll(IndexType.ParentID);
-    }
+//    public static void main(String[] args) throws RocksDBException {
+//        Indexer indexer = new Indexer();
+//        indexer.printAll(IndexType.PageURLID);
+//        indexer.printAll(IndexType.WordID);
+//        indexer.printAll(IndexType.TitleID);
+//        indexer.printAll(IndexType.ParentID);
+//    }
 }
