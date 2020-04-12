@@ -21,21 +21,82 @@ public class InvertedIndex {
         return INSTANCE;
     }
 
-    String getKeyWords(int pageID) {
+    private InvertedIndex(){
+        Options options = new Options();
+        options.setCreateIfMissing(true);
         try {
-            return new String(pageIDdb.get(String.valueOf(pageID).getBytes()));
+            pageIDdb = RocksDB.open(options, "/Java/Spider/pageIDdb");
+            parentIDdb = RocksDB.open(options, "/Java/Spider/parentIDdb");
+            wordIdDb = RocksDB.open(options, "/Java/Spider/wordFreqdb");
+        } catch (RocksDBException e) {
+            e.printStackTrace();
+        }
+    }
+
+    int getFreqOfWordInParticularPage(String word, int pageID) {
+        try {
+            int wordID = Indexer.getInstance().searchIdByWord(word);
+            String record = new String(wordIdDb.get(String.valueOf(wordID).getBytes()));
+            var recordDetails = Converter.readInvertedIndex(record);
+            return recordDetails.get(pageID);
+        } catch (RocksDBException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    String[] getKeyWords(int pageID) {
+        try {
+            String words = new String(pageIDdb.get(String.valueOf(pageID).getBytes()));
+            return Converter.readSeparateWords(words);
         } catch (RocksDBException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    String getChildPage(int parentID) {
+    void clearRecord(int pageID) {
+        int wordId = 1;
+        while (true) {
+            try {
+                byte[] record = wordIdDb.get(String.valueOf(wordId).getBytes());
+                if (record == null) {
+                    break;
+                }
+                var map = Converter.readInvertedIndex(new String(record));
+                int deleteTarget = -1;
+                for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+                    Integer key = entry.getKey();
+                    if (key == pageID) {
+                        deleteTarget = key;
+                        break;
+                    }
+                }
+                if (deleteTarget != -1) {
+                    map.remove(deleteTarget);
+                }
+                String newRecord = Converter.generateInvertedIndex(map);
+                wordIdDb.put(String.valueOf(wordId).getBytes(), newRecord.getBytes());
+                wordId++;
+            } catch (RocksDBException e) { e.printStackTrace(); }
+        }
+    }
+
+    /**
+     * get a string contain all child page (only page that in the database will count), separate by \n
+     * @param pageId page of
+     * @return the string
+     */
+    String getChildPage(int pageId) {
         try {
             StringBuilder result = new StringBuilder();
-            String listOfChild = new String(parentIDdb.get(String.valueOf(parentID).getBytes()));
-            String[] childIDs = WordIdReader.readSeparateWords(listOfChild);
+            String listOfChild = new String(parentIDdb.get(String.valueOf(pageId).getBytes()));
+            String[] childIDs = Converter.readSeparateWords(listOfChild);
+
             for (String childID : childIDs) {
+                if (childID.equals("")) {
+                    continue;
+                }
                 String l = PageProperty.getInstance().getUrl(Integer.parseInt(childID));
                 if (l == null) {
                     continue;
@@ -46,18 +107,6 @@ public class InvertedIndex {
         } catch (RocksDBException e) {
             e.printStackTrace();
             return null;
-        }
-    }
-
-    private InvertedIndex(){
-        Options options = new Options();
-        options.setCreateIfMissing(true);
-        try {
-            pageIDdb = RocksDB.open(options, "/Java/Spider/x");
-            parentIDdb = RocksDB.open(options, "/Java/Spider/y");
-            wordIdDb = RocksDB.open(options, "/Java/Spider/z");
-        } catch (RocksDBException e) {
-            e.printStackTrace();
         }
     }
 
@@ -74,7 +123,6 @@ public class InvertedIndex {
         for (Map.Entry<String, Integer> entry : wordFreqTable.entrySet()) {
             String word = entry.getKey();
             Integer freq = entry.getValue();
-            // System.out.println(word +": "+freq);
             Integer wordID = Indexer.getInstance().searchIdByWord(word);
             byte[] content = null;
             try {
@@ -97,24 +145,24 @@ public class InvertedIndex {
             Vector<String> keyWords = seeker.getKeywords();
             ///////////////////wordID -> {pageID freq}/////////////////////////
             //todo do not support update
-            storeWordFreq(id, seeker.getKeywords());
+            storeWordFreq(id, keyWords);
             //////////////////// Page-ID -> {keywords}////////////////////////
             LinkedHashSet<String> uniqueKeyWords = new LinkedHashSet<>(keyWords);
             keyWords.clear();
             keyWords.addAll(uniqueKeyWords);
             byte[] content = null;
             for (String keyWord : keyWords) {
-                //System.out.print(seeker.getKeywords().get(i) + " ");
                 if (content == null) {
                     content = keyWord.getBytes();
                 } else {
                     content = (new String(content) + " " + keyWord).getBytes();
                 }
             }
-            assert content != null;
+            if (content == null) {             // if the web no not have any word (avoid crash the program)
+                content = "".getBytes();
+            }
             pageIDdb.put(Integer.toString(id).getBytes(), content);
             //////////////////parent ID -> {child ID}//////////////////////////
-
             List<String> child = seeker.getChildLinks();
             Set<String> childPage = new HashSet<>(child);
 
@@ -123,7 +171,6 @@ public class InvertedIndex {
                 if (link.equals(url)) {
                     continue;
                 }
-                //todo get ID with given url
                 int childId = Indexer.getInstance().searchIdByURL(link, true);
                 if (content == null) {
                     content = Integer.toString(childId).getBytes();
@@ -131,7 +178,9 @@ public class InvertedIndex {
                     content = (new String(content) + " " + childId).getBytes();
                 }
             }
-            assert content != null;
+            if (content == null) {             // if the web no not have any child (avoid crash the program)
+                content = "".getBytes();
+            }
             parentIDdb.put(Integer.toString(id).getBytes(), content);
         } catch (RocksDBException e) {
             e.printStackTrace();
@@ -164,11 +213,11 @@ public class InvertedIndex {
         }
     }
 
-    public static void main(String[] args) throws RocksDBException {
-        InvertedIndex invertedIndex = new InvertedIndex();
-        // 1 for word ID -> {pageID, Freq}, 2 for Page-ID -> {keywords}, 3 for Parent-ID ->{ChildID}
-        invertedIndex.store(0, "https://www.cse.ust.hk");
-        invertedIndex.printAll(Type.PageID);
-        invertedIndex.printAll(Type.ParentID);
-    }
+//    public static void main(String[] args){
+//        InvertedIndex invertedIndex = new InvertedIndex();
+//        // 1 for word ID -> {pageID, Freq}, 2 for Page-ID -> {keywords}, 3 for Parent-ID ->{ChildID}
+//        invertedIndex.store(0, "https://www.cse.ust.hk");
+//        invertedIndex.printAll(Type.PageID);
+//        invertedIndex.printAll(Type.ParentID);
+//    }
 }

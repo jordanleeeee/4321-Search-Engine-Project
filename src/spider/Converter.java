@@ -1,10 +1,18 @@
 package spider;
 
 import java.util.HashMap;
+import java.util.Map;
 
-public class WordIdReader {
+public class Converter {
     // page id, freq
-    static HashMap<Integer, Integer> converter(String recordList) {
+
+    /**
+     * convert inverted index to hash map
+     * "1:2 3:4 5:6"  to  1->2, 3->4, 5->6
+     * @param recordList
+     * @return
+     */
+    static HashMap<Integer, Integer> readInvertedIndex(String recordList) {
         String[] records = readSeparateWords(recordList);
         HashMap<Integer, Integer> record = new HashMap<>();
         for (String oneRecord : records) {
@@ -12,6 +20,14 @@ public class WordIdReader {
             record.put(Integer.valueOf(temp[0]), Integer.valueOf(temp[1]));
         }
         return record;
+    }
+
+    static String generateInvertedIndex(HashMap<Integer, Integer> map) {
+        StringBuilder result = new StringBuilder();
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            result.append(entry.getKey()).append(":").append(entry.getValue());
+        }
+        return String.valueOf(result);
     }
 
     /**

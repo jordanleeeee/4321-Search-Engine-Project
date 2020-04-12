@@ -14,6 +14,9 @@ public class PageProperty {
         return INSTANCE;
     }
 
+    /**
+     * open db file
+     */
     private PageProperty(){
         try {
             db = RocksDB.open(PATH);
@@ -35,13 +38,9 @@ public class PageProperty {
         }
     }
 
-    public RocksDB getDb() {
-        return db;
-    }
-
-    String getTitle(int id) {
+    String getTitle(int pageId) {
         try {
-            byte[] url = db.get(handles.get(0), String.valueOf(id).getBytes());
+            byte[] url = db.get(handles.get(0), String.valueOf(pageId).getBytes());
             if (url == null) {
                 return null;
             }
@@ -53,9 +52,9 @@ public class PageProperty {
         }
     }
 
-    String getUrl(int id) {
+    String getUrl(int pageId) {
         try {
-            byte[] url = db.get(handles.get(1), String.valueOf(id).getBytes());
+            byte[] url = db.get(handles.get(1), String.valueOf(pageId).getBytes());
             if (url == null) {
                 return null;
             }
@@ -67,9 +66,9 @@ public class PageProperty {
         }
     }
 
-    String getSize(int id) {
+    String getSize(int pageId) {
         try {
-            byte[] url = db.get(handles.get(3), String.valueOf(id).getBytes());
+            byte[] url = db.get(handles.get(3), String.valueOf(pageId).getBytes());
             if (url == null) {
                 return null;
             }
@@ -81,9 +80,9 @@ public class PageProperty {
         }
     }
 
-    String getLastModificationTime(int id) {
+    String getLastModificationTime(int pageId) {
         try {
-            return new String(db.get(handles.get(2), String.valueOf(id).getBytes()));
+            return new String(db.get(handles.get(2), String.valueOf(pageId).getBytes()));
         } catch (RocksDBException e) {
             e.printStackTrace();
             System.out.println("this should not happened");
@@ -91,27 +90,32 @@ public class PageProperty {
         }
     }
 
-    private void delEntry(byte[] key) throws RocksDBException {
-        for(ColumnFamilyHandle h: handles){
-            db.delete(h, key);
-        }
-    }
+//    private void delEntry(byte[] key) throws RocksDBException {
+//        for(ColumnFamilyHandle h: handles){
+//            db.delete(h, key);
+//        }
+//    }
+//
+//    private void clearDataBase() throws RocksDBException {
+//        RocksIterator iter = db.newIterator();
+//        for(iter.seekToFirst(); iter.isValid(); iter.next()) {
+//            delEntry(iter.key());
+//        }
+//    }
 
-    void clearDataBase() throws RocksDBException {
-        RocksIterator iter = db.newIterator();
-        for(iter.seekToFirst(); iter.isValid(); iter.next()) {
-            delEntry(iter.key());
-        }
-    }
-
-    void store(int id, String url){
-        //db.put(Integer.toString(id).getBytes(), "url".getBytes());
+    /**
+     * store page info into database
+     * @param pageId id of the page
+     * @param url link of the page
+     */
+    void store(int pageId, String url){
+        //db.put(Integer.toString(pageId).getBytes(), "url".getBytes());
         WebInfoSeeker seeker = new WebInfoSeeker(url);
         try {
-            db.put(handles.get(0), Integer.toString(id).getBytes(), seeker.getTitle().getBytes());
-            db.put(handles.get(1), Integer.toString(id).getBytes(), url.getBytes());
-            db.put(handles.get(2), Integer.toString(id).getBytes(), seeker.getLastModificationTime().getBytes());
-            db.put(handles.get(3), Integer.toString(id).getBytes(), seeker.getPageSize().getBytes());
+            db.put(handles.get(0), Integer.toString(pageId).getBytes(), seeker.getTitle().getBytes());
+            db.put(handles.get(1), Integer.toString(pageId).getBytes(), url.getBytes());
+            db.put(handles.get(2), Integer.toString(pageId).getBytes(), seeker.getLastModificationTime().getBytes());
+            db.put(handles.get(3), Integer.toString(pageId).getBytes(), seeker.getPageSize().getBytes());
         } catch (RocksDBException e) {
             System.out.println("this should not happened");
             e.printStackTrace();
@@ -133,9 +137,21 @@ public class PageProperty {
         }
     }
 
-    public static void main(String[] args) throws RocksDBException {
-        PageProperty fetcher = new PageProperty();
-        //fetcher.clearDataBase();
-        fetcher.printAll();
+    int getMaxId() {
+        int maxId = 0;
+        RocksIterator iterator = db.newIterator();
+        for(iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
+            int id = Integer.parseInt(new String(iterator.key()));
+            if (id > maxId) {
+                maxId = id;
+            }
+        }
+        return maxId;
     }
+
+//    public static void main(String[] args) throws RocksDBException {
+//        PageProperty fetcher = new PageProperty();
+//        //fetcher.clearDataBase();
+//        fetcher.printAll();
+//    }
 }
