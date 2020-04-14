@@ -6,7 +6,6 @@ import java.util.*;
 
 public class PageProperty {
     private static PageProperty INSTANCE = new PageProperty();
-    private final String PATH = "/Java/Spider/pagePropDB";
     private RocksDB db;
     private List<ColumnFamilyHandle> handles = new Vector<>();
 
@@ -18,21 +17,15 @@ public class PageProperty {
      * open db file
      */
     private PageProperty(){
-        try {
-            db = RocksDB.open(PATH);
-            db.createColumnFamily(new ColumnFamilyDescriptor("url".getBytes()));
-            db.createColumnFamily(new ColumnFamilyDescriptor("lastDateOfModification".getBytes()));
-            db.createColumnFamily(new ColumnFamilyDescriptor("size".getBytes()));
-            db.close();
-        } catch (RocksDBException ignored){ }
-
+        String PATH = "/Java/Spider/pagePropDB";
         try {
             List<ColumnFamilyDescriptor> colFamily = new Vector<>();
             colFamily.add(new ColumnFamilyDescriptor(RocksDB.DEFAULT_COLUMN_FAMILY, new ColumnFamilyOptions()));
             colFamily.add(new ColumnFamilyDescriptor("url".getBytes(), new ColumnFamilyOptions()));
             colFamily.add(new ColumnFamilyDescriptor("lastDateOfModification".getBytes()));
             colFamily.add(new ColumnFamilyDescriptor("size".getBytes()));
-            db = RocksDB.open(new DBOptions(), PATH, colFamily, handles);
+            DBOptions options = new DBOptions().setCreateIfMissing(true).setCreateMissingColumnFamilies(true);
+            db = RocksDB.open(options, PATH, colFamily, handles);
         } catch (RocksDBException e) {
             e.printStackTrace();
         }
@@ -90,19 +83,6 @@ public class PageProperty {
         }
     }
 
-//    private void delEntry(byte[] key) throws RocksDBException {
-//        for(ColumnFamilyHandle h: handles){
-//            db.delete(h, key);
-//        }
-//    }
-//
-//    private void clearDataBase() throws RocksDBException {
-//        RocksIterator iter = db.newIterator();
-//        for(iter.seekToFirst(); iter.isValid(); iter.next()) {
-//            delEntry(iter.key());
-//        }
-//    }
-
     /**
      * store page info into database
      * @param pageId id of the page
@@ -149,9 +129,22 @@ public class PageProperty {
         return maxId;
     }
 
-//    public static void main(String[] args) throws RocksDBException {
-//        PageProperty fetcher = new PageProperty();
-//        //fetcher.clearDataBase();
-//        fetcher.printAll();
+//        private void delEntry(byte[] key) throws RocksDBException {
+//        for(ColumnFamilyHandle h: handles){
+//            db.delete(h, key);
+//        }
 //    }
+//
+//    private void clearDataBase() throws RocksDBException {
+//        RocksIterator iter = db.newIterator();
+//        for(iter.seekToFirst(); iter.isValid(); iter.next()) {
+//            delEntry(iter.key());
+//        }
+//    }
+//
+    public static void main(String[] args) throws RocksDBException {
+        PageProperty fetcher = getInstance();
+        //fetcher.clearDataBase();
+        fetcher.printAll();
+    }
 }

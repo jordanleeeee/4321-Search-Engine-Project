@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d848cb69-fd9e-4a90-800e-ac0c5677ffdd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/IndexType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4321project/spider/IndexType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/Indexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4321project/spider/Indexer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/InvertedIndex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4321project/spider/InvertedIndex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/PageProperty.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4321project/spider/PageProperty.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/Spider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/4321project/spider/Spider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/4321project/spider/WordIdReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spider/Indexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/Indexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spider/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spider/InvertedIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/InvertedIndex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spider/PageProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/PageProperty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spider/Spider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/Spider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spider/WordIdReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/Converter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/spider/WebInfoSeeker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/WebInfoSeeker.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

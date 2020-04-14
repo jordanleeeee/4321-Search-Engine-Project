@@ -1,18 +1,17 @@
 package spider;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
 
 public class Converter {
-    // page id, freq
-
     /**
      * convert inverted index to hash map
-     * "1:2 3:4 5:6"  to  1->2, 3->4, 5->6
-     * @param recordList
-     * @return
+     * convert "1:2 3:4 5:6"  to  1->2, 3->4, 5->6
+     * @param recordList string representation of inverted index
+     * @return hashMap where key is pageID, value is frequency
      */
-    static HashMap<Integer, Integer> readInvertedIndex(String recordList) {
+    public static HashMap<Integer, Integer> readInvertedIndex(String recordList) {
         String[] records = readSeparateWords(recordList);
         HashMap<Integer, Integer> record = new HashMap<>();
         for (String oneRecord : records) {
@@ -21,8 +20,13 @@ public class Converter {
         }
         return record;
     }
-
-    static String generateInvertedIndex(HashMap<Integer, Integer> map) {
+    /**
+     * convert hash map to inverted index
+     * convert 1->2, 3->4, 5->6  to  "1:2 3:4 5:6"
+     * @param map the hash map represent the inverted index
+     * @return inverted index
+     */
+    public static String generateInvertedIndex(HashMap<Integer, Integer> map) {
         StringBuilder result = new StringBuilder();
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             result.append(entry.getKey()).append(":").append(entry.getValue());
@@ -31,11 +35,27 @@ public class Converter {
     }
 
     /**
-     * e.g. convert  "apple boy cat" -> ["apple", "boy", "cat"]
+     * e.g. convert  "apple boy cat"  to  ["apple", "boy", "cat"]
      * @param words a string contain words separate by a space
      * @return a array contain those words
      */
-    static String[] readSeparateWords(String words) {
+    public static String[] readSeparateWords(String words) {
         return words.split(" ");
+    }
+
+    public static Queue<String> readRemainingQueue(String path) {
+        Queue<String> queue = new LinkedList<>();
+        File file = new File(path);
+        try (Scanner sc = new Scanner(file)) {
+            while (sc.hasNextLine()){
+                queue.add(sc.nextLine());
+            }
+        } catch (FileNotFoundException e) { e.printStackTrace(); }
+        return queue;
+    }
+
+    public static String porterAlgorithm(String word) {
+        //todo
+        return word;
     }
 }
