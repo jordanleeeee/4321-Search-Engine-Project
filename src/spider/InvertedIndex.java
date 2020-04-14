@@ -37,7 +37,7 @@ public class InvertedIndex {
         try {
             int wordID = Indexer.getInstance().searchIdByWord(word);
             String record = new String(wordIdDb.get(String.valueOf(wordID).getBytes()));
-            var recordDetails = Converter.readInvertedIndex(record);
+            HashMap<Integer, Integer> recordDetails = Converter.readInvertedIndex(record);
             return recordDetails.get(pageID);
         } catch (RocksDBException e) {
             e.printStackTrace();
@@ -63,7 +63,7 @@ public class InvertedIndex {
                 if (record == null) {
                     break;
                 }
-                var map = Converter.readInvertedIndex(new String(record));
+                HashMap<Integer, Integer> map = Converter.readInvertedIndex(new String(record));
                 int deleteTarget = -1;
                 for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
                     Integer key = entry.getKey();
@@ -83,7 +83,34 @@ public class InvertedIndex {
     }
 
     /**
-     * get a string contain all child page (only page that in the database will count), separate by \n
+     * get all children page by page id
+     * @param pageId page id
+     * @return list containing all the children link
+     */
+    List<String> getAllChildPage(int pageId) {
+        try {
+            List<String> pages = new LinkedList<>();
+            String listOfChild = new String(parentIDdb.get(String.valueOf(pageId).getBytes()));
+            String[] childIDs = Converter.readSeparateWords(listOfChild);
+
+            for (String childID : childIDs) {
+                if (childID.equals("")) {
+                    continue;
+                }
+                String l = Indexer.getInstance().searchURLById(Integer.parseInt(childID));
+                if (l == null) { throw new IllegalStateException(); }
+                pages.add(l);
+            }
+            return pages;
+        } catch (RocksDBException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * get a string contain child page of a page by pageId
+     * (only page that in the database will count), separate by \n
      * @param pageId page of
      * @return the string
      */

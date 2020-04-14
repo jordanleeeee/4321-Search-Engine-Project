@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
 import java.net.*;
 import java.util.*;
 
-class WebInfoSeeker {
+public class WebInfoSeeker {
     private String url;
     private static HashSet<String> stopWordsList = new HashSet<>();
 
@@ -28,25 +28,47 @@ class WebInfoSeeker {
         }
     }
 
-    WebInfoSeeker(String url) {
+    public WebInfoSeeker(String url) {
         this.url = url;
+    }
+
+    /**
+     * a page can access only if no need to login and the link is alive
+     * @return weather the page can be access
+     */
+    public boolean canAccess() {
+        try{
+            new URL(url).openStream();
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isHtmlPage() {
+        try {
+            String connectionType = null;
+            while (connectionType == null) {
+                connectionType = new URL(url).openConnection().getHeaderField("Content-Type");
+            }
+            return connectionType.contains("html");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     /**
      * get all children links of the given url
      * @return list of children links
      */
-    List<String> getChildLinks() {
+    public List<String> getChildLinks() {
         List<String> links = new LinkedList<>();
         LinkBean bean = new LinkBean();
         bean.setURL(url);
         URL[] urls = bean.getLinks();
         for (URL link : urls) {
             String l = link.toString();
-            //ignore not cse web page
-            if(!l.contains("cse.ust.hk")){
-                continue;
-            }
             // remove any junk suffix at the end of url
             while (true) {
                 char lastChar = l.charAt(l.length() - 1);
@@ -57,13 +79,12 @@ class WebInfoSeeker {
                 else
                     l = l.substring(0, l.length()-1);
             }
-            //todo can ignore .pdf .png .......??
             links.add(l);
         }
         return links;
     }
 
-    String getTitle() {
+    public String getTitle() {
         //todo can have a better way to do it?
         HTMLEditorKit htmlKit = new HTMLEditorKit();
         HTMLDocument htmlDoc = (HTMLDocument) htmlKit.createDefaultDocument();
@@ -85,7 +106,7 @@ class WebInfoSeeker {
         return title.toString();
     }
 
-    String getLastModificationTime() {
+    public String getLastModificationTime() {
         URL link = null;
         try {
             link = new URL(url);
@@ -112,7 +133,7 @@ class WebInfoSeeker {
         return date;
     }
 
-    String getPageSize() {
+    public String getPageSize() {
         URL link = null;
         try {
             link = new URL(url);
@@ -150,7 +171,8 @@ class WebInfoSeeker {
         return String.valueOf(contents.length());
     }
 
-    Vector<String> getKeywords() {
+
+    public Vector<String> getKeywords() {
         String contents = getWords();
         Vector<String> words = new Vector<>();
         StringTokenizer st = new StringTokenizer(contents);

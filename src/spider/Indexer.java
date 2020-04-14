@@ -4,6 +4,8 @@ import org.rocksdb.*;
 
 import com.google.common.collect.HashBiMap;
 
+import java.util.List;
+
 enum IndexType {PageURLID, WordID, TitleID, ParentID}
 public class Indexer {
     private static Indexer INSTANCE = new Indexer();
@@ -86,8 +88,12 @@ public class Indexer {
         else return pageIndexer.inverse().get(url);
     }
 
+    String searchURLById(int pageId) {
+        return pageIndexer.getOrDefault(pageId, null);
+    }
+
     ///////Title////////
-    void storeTitle(String title) {
+     void storeTitle(String title) {
         try {
             titleCount += 1;
             titleIDdb.put(Integer.toString(titleCount).getBytes(), title.getBytes());
