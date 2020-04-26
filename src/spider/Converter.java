@@ -15,6 +15,9 @@ public class Converter {
         String[] records = readSeparateWords(recordList);
         HashMap<Integer, Integer> record = new HashMap<>();
         for (String oneRecord : records) {
+            if (oneRecord.equals("")) {
+                continue;
+            }
             String[] temp = oneRecord.split(":");
             record.put(Integer.valueOf(temp[0]), Integer.valueOf(temp[1]));
         }
@@ -29,9 +32,13 @@ public class Converter {
     public static String generateInvertedIndex(HashMap<Integer, Integer> map) {
         StringBuilder result = new StringBuilder();
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            result.append(entry.getKey()).append(":").append(entry.getValue());
+            result.append(entry.getKey()).append(":").append(entry.getValue()).append(" ");
         }
-        return String.valueOf(result);
+        String detail = String.valueOf(result);
+        if (detail.equals("")) {
+            return detail;
+        }
+        return detail.substring(0, detail.length()-1);
     }
 
     /**

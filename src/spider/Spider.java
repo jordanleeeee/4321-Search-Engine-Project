@@ -96,8 +96,8 @@ public class Spider {
 
     /**
      * determine the type of page
+     *      * if not cse website: ignore
      * if the link is dead or need login access: ignore
-     * if not cse website ignore
      * if the link go to a non html page: ignore
      * if not in the local system: addNew
      * if in the local system:
@@ -108,14 +108,14 @@ public class Spider {
      */
     private PageType fetchCase(String url) {
         //System.out.println("checking " + url);
-        WebInfoSeeker seeker = new WebInfoSeeker(url);
-        //ignore page that need login to access, or the link is dead
-        if (!seeker.canAccess()) {
-            return PageType.ignore;
-        }
         //todo should uncomment this line
         //ignore page that is not cse web page
         if (!url.contains("cse.ust.hk")) {
+            return PageType.ignore;
+        }
+        WebInfoSeeker seeker = new WebInfoSeeker(url);
+        //ignore page that need login to access, or the link is dead
+        if (!seeker.canAccess()) {
             return PageType.ignore;
         }
         //ignore page that is a not html page
@@ -165,7 +165,7 @@ public class Spider {
                     writer.print(InvertedIndex.getInstance().getFreqOfWordInParticularPage(word, id) + "; ");
                 }
 
-                //writer.println();
+                writer.println();
                 //writer.println(invertedIndex.getChildPage(id));
                 writer.println("......................................................................");
             }

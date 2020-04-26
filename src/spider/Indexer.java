@@ -198,11 +198,8 @@ public class Indexer {
         }
     }
 
-//    public static void main(String[] args) throws RocksDBException {
-//        Indexer indexer = new Indexer();
-//        indexer.printAll(IndexType.PageURLID);
-//        indexer.printAll(IndexType.WordID);
-//        indexer.printAll(IndexType.TitleID);
-//        indexer.printAll(IndexType.ParentID);
-//    }
+    public static void main(String[] args) throws RocksDBException {
+        Indexer indexer = getInstance();
+        indexer.printAll(IndexType.WordID);
+    }
 }
