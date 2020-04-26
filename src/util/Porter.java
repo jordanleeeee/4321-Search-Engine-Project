@@ -14,7 +14,6 @@ class Porter {
 
     static class NewString {
         String str;
-
         NewString() {
             str = "";
         }
@@ -32,7 +31,7 @@ class Porter {
         return temp.toString();
     }
 
-    private boolean hasSuffix( String word, String suffix, NewString stem ) {
+    private boolean hasSuffix(String word, String suffix, NewString stem) {
         StringBuilder tmp;
         if (word.length() <= suffix.length()) {
             return false;
@@ -194,7 +193,8 @@ class Porter {
                         return str;
                     }
 
-                    if ((hasSuffix(str, "at", stem)) || (hasSuffix(str, "bl", stem)) || (hasSuffix(str, "iz", stem))) {
+                    if ((hasSuffix(str, "at", stem)) || (hasSuffix(str, "bl", stem))
+                            || (hasSuffix(str, "iz", stem))) {
                         str += "e";
 
                     } else {
@@ -218,7 +218,7 @@ class Porter {
         }
 
         if ( hasSuffix(str,"y",stem) )
-            if ( containsVowel( stem.str ) ) {
+            if (containsVowel(stem.str)) {
                 StringBuilder tmp = new StringBuilder();
                 for (int i = 0; i < str.length() - 1; i++) {
                     tmp.append(str.charAt(i));
@@ -228,29 +228,29 @@ class Porter {
         return str;
     }
 
-    private String step2( String str ) {
-        String[][] suffixes = { { "ational", "ate" },
-                { "tional",  "tion" },
-                { "enci",    "ence" },
-                { "anci",    "ance" },
-                { "izer",    "ize" },
-                { "iser",    "ize" },
-                { "abli",    "able" },
-                { "alli",    "al" },
-                { "entli",   "ent" },
-                { "eli",     "e" },
-                { "ousli",   "ous" },
-                { "ization", "ize" },
-                { "isation", "ize" },
-                { "ation",   "ate" },
-                { "ator",    "ate" },
-                { "alism",   "al" },
-                { "iveness", "ive" },
-                { "fulness", "ful" },
-                { "ousness", "ous" },
-                { "aliti",   "al" },
-                { "iviti",   "ive" },
-                { "biliti",  "ble" }};
+    private String step2(String str) {
+        String[][] suffixes = {{"ational", "ate"},
+                {"tional", "tion"},
+                {"enci", "ence"},
+                {"anci", "ance"},
+                {"izer", "ize"},
+                {"iser", "ize"},
+                {"abli", "able"},
+                {"alli", "al"},
+                {"entli", "ent"},
+                {"eli", "e"},
+                {"ousli", "ous"},
+                {"ization", "ize"},
+                {"isation", "ize"},
+                {"ation", "ate"},
+                {"ator", "ate"},
+                {"alism", "al"},
+                {"iveness", "ive"},
+                {"fulness", "ful"},
+                {"ousness", "ous"},
+                {"aliti", "al"},
+                {"iviti", "ive"},
+                {"biliti", "ble"}};
         NewString stem = new NewString();
         for (String[] suffix : suffixes) {
             if (hasSuffix(str, suffix[0], stem)) {
@@ -263,16 +263,16 @@ class Porter {
         return str;
     }
 
-    private String step3( String str ) {
+    private String step3(String str) {
 
-        String[][] suffixes = { { "icate", "ic" },
-                { "ative", "" },
-                { "alize", "al" },
-                { "alise", "al" },
-                { "iciti", "ic" },
-                { "ical",  "ic" },
-                { "ful",   "" },
-                { "ness",  "" }};
+        String[][] suffixes = {{"icate", "ic"},
+                {"ative", ""},
+                {"alize", "al"},
+                {"alise", "al"},
+                {"iciti", "ic"},
+                {"ical", "ic"},
+                {"ful", ""},
+                {"ness", ""}};
         NewString stem = new NewString();
 
         for (String[] suffix : suffixes) {
@@ -286,9 +286,9 @@ class Porter {
         return str;
     }
 
-    private String step4( String str ) {
+    private String step4(String str) {
 
-        String[] suffixes = { "al", "ance", "ence", "er", "ic", "able", "ible", "ant", "ement", "ment", "ent", "sion", "tion",
+        String[] suffixes = {"al", "ance", "ence", "er", "ic", "able", "ible", "ant", "ement", "ment", "ent", "sion", "tion",
                 "ou", "ism", "ate", "iti", "ous", "ive", "ize", "ise"};
 
         NewString stem = new NewString();
@@ -303,16 +303,15 @@ class Porter {
         return str;
     }
 
-    private String step5( String str ) {
-        if ( str.charAt(str.length()-1) == 'e' ) {
-            if ( measure(str) > 1 ) {                   /* measure(str)==measure(stem) if ends in vowel */
+    private String step5(String str) {
+        if (str.charAt(str.length() - 1) == 'e') {
+            if (measure(str) > 1) {                   /* measure(str)==measure(stem) if ends in vowel */
                 StringBuilder tmp = new StringBuilder();
                 for (int i = 0; i < str.length() - 1; i++) {
                     tmp.append(str.charAt(i));
                 }
                 str = tmp.toString();
-            }
-            else if ( measure(str) == 1 ) {
+            } else if (measure(str) == 1) {
                 StringBuilder stem = new StringBuilder();
                 for (int i = 0; i < str.length() - 1; i++) {
                     stem.append(str.charAt(i));
@@ -326,10 +325,10 @@ class Porter {
         if (str.length() == 1) {
             return str;
         }
-        if ( (str.charAt(str.length()-1) == 'l') && (str.charAt(str.length()-2) == 'l') && (measure(str) > 1) )
-            if ( measure(str) > 1 ) {                       /* measure(str)==measure(stem) if ends in vowel */
+        if ((str.charAt(str.length() - 1) == 'l') && (str.charAt(str.length() - 2) == 'l') && (measure(str) > 1))
+            if (measure(str) > 1) {                       /* measure(str)==measure(stem) if ends in vowel */
                 StringBuilder tmp = new StringBuilder();
-                for ( int i=0; i<str.length()-1; i++ ) {
+                for (int i = 0; i < str.length() - 1; i++) {
                     tmp.append(str.charAt(i));
                 }
                 str = tmp.toString();
@@ -337,8 +336,8 @@ class Porter {
         return str;
     }
 
-    private String stripPrefixes ( String str) {
-        String[] prefixes = { "kilo", "micro", "milli", "intra", "ultra", "mega", "nano", "pico", "pseudo"};
+    private String stripPrefixes(String str) {
+        String[] prefixes = {"kilo", "micro", "milli", "intra", "ultra", "mega", "nano", "pico", "pseudo"};
         for (String prefix : prefixes) {
             if (str.startsWith(prefix)) {
                 StringBuilder temp = new StringBuilder();
@@ -352,10 +351,9 @@ class Porter {
     }
 
 
-    private String stripSuffixes( String str ) {
-
-        str = step1( str );
-        if ( str.length() >= 1 ) {
+    private String stripSuffixes(String str) {
+        str = step1(str);
+        if (str.length() >= 1) {
             str = step2(str);
         }
         if (str.length() >= 1) {

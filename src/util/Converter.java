@@ -66,8 +66,14 @@ public class Converter {
         return queue;
     }
 
-    public static List<String> phraseTitle(String title) {
-        String[] titleWords = readSeparateWords(title);
+    /**
+     * convert content to list of stem word and ignore stop word
+     * can use as converting title or query
+     * @param content content
+     * @return list of stem word
+     */
+    public static List<String> phraseString(String content) {
+        String[] titleWords = readSeparateWords(content);
         List<String> stemTitleWord = new ArrayList<>();
         for (String word : titleWords) {
             if (Word.isMeaningfulWord(word)) {

@@ -151,15 +151,14 @@ public class Indexer {
         wordIndexer.put(wordId, word);
     }
 
-    Integer searchIdByWord(String word) {
-        if (!(wordIndexer.containsValue(word))){
+    public Integer searchIdByWord(String word) {
+        if (!(wordIndexer.containsValue(word))) {
             addWord(word);
             return wordCount;
-        }
-        else return wordIndexer.inverse().get(word);
+        } else return wordIndexer.inverse().get(word);
     }
 
-    String searchWordById(int wordId) {
+    public String searchWordById(int wordId) {
         return wordIndexer.getOrDefault(wordId, null);
     }
 
