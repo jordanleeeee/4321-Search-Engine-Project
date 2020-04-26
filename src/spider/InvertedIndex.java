@@ -55,30 +55,26 @@ public class InvertedIndex {
         }
     }
 
+    /**
+     * is not work... will make bugs
+     * @param pageID page id
+     */
     void clearRecord(int pageID) {
-        int wordId = 1;
-        while (true) {
+        String[] words = getKeyWords(pageID);
+        for (String word : words) {
             try {
+                if (word.equals("")) {
+                    continue;
+                }
+                int wordId = Indexer.getInstance().searchIdByWord(word);
                 byte[] record = wordIdDb.get(String.valueOf(wordId).getBytes());
-                if (record == null) {
-                    break;
-                }
                 HashMap<Integer, Integer> map = Converter.readInvertedIndex(new String(record));
-                int deleteTarget = -1;
-                for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-                    Integer key = entry.getKey();
-                    if (key == pageID) {
-                        deleteTarget = key;
-                        break;
-                    }
-                }
-                if (deleteTarget != -1) {
-                    map.remove(deleteTarget);
-                }
+                map.remove(pageID);
                 String newRecord = Converter.generateInvertedIndex(map);
                 wordIdDb.put(String.valueOf(wordId).getBytes(), newRecord.getBytes());
-                wordId++;
-            } catch (RocksDBException e) { e.printStackTrace(); }
+            } catch (RocksDBException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -214,7 +210,7 @@ public class InvertedIndex {
         }
     }
 
-    void printAll(Type situation){
+    private void printAll(Type situation){
         //Page-ID -> {keywords}
         if(situation == Type.PageID) {
             RocksIterator iter = pageIDdb.newIterator();
@@ -240,11 +236,8 @@ public class InvertedIndex {
         }
     }
 
-//    public static void main(String[] args){
-//        InvertedIndex invertedIndex = new InvertedIndex();
-//        // 1 for word ID -> {pageID, Freq}, 2 for Page-ID -> {keywords}, 3 for Parent-ID ->{ChildID}
-//        invertedIndex.store(0, "https://www.cse.ust.hk");
-//        invertedIndex.printAll(Type.PageID);
-//        invertedIndex.printAll(Type.ParentID);
-//    }
+    public static void main(String[] args){
+        InvertedIndex invertedIndex = getInstance();
+        invertedIndex.printAll(Type.WordID);
+    }
 }

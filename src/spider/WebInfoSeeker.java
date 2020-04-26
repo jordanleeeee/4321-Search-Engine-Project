@@ -6,10 +6,7 @@ import org.htmlparser.beans.StringBean;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.parser.ParserDelegator;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.*;
 import java.util.*;
 
@@ -84,7 +81,7 @@ public class WebInfoSeeker {
         return links;
     }
 
-    public String getTitle() {
+    private String getTitleVer2() {
         //todo can have a better way to do it?
         HTMLEditorKit htmlKit = new HTMLEditorKit();
         HTMLDocument htmlDoc = (HTMLDocument) htmlKit.createDefaultDocument();
@@ -93,17 +90,27 @@ public class WebInfoSeeker {
             parser.parse(new InputStreamReader(new URL(url).openStream()),
                     htmlDoc.getReader(0), true);
         } catch (IOException e) {
-            if (e instanceof ConnectException){
-                return getTitle();
-            }
-            e.printStackTrace();
-            System.out.println("this should not happened");
+            System.out.println("take too long, try again");
+            return getTitleVer2();
         }
         Object title = htmlDoc.getProperty("title");
         if (title == null) {
             return "NoTitle";
         }
         return title.toString();
+    }
+
+    public String getTitle() {
+        try {
+            InputStream response = new URL(url).openStream();
+            Scanner scanner = new Scanner(response);
+            String responseBody = scanner.useDelimiter("\\A").next();
+            String title;
+            title = responseBody.substring(responseBody.indexOf("<title>") + 7, responseBody.indexOf("</title>"));
+            return title.replace("\n", "");
+        } catch (Exception e) {
+            return getTitleVer2();
+        }
     }
 
     public String getLastModificationTime() {
@@ -184,6 +191,7 @@ public class WebInfoSeeker {
         for (String oneWord : words) {
             String word = oneWord.toLowerCase();
             if (!(stopWordsList.contains(word)) && word.length() >= 2 && word.matches("^[a-zA-Z]*$")) {
+                word = Converter.porterAlgorithm(word);
                 keywords.add(word);
             }
         }
