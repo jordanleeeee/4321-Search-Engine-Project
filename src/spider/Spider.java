@@ -1,5 +1,9 @@
 package spider;
 
+import indexer.Indexer;
+import indexer.InvertedIndex;
+import indexer.PageProperty;
+
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.*;
@@ -59,14 +63,14 @@ public class Spider {
             }
             if ( type != PageType.bypass) {
                 pageFetched++;
-                int id = indexer.searchIdByURL(site, true);
-                System.out.println(id +" handling " + site);
+                int pageID = indexer.searchIdByURL(site, true);
+                System.out.println(pageID +" handling " + site);
                 if (type == PageType.updateOld) {
-                    invertedIndex.clearRecord(id);
+                    invertedIndex.clearRecord(pageID);
                 }
-                pageProperty.store(id, site);
-                invertedIndex.store(id, site);
-                indexer.storeTitle(pageProperty.getTitle(id));
+                pageProperty.store(pageID, site);
+                invertedIndex.store(pageID, site);
+                indexer.storeTitle(pageProperty.getTitle(pageID));
             }
             int id = indexer.searchIdByURL(site, false);
             List<String> links = (type==PageType.bypass)?
@@ -144,12 +148,10 @@ public class Spider {
      */
     void printAll(String outputPath) {
         try (PrintWriter writer = new PrintWriter(outputPath)) {
-            int maxId = pageProperty.getMaxId();
-            for (int id = 1; id < maxId + 1; id++) {
+            List<Integer> maxId = pageProperty.getAllPageId();
+            for (int id : maxId) {
                 String url = pageProperty.getUrl(id);
-                if (url == null) {
-                    continue;
-                }
+                writer.println(id);
                 writer.println(pageProperty.getTitle(id));
                 writer.println(url);
                 writer.print(pageProperty.getLastModificationTime(id));
@@ -166,7 +168,7 @@ public class Spider {
                 }
 
                 writer.println();
-                //writer.println(invertedIndex.getChildPage(id));
+                //writer.println(invertedIndex.getChildPages(id));
                 writer.println("......................................................................");
             }
         } catch (FileNotFoundException e) {

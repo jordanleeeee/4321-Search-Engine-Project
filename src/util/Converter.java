@@ -1,10 +1,10 @@
-package spider;
+package util;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 
 public class Converter {
+
     /**
      * convert inverted index to hash map
      * convert "1:2 3:4 5:6"  to  1->2, 3->4, 5->6
@@ -50,6 +50,11 @@ public class Converter {
         return words.split(" ");
     }
 
+    /**
+     * load all url in the file into a list
+     * @param path path to the txt file
+     * @return a queue contain all url
+     */
     public static Queue<String> readRemainingQueue(String path) {
         Queue<String> queue = new LinkedList<>();
         File file = new File(path);
@@ -61,8 +66,15 @@ public class Converter {
         return queue;
     }
 
-    public static String porterAlgorithm(String word) {
-        //todo
-        return word;
+    public static List<String> phraseTitle(String title) {
+        String[] titleWords = readSeparateWords(title);
+        List<String> stemTitleWord = new ArrayList<>();
+        for (String word : titleWords) {
+            if (Word.isMeaningfulWord(word)) {
+                stemTitleWord.add(Word.porterAlgorithm(word));
+            }
+        }
+        return stemTitleWord;
     }
+
 }
