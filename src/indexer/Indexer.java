@@ -1,13 +1,12 @@
-package spider;
+package indexer;
 
 import org.rocksdb.*;
 
 import com.google.common.collect.HashBiMap;
 
-import java.util.List;
-
-enum IndexType {PageURLID, WordID, TitleID, ParentID}
 public class Indexer {
+    enum IndexType {PageURLID, WordID, TitleID, ParentID}
+
     private static Indexer INSTANCE = new Indexer();
     private RocksDB pageURLIDdb, wordIDdb, titleIDdb, parentIDdb;
     private Integer wordCount = 0, titleCount = 0, URLCount = 0;
@@ -15,7 +14,7 @@ public class Indexer {
     private HashBiMap<Integer, String> wordIndexer = HashBiMap.create();
     private HashBiMap<Integer, String> titleIndexer = HashBiMap.create();
 
-    static Indexer getInstance() {
+    public static Indexer getInstance() {
         return INSTANCE;
     }
 
@@ -75,7 +74,7 @@ public class Indexer {
      * @param addIfMissing boolean
      * @return page id, -1 if no such page
      */
-    Integer searchIdByURL(String url, boolean addIfMissing) {
+    public Integer searchIdByURL(String url, boolean addIfMissing) {
         if (!(pageIndexer.containsValue(url))){
             if (addIfMissing) {
                 addPage(url);
@@ -92,8 +91,8 @@ public class Indexer {
         return pageIndexer.getOrDefault(pageId, null);
     }
 
-    ///////Title////////
-     void storeTitle(String title) {
+      ///////Title////////
+     public void storeTitle(String title) {
         try {
             titleCount += 1;
             titleIDdb.put(Integer.toString(titleCount).getBytes(), title.getBytes());
@@ -165,7 +164,7 @@ public class Indexer {
     }
 
     //////////others///////////////////
-    void printAll(IndexType situation) {
+    private void printAll(IndexType situation) {
         if (situation == IndexType.PageURLID) {
             RocksIterator iter = pageURLIDdb.newIterator();
             for (iter.seekToFirst(); iter.isValid(); iter.next()) {
@@ -198,8 +197,9 @@ public class Indexer {
         }
     }
 
-    public static void main(String[] args) throws RocksDBException {
+    public static void main(String[] args){
         Indexer indexer = getInstance();
         indexer.printAll(IndexType.WordID);
+        indexer.printAll(IndexType.ParentID);
     }
 }

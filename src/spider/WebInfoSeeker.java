@@ -2,6 +2,8 @@ package spider;
 
 import org.htmlparser.beans.LinkBean;
 import org.htmlparser.beans.StringBean;
+import util.Converter;
+import util.Word;
 
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
@@ -12,18 +14,6 @@ import java.util.*;
 
 public class WebInfoSeeker {
     private String url;
-    private static HashSet<String> stopWordsList = new HashSet<>();
-
-    static {
-        try (BufferedReader reader = new BufferedReader(new FileReader("stopwords.txt"))){
-            String line;
-            while ((line = reader.readLine()) != null) {
-                stopWordsList.add(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public WebInfoSeeker(String url) {
         this.url = url;
@@ -33,7 +23,7 @@ public class WebInfoSeeker {
      * a page can access only if no need to login and the link is alive
      * @return weather the page can be access
      */
-    public boolean canAccess() {
+    boolean canAccess() {
         try{
             new URL(url).openStream();
         } catch (Exception e) {
@@ -42,7 +32,7 @@ public class WebInfoSeeker {
         return true;
     }
 
-    public boolean isHtmlPage() {
+    boolean isHtmlPage() {
         try {
             String connectionType = null;
             while (connectionType == null) {
@@ -190,8 +180,8 @@ public class WebInfoSeeker {
         Vector<String> keywords = new Vector<>();
         for (String oneWord : words) {
             String word = oneWord.toLowerCase();
-            if (!(stopWordsList.contains(word)) && word.length() >= 2 && word.matches("^[a-zA-Z]*$")) {
-                word = Converter.porterAlgorithm(word);
+            if (Word.isMeaningfulWord(word)) {
+                word = Word.porterAlgorithm(word);
                 keywords.add(word);
             }
         }
