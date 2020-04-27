@@ -277,7 +277,7 @@ public class InvertedIndex {
         try {
             WebInfoSeeker seeker = new WebInfoSeeker(url);
             Vector<String> keyWords = seeker.getKeywords();
-            List<String> titleWord = Converter.phraseTitle(PageProperty.getInstance().getTitle(pageID));
+            List<String> titleWord = Converter.phraseString(PageProperty.getInstance().getTitle(pageID));
             for (String s : titleWord) {
                 if (s.equals(keyWords.get(0))) {
                     keyWords.remove(0);
