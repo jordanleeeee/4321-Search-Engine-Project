@@ -53,8 +53,6 @@ public class Indexer {
     }
 
     private void addPage(String url) {
-        //todo
-        //if page not in database, add it
         try {
             URLCount += 1;
             pageURLIDdb.put(Integer.toString(URLCount).getBytes(), url.getBytes());
@@ -87,8 +85,8 @@ public class Indexer {
         else return pageIndexer.inverse().get(url);
     }
 
-    String searchURLById(int pageId) {
-        return pageIndexer.getOrDefault(pageId, null);
+    String searchURLById(int pageID) {
+        return pageIndexer.getOrDefault(pageID, null);
     }
 
       ///////Title////////
@@ -199,6 +197,6 @@ public class Indexer {
     public static void main(String[] args){
         Indexer indexer = getInstance();
         indexer.printAll(IndexType.WordID);
-        indexer.printAll(IndexType.ParentID);
+//        indexer.printAll(IndexType.ParentID);
     }
 }

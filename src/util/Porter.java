@@ -1,15 +1,13 @@
-/* author:   Fotis Lazarinis (actually I translated from C to Java)
-   date:     June 1997
-   address:  Psilovraxou 12, Agrinio, 30100
-
-   comments: Compile it, import the Porter class into you program and create an instance.
-	     Then use the stripAffixes method of this method which takes a String as
-             input and returns the stem of this String again as a String.
-
-*/
-
 package util;
 
+/**
+ * Compile it, import the Porter class into you program and create an instance.
+ * Then use the stripAffixes method of this method which takes a String as
+ * input and returns the stem of this String again as a String.
+ * @author  Fotis Lazarinis (actually I translated from C to Java)
+ * @date    June 1997
+ * @address Psilovraxou 12, Agrinio, 30100
+ */
 class Porter {
 
     static class NewString {
@@ -78,7 +76,6 @@ class Porter {
                         return true;
                 }
             }
-
             default:
                 return false;
         }
@@ -103,11 +100,13 @@ class Porter {
 
             for (i++; i < length; i++) {
                 if (i > 0) {
-                    if (!vowel(stem.charAt(i), stem.charAt(i - 1)))
+                    if (!vowel(stem.charAt(i), stem.charAt(i - 1))) {
                         break;
+                    }
                 } else {
-                    if (!vowel(stem.charAt(i), '?'))
+                    if (!vowel(stem.charAt(i), '?')) {
                         break;
+                    }
                 }
             }
             if (i < length) {
@@ -118,15 +117,16 @@ class Porter {
         return (count);
     }
 
-    private boolean containsVowel( String word ) {
-
+    private boolean containsVowel(String word) {
         for (int i = 0; i < word.length(); i++) {
             if (i > 0) {
-                if (vowel(word.charAt(i), word.charAt(i - 1)))
+                if (vowel(word.charAt(i), word.charAt(i - 1))) {
                     return true;
+                }
             } else {
-                if (vowel(word.charAt(0), 'a'))
+                if (vowel(word.charAt(0), 'a')) {
                     return true;
+                }
             }
         }
         return false;
@@ -150,7 +150,7 @@ class Porter {
         return false;
     }
 
-    private String step1( String str ) {
+    private String step1(String str) {
         NewString stem = new NewString();
         if (str.charAt(str.length() - 1) == 's') {
             if ((hasSuffix(str, "sses", stem)) || (hasSuffix(str, "ies", stem))) {
@@ -217,7 +217,7 @@ class Porter {
             }
         }
 
-        if ( hasSuffix(str,"y",stem) )
+        if (hasSuffix(str, "y", stem))
             if (containsVowel(stem.str)) {
                 StringBuilder tmp = new StringBuilder();
                 for (int i = 0; i < str.length() - 1; i++) {

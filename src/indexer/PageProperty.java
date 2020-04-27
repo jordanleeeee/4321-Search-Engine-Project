@@ -38,9 +38,9 @@ public class PageProperty {
         return numOfPageFetched;
     }
 
-    public String getTitle(int pageId) {
+    public String getTitle(int pageID) {
         try {
-            byte[] url = pagePropDB.get(handles.get(0), String.valueOf(pageId).getBytes());
+            byte[] url = pagePropDB.get(handles.get(0), String.valueOf(pageID).getBytes());
             if (url == null) {
                 return null;
             }
@@ -52,9 +52,9 @@ public class PageProperty {
         }
     }
 
-    public String getUrl(int pageId) {
+    public String getUrl(int pageID) {
         try {
-            byte[] url = pagePropDB.get(handles.get(1), String.valueOf(pageId).getBytes());
+            byte[] url = pagePropDB.get(handles.get(1), String.valueOf(pageID).getBytes());
             if (url == null) {
                 return null;
             }
@@ -66,9 +66,9 @@ public class PageProperty {
         }
     }
 
-    public String getSize(int pageId) {
+    public String getSize(int pageID) {
         try {
-            byte[] url = pagePropDB.get(handles.get(3), String.valueOf(pageId).getBytes());
+            byte[] url = pagePropDB.get(handles.get(3), String.valueOf(pageID).getBytes());
             if (url == null) {
                 return null;
             }
@@ -80,9 +80,9 @@ public class PageProperty {
         }
     }
 
-    public String getLastModificationTime(int pageId) {
+    public String getLastModificationTime(int pageID) {
         try {
-            return new String(pagePropDB.get(handles.get(2), String.valueOf(pageId).getBytes()));
+            return new String(pagePropDB.get(handles.get(2), String.valueOf(pageID).getBytes()));
         } catch (RocksDBException e) {
             e.printStackTrace();
             System.out.println("this should not happened");
@@ -92,17 +92,17 @@ public class PageProperty {
 
     /**
      * store page info into database
-     * @param pageId id of the page
+     * @param pageID id of the page
      * @param url link of the page
      */
-    public void store(int pageId, String url){
+    public void store(int pageID, String url){
 
         WebInfoSeeker seeker = new WebInfoSeeker(url);
         try {
-            pagePropDB.put(handles.get(0), Integer.toString(pageId).getBytes(), seeker.getTitle().getBytes());
-            pagePropDB.put(handles.get(1), Integer.toString(pageId).getBytes(), url.getBytes());
-            pagePropDB.put(handles.get(2), Integer.toString(pageId).getBytes(), seeker.getLastModificationTime().getBytes());
-            pagePropDB.put(handles.get(3), Integer.toString(pageId).getBytes(), seeker.getPageSize().getBytes());
+            pagePropDB.put(handles.get(0), Integer.toString(pageID).getBytes(), seeker.getTitle().getBytes());
+            pagePropDB.put(handles.get(1), Integer.toString(pageID).getBytes(), url.getBytes());
+            pagePropDB.put(handles.get(2), Integer.toString(pageID).getBytes(), seeker.getLastModificationTime().getBytes());
+            pagePropDB.put(handles.get(3), Integer.toString(pageID).getBytes(), seeker.getPageSize().getBytes());
             numOfPageFetched++;
         } catch (RocksDBException e) {
             System.out.println("this should not happened");
@@ -138,7 +138,7 @@ public class PageProperty {
      * get all pageID in the database
      * @return list of pageID
      */
-    public List<Integer> getAllPageId() {
+    public List<Integer> getAllPageID() {
         List<Integer> pageIDs = new LinkedList<>();
         RocksIterator iterator = pagePropDB.newIterator();
         for(iterator.seekToFirst(); iterator.isValid(); iterator.next()) {

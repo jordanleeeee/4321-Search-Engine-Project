@@ -139,7 +139,7 @@ public class Spider {
         long diff = new Date(Date.parse(new WebInfoSeeker(url).getLastModificationTime())).getTime()
                         - new Date(Date.parse(lastModify)).getTime();
         // 86400000 is 1 day in nanosecond
-        return (diff > 86400000)? PageType.updateOld: PageType.bypass;
+        return (diff > 86400000) ? PageType.updateOld : PageType.bypass;
     }
 
     /**
@@ -148,7 +148,7 @@ public class Spider {
      */
     void printAll(String outputPath) {
         try (PrintWriter writer = new PrintWriter(outputPath)) {
-            List<Integer> maxId = pageProperty.getAllPageId();
+            List<Integer> maxId = pageProperty.getAllPageID();
             for (int id : maxId) {
                 String url = pageProperty.getUrl(id);
                 writer.println(id);
@@ -178,7 +178,7 @@ public class Spider {
 
 //    public static void main(String[] args) throws RocksDBException {
 //        Spider spider = new Spider("https://www.cse.ust.hk");
-//       // spider.BFS(30);
+//        spider.BFS(30);
 //        System.out.println("page property contain");
 //        spider.pageProperty.printAll();
 //        spider.indexer.printAll(IndexType.WordID);
