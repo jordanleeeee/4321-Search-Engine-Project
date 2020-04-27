@@ -2,7 +2,6 @@ package spider;
 
 import org.htmlparser.beans.LinkBean;
 import org.htmlparser.beans.StringBean;
-import util.Converter;
 import util.Word;
 
 import javax.swing.text.html.HTMLDocument;
@@ -167,7 +166,6 @@ public class WebInfoSeeker {
         contents = contents.replace("\n", "");
         return String.valueOf(contents.length());
     }
-
 
     public Vector<String> getKeywords() {
         String contents = getWords();

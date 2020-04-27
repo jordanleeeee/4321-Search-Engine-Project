@@ -6,42 +6,6 @@ import java.util.*;
 public class Converter {
 
     /**
-     * convert inverted index to hash map
-     * convert "1:2 3:4 5:6"  to  1->2, 3->4, 5->6
-     * @param recordList string representation of inverted index
-     * @return hashMap where key is pageID, value is frequency
-     */
-    public static HashMap<Integer, Integer> readInvertedIndex(String recordList) {
-        String[] records = readSeparateWords(recordList);
-        HashMap<Integer, Integer> record = new HashMap<>();
-        for (String oneRecord : records) {
-            if (oneRecord.equals("")) {
-                continue;
-            }
-            String[] temp = oneRecord.split(":");
-            record.put(Integer.valueOf(temp[0]), Integer.valueOf(temp[1]));
-        }
-        return record;
-    }
-    /**
-     * convert hash map to inverted index
-     * convert 1->2, 3->4, 5->6  to  "1:2 3:4 5:6"
-     * @param map the hash map represent the inverted index
-     * @return inverted index
-     */
-    public static String generateInvertedIndex(HashMap<Integer, Integer> map) {
-        StringBuilder result = new StringBuilder();
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            result.append(entry.getKey()).append(":").append(entry.getValue()).append(" ");
-        }
-        String detail = String.valueOf(result);
-        if (detail.equals("")) {
-            return detail;
-        }
-        return detail.substring(0, detail.length()-1);
-    }
-
-    /**
      * e.g. convert  "apple boy cat"  to  ["apple", "boy", "cat"]
      * @param words a string contain words separate by a space
      * @return a array contain those words
@@ -82,5 +46,4 @@ public class Converter {
         }
         return stemTitleWord;
     }
-
 }

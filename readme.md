@@ -1,6 +1,7 @@
-#Search Engine Project
-<br>Update (27/4): term weighted added, code is refactored, phrase search is still not supported</br>
-<br></br>
+# Search Engine Project #
+<br>Update (26/4): term weighted added, code is refactored, phrase search is still not supported.</br>
+<br>Update (27/4): posting list of inverted index will record the position of word in the page.
+(similar to slide 14 in lecture notes: implementation issues). It can be useful for for identify phrase</br>
 <br>possible useful function for retriever:</br>
 ```
 //in inverted index class *very useful*

@@ -7,7 +7,7 @@ public class Main {
         String url = "https://www.cse.ust.hk";
         int numOfPage = 30;
         Spider spider1 = new Spider(url);
-        //spider1.BFS(numOfPage);
+        spider1.BFS(numOfPage);
         spider1.printAll("spider_result.txt");
 
 //        continue fetch page base on previous not yet fetched child links

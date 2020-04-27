@@ -20,6 +20,11 @@ public class Word {
         }
     }
 
+    /**
+     * convert a word to stem using porter algorithm
+     * @param word a word
+     * @return stem word
+     */
     public static String porterAlgorithm(String word) {
         return porter.stripAffixes(word);
     }
@@ -28,6 +33,12 @@ public class Word {
         return stopWordsList.contains(word);
     }
 
+    /**
+     * check if a word is meaningful
+     * a word is meaningful is it is not a stop word and length >= 2 and only contain alphabet
+     * @param word a word
+     * @return true if is meaningful
+     */
     public static boolean isMeaningfulWord(String word) {
         return !isStopWord(word) && word.length() >= 2
                 && word.matches("^[a-zA-Z]*$");
