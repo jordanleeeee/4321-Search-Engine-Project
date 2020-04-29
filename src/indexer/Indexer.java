@@ -4,6 +4,9 @@ import org.rocksdb.*;
 
 import com.google.common.collect.HashBiMap;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Indexer {
     enum IndexType {PageURLID, WordID, TitleID, ParentID}
 
@@ -39,7 +42,6 @@ public class Indexer {
     }
 
     ///////Page////////
-
     private void addPageBiMap(){
         RocksIterator iter = pageURLIDdb.newIterator();
         for (iter.seekToFirst(); iter.isValid(); iter.next()) {
@@ -48,8 +50,8 @@ public class Indexer {
         }
     }
 
-    private void updatePageBiMap(int pageId, String url){
-        pageIndexer.put(pageId, url);
+    private void updatePageBiMap(int pageID, String url){
+        pageIndexer.put(pageID, url);
     }
 
     private void addPage(String url) {
@@ -65,14 +67,14 @@ public class Indexer {
 
     /**
      * true:
-     *     get id from url, if no such id (a newly appeared link), make one for it
+     *     get ID from url, if no such ID (a newly appeared link), make one for it
      * false:
-     *      get id from url, if no such id, return -1
+     *      get ID from url, if no such ID, return -1
      * @param url link
      * @param addIfMissing boolean
-     * @return page id, -1 if no such page
+     * @return page ID, -1 if no such page
      */
-    public Integer searchIdByURL(String url, boolean addIfMissing) {
+    public Integer searchIDByURL(String url, boolean addIfMissing) {
         if (!(pageIndexer.containsValue(url))){
             if (addIfMissing) {
                 addPage(url);
@@ -85,7 +87,7 @@ public class Indexer {
         else return pageIndexer.inverse().get(url);
     }
 
-    String searchURLById(int pageID) {
+    String searchURLByID(int pageID) {
         return pageIndexer.getOrDefault(pageID, null);
     }
 
@@ -109,20 +111,20 @@ public class Indexer {
         }
     }
 
-    private void updateTitleBiMap(int titleId, String title){
+    private void updateTitleBiMap(int titleID, String title){
         if (titleIndexer.containsValue(title)) {
             titleCount--;
         } else {
-            titleIndexer.put(titleId, title);
+            titleIndexer.put(titleID, title);
         }
     }
 
-    Integer searchIdByTitle(String title) {
+    Integer searchIDByTitle(String title) {
         return titleIndexer.inverse().get(title);
     }
 
-    String searchTitleById(int titleId) {
-        return titleIndexer.get(titleId);
+    String searchTitleByID(int titleID) {
+        return titleIndexer.get(titleID);
     }
 
     ///////Word////////
@@ -145,19 +147,43 @@ public class Indexer {
         }
     }
 
-    private void updateWordBiMap(int wordId, String word){
-        wordIndexer.put(wordId, word);
+    public Set<String> getAllStemWord() {
+        Set<String> result = new HashSet<>();
+        RocksIterator iter = wordIDdb.newIterator();
+        for (iter.seekToFirst(); iter.isValid(); iter.next()) {
+            result.add(new String(iter.value()));
+        }
+        return result;
     }
 
-    public Integer searchIdByWord(String word) {
+    private void updateWordBiMap(int wordID, String word){
+        wordIndexer.put(wordID, word);
+    }
+
+    /**
+     * true:
+     *     get ID from word, if no such ID make one for it
+     * false:
+     *      get ID from word, if no such ID, return -1
+     * @param word a word
+     * @param addIfMissing boolean
+     * @return word ID, -1 if no such word
+     */
+    public Integer searchIDByWord(String word, boolean addIfMissing) {
         if (!(wordIndexer.containsValue(word))) {
-            addWord(word);
-            return wordCount;
-        } else return wordIndexer.inverse().get(word);
+            if (addIfMissing) {
+                addWord(word);
+                return wordCount;
+            } else {
+                return -1;
+            }
+        } else{
+            return wordIndexer.inverse().get(word);
+        }
     }
 
-    public String searchWordById(int wordId) {
-        return wordIndexer.getOrDefault(wordId, null);
+    public String searchWordByID(int wordID) {
+        return wordIndexer.getOrDefault(wordID, null);
     }
 
     //////////others///////////////////

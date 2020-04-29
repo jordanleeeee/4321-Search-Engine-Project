@@ -63,7 +63,7 @@ public class Spider {
             }
             if ( type != PageType.bypass) {
                 pageFetched++;
-                int pageID = indexer.searchIdByURL(site, true);
+                int pageID = indexer.searchIDByURL(site, true);
                 System.out.println(pageID +" handling " + site);
                 if (type == PageType.updateOld) {
                     invertedIndex.clearRecord(pageID);
@@ -72,9 +72,9 @@ public class Spider {
                 invertedIndex.store(pageID, site);
                 indexer.storeTitle(pageProperty.getTitle(pageID));
             }
-            int id = indexer.searchIdByURL(site, false);
+            int ID = indexer.searchIDByURL(site, false);
             List<String> links = (type==PageType.bypass)?
-                    invertedIndex.getAllChildPage(id): new WebInfoSeeker(site).getChildLinks();
+                    invertedIndex.getAllChildPage(ID): new WebInfoSeeker(site).getChildLinks();
             //List<String> links = new WebInfoSeeker(site).getChildLinks();
             for (String link : links) {
                 if (!queue.contains(link)) {
@@ -127,7 +127,7 @@ public class Spider {
             return PageType.ignore;
         }
         //if site is not in the system
-        Integer pageID = indexer.searchIdByURL(url,false);
+        Integer pageID = indexer.searchIDByURL(url,false);
         if (pageID == -1) {
             return PageType.addNew;
         }
@@ -148,27 +148,27 @@ public class Spider {
      */
     void printAll(String outputPath) {
         try (PrintWriter writer = new PrintWriter(outputPath)) {
-            List<Integer> maxId = pageProperty.getAllPageID();
-            for (int id : maxId) {
-                String url = pageProperty.getUrl(id);
-                writer.println(id);
-                writer.println(pageProperty.getTitle(id));
+            List<Integer> maxID = pageProperty.getAllPageID();
+            for (int ID : maxID) {
+                String url = pageProperty.getUrl(ID);
+                writer.println(ID);
+                writer.println(pageProperty.getTitle(ID));
                 writer.println(url);
-                writer.print(pageProperty.getLastModificationTime(id));
+                writer.print(pageProperty.getLastModificationTime(ID));
                 writer.print(", ");
-                writer.println(pageProperty.getSize(id));
-                String[] words = invertedIndex.getKeyWords(id);
+                writer.println(pageProperty.getSize(ID));
+                String[] words = invertedIndex.getKeyWords(ID);
 
                 for (String word : words) {
                     if (word.equals("")) {
                         continue;
                     }
                     writer.print(word + " ");
-                    writer.print(InvertedIndex.getInstance().getFreqOfWordInParticularPage(word, id) + "; ");
+                    writer.print(InvertedIndex.getInstance().getFreqOfWordInParticularPage(word, ID) + "; ");
                 }
 
                 writer.println();
-                //writer.println(invertedIndex.getChildPages(id));
+                //writer.println(invertedIndex.getChildPages(ID));
                 writer.println("......................................................................");
             }
         } catch (FileNotFoundException e) {

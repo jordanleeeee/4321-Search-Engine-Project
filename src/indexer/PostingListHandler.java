@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * the posting list of inverted index has the following format
- * pageId1:frequency:position1,position2,... pageId2:frequency2:position1,position2....
+ * pageID1:frequency:position1,position2,... pageID2:frequency2:position1,position2....
  */
 public class PostingListHandler {
     /**
@@ -55,7 +55,7 @@ public class PostingListHandler {
 
     /**
      * remove record of a particular page in the posting list
-     * @param pageID page id
+     * @param pageID page ID
      */
     void removeRecord(int pageID) {
         frequencyRecord.remove(pageID);
@@ -64,7 +64,7 @@ public class PostingListHandler {
 
     /**
      * add a word
-     * @param pageID page id
+     * @param pageID page ID
      * @param pos position
      * @return current term frequency
      */
