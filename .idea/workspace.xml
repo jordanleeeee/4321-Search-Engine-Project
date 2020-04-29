@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d848cb69-fd9e-4a90-800e-ac0c5677ffdd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spider_result.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/indexer/Indexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indexer/Indexer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/indexer/InvertedIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indexer/InvertedIndex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/indexer/PageProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indexer/PageProperty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/indexer/PostingListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indexer/PostingListHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spider/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/spider/Spider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/Spider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spider/WebInfoSeeker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/WebInfoSeeker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Converter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Porter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Porter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Word.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

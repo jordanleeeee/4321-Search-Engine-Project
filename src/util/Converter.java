@@ -30,20 +30,4 @@ public class Converter {
         return queue;
     }
 
-    /**
-     * convert content to list of stem word and ignore stop word
-     * can use as converting title or query
-     * @param content content
-     * @return list of stem word
-     */
-    public static List<String> phraseString(String content) {
-        String[] titleWords = readSeparateWords(content);
-        List<String> stemTitleWord = new ArrayList<>();
-        for (String word : titleWords) {
-            if (Word.isMeaningfulWord(word)) {
-                stemTitleWord.add(Word.porterAlgorithm(word));
-            }
-        }
-        return stemTitleWord;
-    }
 }

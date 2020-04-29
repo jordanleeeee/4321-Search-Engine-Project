@@ -22,8 +22,8 @@ public class PageProperty {
         String PATH = "/Java/Spider/pagePropDB";
         try {
             List<ColumnFamilyDescriptor> colFamily = new Vector<>();
-            colFamily.add(new ColumnFamilyDescriptor(RocksDB.DEFAULT_COLUMN_FAMILY, new ColumnFamilyOptions()));
-            colFamily.add(new ColumnFamilyDescriptor("url".getBytes(), new ColumnFamilyOptions()));
+            colFamily.add(new ColumnFamilyDescriptor(RocksDB.DEFAULT_COLUMN_FAMILY));
+            colFamily.add(new ColumnFamilyDescriptor("url".getBytes()));
             colFamily.add(new ColumnFamilyDescriptor("lastDateOfModification".getBytes()));
             colFamily.add(new ColumnFamilyDescriptor("size".getBytes()));
             DBOptions options = new DBOptions().setCreateIfMissing(true).setCreateMissingColumnFamilies(true);
@@ -92,7 +92,7 @@ public class PageProperty {
 
     /**
      * store page info into database
-     * @param pageID id of the page
+     * @param pageID ID of the page
      * @param url link of the page
      */
     public void store(int pageID, String url){
@@ -142,8 +142,8 @@ public class PageProperty {
         List<Integer> pageIDs = new LinkedList<>();
         RocksIterator iterator = pagePropDB.newIterator();
         for(iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
-            int id = Integer.parseInt(new String(iterator.key()));
-            pageIDs.add(id);
+            int ID = Integer.parseInt(new String(iterator.key()));
+            pageIDs.add(ID);
         }
         return pageIDs;
     }

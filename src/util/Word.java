@@ -3,7 +3,9 @@ package util;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 public class Word {
     private static Porter porter = new Porter();
@@ -42,5 +44,26 @@ public class Word {
     public static boolean isMeaningfulWord(String word) {
         return !isStopWord(word) && word.length() >= 2
                 && word.matches("^[a-zA-Z]*$");
+    }
+
+    /**
+     * convert content to list of stem word and ignore stop word
+     * can use as converting title or query
+     * @param content content
+     * @return list of stem word
+     */
+    public static List<String> phraseString(String content) {
+        String[] titleWords = Converter.readSeparateWords(content);
+        List<String> stemTitleWord = new ArrayList<>();
+        for (String word : titleWords) {
+            if (isMeaningfulWord(word)) {
+                stemTitleWord.add(porterAlgorithm(word));
+            }
+        }
+        return stemTitleWord;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(phraseString("news letters"));
     }
 }
