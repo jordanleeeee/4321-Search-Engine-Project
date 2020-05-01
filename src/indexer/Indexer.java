@@ -4,8 +4,7 @@ import org.rocksdb.*;
 
 import com.google.common.collect.HashBiMap;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Indexer {
     enum IndexType {PageURLID, WordID, TitleID, ParentID}
@@ -147,13 +146,20 @@ public class Indexer {
         }
     }
 
-    public Set<String> getAllStemWord() {
+    /**
+     * get all stem in the database
+     * @return a list of sorted stem word
+     */
+    public List<String> getAllStemWord() {
         Set<String> result = new HashSet<>();
         RocksIterator iter = wordIDdb.newIterator();
         for (iter.seekToFirst(); iter.isValid(); iter.next()) {
             result.add(new String(iter.value()));
         }
-        return result;
+        List<String> sortedList = new ArrayList<>(result);
+        Collections.sort(sortedList);
+
+        return sortedList;
     }
 
     private void updateWordBiMap(int wordID, String word){
@@ -222,7 +228,7 @@ public class Indexer {
 
     public static void main(String[] args){
         Indexer indexer = getInstance();
-        indexer.printAll(IndexType.WordID);
-//        indexer.printAll(IndexType.ParentID);
+        System.out.println(indexer.getAllStemWord());
+        indexer.printAll(IndexType.PageURLID);
     }
 }
