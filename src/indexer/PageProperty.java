@@ -52,6 +52,13 @@ public class PageProperty {
         }
     }
 
+    private void delEntry(int pageID) throws RocksDBException {
+        byte[] key = String.valueOf(pageID).getBytes();
+        for(ColumnFamilyHandle h: handles){
+            pagePropDB.delete(h, key);
+        }
+    }
+
     public String getUrl(int pageID) {
         try {
             byte[] url = pagePropDB.get(handles.get(1), String.valueOf(pageID).getBytes());
@@ -149,8 +156,8 @@ public class PageProperty {
     }
 
     public static void main(String[] args) throws RocksDBException {
-        PageProperty fetcher = getInstance();
-        //fetcher.clearDataBase();
-        fetcher.printAll();
+        PageProperty pageProperty = getInstance();
+        pageProperty.delEntry(7802);
+        pageProperty.printAll();
     }
 }

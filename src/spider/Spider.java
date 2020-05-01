@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.*;
 
-public class Spider {
+class Spider {
     private Indexer indexer;
     private InvertedIndex invertedIndex;
     private PageProperty pageProperty;
@@ -42,6 +42,9 @@ public class Spider {
      * will be determine automatically.
      * n must not be too large, otherwise continuous access the same web server
      * too much in a short time will make the web server treat you as hacker
+     * (connect to UST vpn can solve this problem)
+     * Moreover, set n too large will cause stack overflow runtime error...
+     * just set n around 1000 is secure.
      * and block access from you temporarily.
      * @param numOfPage n (required number of page to be fetch)
      */
@@ -140,6 +143,7 @@ public class Spider {
                         - new Date(Date.parse(lastModify)).getTime();
         // 86400000 is 1 day in nanosecond
         return (diff > 86400000) ? PageType.updateOld : PageType.bypass;
+
     }
 
     /**

@@ -64,6 +64,6 @@ public class Word {
     }
 
     public static void main(String[] args) {
-        System.out.println(phraseString("news letters"));
+        System.out.println(phraseString("News letters"));
     }
 }

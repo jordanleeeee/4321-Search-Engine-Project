@@ -10,7 +10,7 @@ import java.util.Map;
  * the posting list of inverted index has the following format
  * pageID1:frequency:position1,position2,... pageID2:frequency2:position1,position2....
  */
-public class PostingListHandler {
+class PostingListHandler {
     /**
      * pageID -> frequency
      */

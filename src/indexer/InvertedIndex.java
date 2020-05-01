@@ -54,6 +54,16 @@ public class InvertedIndex {
         return map.keySet();
     }
 
+    public LinkedList<Integer> getWordPositionsInPage(int wordID, int pageID) {
+        try {
+            byte[] record = wordIdDb.get(String.valueOf(wordID).getBytes());
+            HashMap<Integer, LinkedList<Integer>> pos = new PostingListHandler(new String(record)).getPositionsRecord();
+            return pos.get(pageID);
+        } catch (RocksDBException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     /**
      * the stem word from a title of a page
@@ -284,7 +294,6 @@ public class InvertedIndex {
                     break;
                 }
             }
-            System.out.println(titleWord);
             ///////////////////wordID -> {pageID freq}, pageID ->{tf max}/////////////////////////
             storeWordFreq(pageID, keyWords);
             //////////////////// Page-ID -> {title Words}/////////////////////
@@ -389,12 +398,13 @@ public class InvertedIndex {
 
     public static void main(String[] args) throws RocksDBException{
         InvertedIndex invertedIndex = getInstance();
-        System.out.println(PageProperty.getInstance().getNumOfPageFetched());
-        System.out.println(invertedIndex.getFreqOfWordInParticularPage("rainbow", 17));
-        System.out.println(invertedIndex.getDocumentFrequency("rainbow"));
-        System.out.println(invertedIndex.getIdf("rainbow"));
-        System.out.println(invertedIndex.getMaxTf(17));
-        System.out.println(invertedIndex.getTermWeight("rainbow",17));
+        invertedIndex.clearRecord(7802);
+//        System.out.println(PageProperty.getInstance().getNumOfPageFetched());
+//        System.out.println(invertedIndex.getFreqOfWordInParticularPage("rainbow", 17));
+//        System.out.println(invertedIndex.getDocumentFrequency("rainbow"));
+//        System.out.println(invertedIndex.getIdf("rainbow"));
+//        System.out.println(invertedIndex.getMaxTf(17));
+//        System.out.println(invertedIndex.getTermWeight("rainbow",17));
 //        System.out.println(invertedIndex.getRelatedPage(95));
 //          invertedIndex.printAll(Type.WordID);
     }

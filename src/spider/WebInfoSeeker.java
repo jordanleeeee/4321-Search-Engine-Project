@@ -4,15 +4,13 @@ import org.htmlparser.beans.LinkBean;
 import org.htmlparser.beans.StringBean;
 import util.Word;
 
-import javax.swing.text.html.HTMLDocument;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.parser.ParserDelegator;
 import java.io.*;
 import java.net.*;
 import java.util.*;
 
 public class WebInfoSeeker {
     private String url;
+    private String words = null;
 
     public WebInfoSeeker(String url) {
         this.url = url;
@@ -32,6 +30,9 @@ public class WebInfoSeeker {
     }
 
     boolean isHtmlPage() {
+        if (url.contains(".bib") || url.contains(".pdf") || url.contains(".doc")) {
+            return false;
+        }
         try {
             String connectionType = null;
             while (connectionType == null) {
@@ -70,35 +71,21 @@ public class WebInfoSeeker {
         return links;
     }
 
-    private String getTitleVer2() {
-        //todo can have a better way to do it?
-        HTMLEditorKit htmlKit = new HTMLEditorKit();
-        HTMLDocument htmlDoc = (HTMLDocument) htmlKit.createDefaultDocument();
-        HTMLEditorKit.Parser parser = new ParserDelegator();
-        try {
-            parser.parse(new InputStreamReader(new URL(url).openStream()),
-                    htmlDoc.getReader(0), true);
-        } catch (IOException e) {
-            System.out.println("take too long, try again");
-            return getTitleVer2();
-        }
-        Object title = htmlDoc.getProperty("title");
-        if (title == null) {
-            return "NoTitle";
-        }
-        return title.toString();
-    }
-
     public String getTitle() {
         try {
             InputStream response = new URL(url).openStream();
             Scanner scanner = new Scanner(response);
             String responseBody = scanner.useDelimiter("\\A").next();
+            responseBody = responseBody.toLowerCase(Locale.ROOT);
+            if (!responseBody.contains("<title>")) {
+                return "NoTitle";
+            }
             String title;
             title = responseBody.substring(responseBody.indexOf("<title>") + 7, responseBody.indexOf("</title>"));
             return title.replace("\n", "");
         } catch (Exception e) {
-            return getTitleVer2();
+            e.printStackTrace();
+            return "NoTitle";
         }
     }
 
@@ -154,21 +141,25 @@ public class WebInfoSeeker {
             return date + " bytes";
     }
 
-    private String getWords() {
-        StringBean bean = new StringBean();
-        bean.setURL(url);
-        bean.setLinks(false);
-        return bean.getStrings();
+    private void getWords() {
+        if (words == null) {
+            StringBean bean = new StringBean();
+            bean.setURL(url);
+            bean.setLinks(false);
+            words = bean.getStrings();
+        }
     }
 
     private String getTotalNumOfChar() {
-        String contents = getWords();
+        getWords();
+        String contents = words;
         contents = contents.replace("\n", "");
         return String.valueOf(contents.length());
     }
 
     public Vector<String> getKeywords() {
-        String contents = getWords();
+        getWords();
+        String contents = words;
         Vector<String> words = new Vector<>();
         StringTokenizer st = new StringTokenizer(contents);
         while (st.hasMoreTokens()) {
@@ -177,10 +168,9 @@ public class WebInfoSeeker {
 
         Vector<String> keywords = new Vector<>();
         for (String oneWord : words) {
-            String word = oneWord.toLowerCase();
-            if (Word.isMeaningfulWord(word)) {
-                word = Word.porterAlgorithm(word);
-                keywords.add(word);
+            if (Word.isMeaningfulWord(oneWord)) {
+                oneWord = Word.porterAlgorithm(oneWord);
+                keywords.add(oneWord);
             }
         }
         return keywords;
