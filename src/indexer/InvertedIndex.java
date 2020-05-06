@@ -5,7 +5,6 @@ import util.Converter;
 import spider.WebInfoSeeker;
 import util.Word;
 
-import java.math.BigDecimal;
 import java.util.*;
 
 /*
@@ -99,7 +98,7 @@ public class InvertedIndex {
     }
 
     /**
-     * get tf(i, j), the program will crash if the pageID is invalID or no such word in that page
+     * get tf(i, j), the program will crash if the pageID is invalid or no such word in that page
      * @param word a specific stemmed word
      * @param pageID page ID
      * @return tf(i, j)
@@ -144,7 +143,12 @@ public class InvertedIndex {
      * @return w(i,j)
      */
     public double getTermWeight(String word, int pageID) {
-        return ((double)getFreqOfWordInParticularPage(word, pageID) / getMaxTf(pageID)) * getIdf(word);
+//        System.out.println("start");
+//        long start = System.nanoTime();
+        double weight = ((double)getFreqOfWordInParticularPage(word, pageID) / getMaxTf(pageID)) * getIdf(word);
+//        System.out.print("get term weight need ");
+//        System.out.println((System.nanoTime()-start)/1000000000.0);
+        return weight;
     }
 
     /**
@@ -186,20 +190,33 @@ public class InvertedIndex {
                 int wordID = Indexer.getInstance().searchIDByWord(word,false);
                 byte[] postingList = wordIdDb.get(String.valueOf(wordID).getBytes());
                 PostingListHandler newRecord = new PostingListHandler(new String(postingList));
-                newRecord.removeRecord(pageID);
-                wordIdDb.put(String.valueOf(wordID).getBytes(), newRecord.toString().getBytes());
+                boolean resultInEmptyPostingList = newRecord.removeRecord(pageID);
+                if (resultInEmptyPostingList) {
+                    wordIdDb.delete(String.valueOf(wordID).getBytes());
+                    Indexer.getInstance().deleteEntry(wordID);
+                } else {
+                    wordIdDb.put(String.valueOf(wordID).getBytes(), newRecord.toString().getBytes());
+                }
+            } catch (RocksDBException e) {
+                e.printStackTrace();
+            }
+        }
+        for (ColumnFamilyHandle handle : handles) {
+            try {
+                pageDetailDb.delete(handle, String.valueOf(pageID).getBytes());
             } catch (RocksDBException e) {
                 e.printStackTrace();
             }
         }
     }
 
+    public enum Status {WithinDB, OutsideDB, All}
     /**
      * get all children page by page ID
      * @param pageID page ID
      * @return list containing all the children link
      */
-    public List<String> getAllChildPage(int pageID) {
+    public List<String> getAllChildPage(int pageID, Status status) {
         try {
             List<String> pages = new LinkedList<>();
             String listOfChild = new String(pageDetailDb.get(handles.get(0), String.valueOf(pageID).getBytes()));
@@ -210,6 +227,22 @@ public class InvertedIndex {
                     continue;
                 }
                 String l = Indexer.getInstance().searchURLByID(Integer.parseInt(childID));
+                boolean canIgnore = false;
+                switch (status) {
+                    case All:
+                        break;
+                    case WithinDB:
+                        if (PageProperty.getInstance().getUrl(Integer.parseInt(childID)) == null) {
+                            canIgnore = true;
+                        }
+                        break;
+                    case OutsideDB:
+                        if (PageProperty.getInstance().getUrl(Integer.parseInt(childID)) != null) {
+                            canIgnore = true;
+                        }
+                        break;
+                }
+                if(canIgnore) continue;
                 if (l == null) { throw new IllegalStateException(); }
                 pages.add(l);
             }
@@ -398,14 +431,14 @@ public class InvertedIndex {
 
     public static void main(String[] args) throws RocksDBException{
         InvertedIndex invertedIndex = getInstance();
-        invertedIndex.clearRecord(7802);
-//        System.out.println(PageProperty.getInstance().getNumOfPageFetched());
+//        invertedIndex.dangerous();
+        System.out.println(PageProperty.getInstance().getNumOfPageFetched());
 //        System.out.println(invertedIndex.getFreqOfWordInParticularPage("rainbow", 17));
 //        System.out.println(invertedIndex.getDocumentFrequency("rainbow"));
 //        System.out.println(invertedIndex.getIdf("rainbow"));
 //        System.out.println(invertedIndex.getMaxTf(17));
-//        System.out.println(invertedIndex.getTermWeight("rainbow",17));
+//        System.out.println(invertedIndex.getTermWeight("minor",14080));
 //        System.out.println(invertedIndex.getRelatedPage(95));
-//          invertedIndex.printAll(Type.WordID);
+//
     }
 }

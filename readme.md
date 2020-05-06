@@ -4,6 +4,8 @@
 (similar to slide 14 in lecture notes: implementation issues). It can be useful for for identify phrase</br>
 <br>Update(29/4): retriever has basic function(calculate cosine similarity), still not support phrase
 search. Fixed some bugs in inverted index. Make code cleaner</br>
+<br>Update(7/5): retriever has nearly complete function(calculate cosine similarity), support phrase
+search. Fixed some bugs. Pre-compute document length, make search faster. Page rank still not supported</br>
 <br>possible useful function for retriever:</br>
 ```
 //in inverted index class *very useful*

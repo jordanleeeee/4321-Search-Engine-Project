@@ -37,13 +37,21 @@ public class Word {
 
     /**
      * check if a word is meaningful
-     * a word is meaningful is it is not a stop word and length >= 2 and only contain alphabet
+     * a word is meaningful is it is not a stop word and is alphabet and length of word >=2
      * @param word a word
      * @return true if is meaningful
      */
     public static boolean isMeaningfulWord(String word) {
-        return !isStopWord(word) && word.length() >= 2
-                && word.matches("^[a-zA-Z]*$");
+        if (word.length() < 2) {
+            return false;
+        }
+        if (! word.matches("^[a-zA-Z]*$")) {
+            String temp = word.substring(0, word.length() - 1);
+            if (!temp.matches("^[a-zA-Z]*$")) {
+                return false;
+            }
+        }
+        return !isStopWord(word);
     }
 
     /**
@@ -64,6 +72,6 @@ public class Word {
     }
 
     public static void main(String[] args) {
-        System.out.println(phraseString("News letters"));
+        System.out.println(phraseString("apples."));
     }
 }

@@ -50,6 +50,16 @@ class Spider {
      */
     void BFS(int numOfPage){
         Set<String> discoveredPage = new HashSet<>();
+        // these website have problem, will make the program in trouble, add them to discoveredPage
+        // in order to avoid the spider reach those site.
+        discoveredPage.add("https://home.cse.ust.hk/~rossiter/independent_studies_projects/classifier_reddit_bots/post_title_chart.html");
+        discoveredPage.add("http://home.cse.ust.hk/~rossiter/independent_studies_projects/classifier_reddit_bots/post_title_chart.html");
+        discoveredPage.add("http://www.cse.ust.hk/faculty/rossiter/independent_studies_projects/classifier_reddit_bots/post_title_chart.html");
+        discoveredPage.add("http://www.cse.ust.hk/faculty/rossiter/independent_studies_projects/classifier_reddit_bots/comment_text_chart.html");
+        discoveredPage.add("https://home.cse.ust.hk/~rossiter/independent_studies_projects/classifier_reddit_bots/comment_text_chart.html");
+        discoveredPage.add("http://home.cse.ust.hk/~rossiter/independent_studies_projects/classifier_reddit_bots/comment_text_chart.html");
+        discoveredPage.add("http://home.cse.ust.hk/~twinsen/OurGMM.m");
+        discoveredPage.add("http://home.cse.ust.hk/~skiena/510/schedule");
         int pageFetched = 0;
         while (!queue.isEmpty()) {
             String site = queue.remove();
@@ -64,28 +74,39 @@ class Spider {
             if (type == PageType.ignore) {
                 continue;
             }
+            int pageID = 0;
             if ( type != PageType.bypass) {
                 pageFetched++;
-                int pageID = indexer.searchIDByURL(site, true);
+                pageID = indexer.searchIDByURL(site, true);
+                System.out.println(pageFetched);
                 System.out.println(pageID +" handling " + site);
                 if (type == PageType.updateOld) {
+                    System.out.print("clear record ");
                     invertedIndex.clearRecord(pageID);
                 }
+                System.out.print("finding info ");
                 pageProperty.store(pageID, site);
+                System.out.print("indexing ");
                 invertedIndex.store(pageID, site);
                 indexer.storeTitle(pageProperty.getTitle(pageID));
+                System.out.print("processing ");
             }
-            int ID = indexer.searchIDByURL(site, false);
-            List<String> links = (type==PageType.bypass)?
-                    invertedIndex.getAllChildPage(ID): new WebInfoSeeker(site).getChildLinks();
-            //List<String> links = new WebInfoSeeker(site).getChildLinks();
+
+            List<String> links = null;
+            if(type == PageType.bypass){
+                links = invertedIndex.getAllChildPage(pageID, InvertedIndex.Status.All);
+            } else {
+                links = new WebInfoSeeker(site).getChildLinks();
+            }
             for (String link : links) {
                 if (!queue.contains(link)) {
                     queue.add(link);
                 }
             }
+            System.out.println("complete ");
         }
         try (PrintWriter writer = new PrintWriter("remainingQueue.txt")) {
+            System.out.println("save process");
             for (String link : queue) {
                 writer.println(link);
             }
@@ -103,7 +124,7 @@ class Spider {
 
     /**
      * determine the type of page
-     *      * if not cse website: ignore
+     *  if not cse website: ignore
      * if the link is dead or need login access: ignore
      * if the link go to a non html page: ignore
      * if not in the local system: addNew
@@ -114,13 +135,12 @@ class Spider {
      * @return case
      */
     private PageType fetchCase(String url) {
-        //System.out.println("checking " + url);
-        //todo should uncomment this line
+        System.out.println("checking " + url);
+        WebInfoSeeker seeker = new WebInfoSeeker(url);
         //ignore page that is not cse web page
-        if (!url.contains("cse.ust.hk")) {
+        if (!seeker.isCSEWebpage()) {
             return PageType.ignore;
         }
-        WebInfoSeeker seeker = new WebInfoSeeker(url);
         //ignore page that need login to access, or the link is dead
         if (!seeker.canAccess()) {
             return PageType.ignore;
@@ -143,6 +163,7 @@ class Spider {
                         - new Date(Date.parse(lastModify)).getTime();
         // 86400000 is 1 day in nanosecond
         return (diff > 86400000) ? PageType.updateOld : PageType.bypass;
+        //return PageType.updateOld;
 
     }
 
@@ -180,15 +201,4 @@ class Spider {
         }
     }
 
-//    public static void main(String[] args) throws RocksDBException {
-//        Spider spider = new Spider("https://www.cse.ust.hk");
-//        spider.BFS(30);
-//        System.out.println("page property contain");
-//        spider.pageProperty.printAll();
-//        spider.indexer.printAll(IndexType.WordID);
-//        spider.invertedIndex.printAll(Type.WordID);
-//        spider.invertedIndex.printAll(Type.PageID);
-//        spider.printAll("spider_result.txt");
-//        spider.invertedIndex.printAll(Type.ParentID);
-//    }
 }
