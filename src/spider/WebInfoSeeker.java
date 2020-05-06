@@ -16,6 +16,26 @@ public class WebInfoSeeker {
         this.url = url;
     }
 
+    boolean isCSEWebpage() {
+        try {
+            if (url.split("/")[2].contains("cse.ust.hk")) {
+                //ignore some rubbish page
+                //the following two site will produce many many many page with same content
+                if (url.contains("/vislab_homepage/vislab_homepage/") || url.contains("comp151.cse.ust.hk/~dekai/content/")
+                        //the following three site have many page but is useless and contain no useful info
+                        || url.contains("labschedule.cse.ust.hk") || url.contains("booking.cse.ust.hk")
+                                || url.contains("stubooking.cse.ust.hk")) {
+                    return false;
+                }
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     /**
      * a page can access only if no need to login and the link is alive
      * @return weather the page can be access
@@ -29,8 +49,17 @@ public class WebInfoSeeker {
         return true;
     }
 
+    /**
+     * check if a page is html page.
+     * I already try my best to do the job, but the function may not be 100% correct
+     * @return true if is a html page
+     */
     boolean isHtmlPage() {
-        if (url.contains(".bib") || url.contains(".pdf") || url.contains(".doc")) {
+        if (url.contains(".bib") || url.contains(".pdf") || url.contains(".doc")
+                || url.contains(".zip") || url.contains(".scala") || url.contains(".key")
+                    || url.contains(".rar") || url.contains(".7z") || url.contains(".txt")
+                        || url.contains("/files/") || url.contains(".bat") || url.contains(".py")
+                            || url.contains(".hpp") || url.contains(".m4a") || url.contains(".java")) {
             return false;
         }
         try {
@@ -82,9 +111,16 @@ public class WebInfoSeeker {
             }
             String title;
             title = responseBody.substring(responseBody.indexOf("<title>") + 7, responseBody.indexOf("</title>"));
+            if (title.equals("301 moved permanently")) {
+                response = new URL(url.replace("http", "https")).openStream();
+                scanner = new Scanner(response);
+                responseBody = scanner.useDelimiter("\\A").next();
+                responseBody = responseBody.toLowerCase(Locale.ROOT);
+                title = responseBody.substring(responseBody.indexOf("<title>") + 7, responseBody.indexOf("</title>"));
+                return title;
+            }
             return title.replace("\n", "");
         } catch (Exception e) {
-            e.printStackTrace();
             return "NoTitle";
         }
     }
@@ -175,4 +211,5 @@ public class WebInfoSeeker {
         }
         return keywords;
     }
+
 }

@@ -10,7 +10,7 @@ public class Indexer {
     enum IndexType {PageURLID, WordID, TitleID, ParentID}
 
     private static Indexer INSTANCE = new Indexer();
-    private RocksDB pageURLIDdb, wordIDdb, titleIDdb, parentIDdb;
+    private RocksDB pageURLIDdb, wordIDdb, titleIDdb;
     private Integer wordCount = 0, titleCount = 0, URLCount = 0;
     private HashBiMap<Integer, String> pageIndexer = HashBiMap.create();
     private HashBiMap<Integer, String> wordIndexer = HashBiMap.create();
@@ -216,19 +216,19 @@ public class Indexer {
                         "Title: " + new String(iter.value()) + "\n");
             }
         }
+    }
 
-        if (situation == IndexType.ParentID) {
-            RocksIterator iter = parentIDdb.newIterator();
-            for (iter.seekToFirst(); iter.isValid(); iter.next()) {
-                System.out.println("ParentID: " + new String(iter.key()) + '\n' +
-                        "Child ID: " + new String(iter.value()) + "\n");
-            }
+    void deleteEntry(int wordID) {
+        try {
+            wordIDdb.delete(String.valueOf(wordID).getBytes());
+        } catch (RocksDBException e) {
+            e.printStackTrace();
         }
     }
 
     public static void main(String[] args){
+
         Indexer indexer = getInstance();
-        System.out.println(indexer.getAllStemWord());
-        indexer.printAll(IndexType.PageURLID);
+        indexer.printAll(IndexType.WordID);
     }
 }

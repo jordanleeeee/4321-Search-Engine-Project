@@ -3,6 +3,8 @@ package indexer;
 import org.rocksdb.*;
 import spider.WebInfoSeeker;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class PageProperty {
@@ -52,10 +54,14 @@ public class PageProperty {
         }
     }
 
-    private void delEntry(int pageID) throws RocksDBException {
+    public void delEntry(int pageID){
         byte[] key = String.valueOf(pageID).getBytes();
         for(ColumnFamilyHandle h: handles){
-            pagePropDB.delete(h, key);
+            try {
+                pagePropDB.delete(h, key);
+            } catch (RocksDBException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -118,18 +124,21 @@ public class PageProperty {
     }
 
     private void printAll() throws RocksDBException {
-        RocksIterator iterator = pagePropDB.newIterator();
-        for(iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
-            System.out.print(new String(iterator.key())+": ");
-            System.out.print(new String(pagePropDB.get(handles.get(0), iterator.key())));
-            System.out.print("\t");
-            System.out.print(new String(pagePropDB.get(handles.get(1), iterator.key())));
-            System.out.print("\t");
-            System.out.print(new String(pagePropDB.get(handles.get(2), iterator.key())));
-            System.out.print("\t");
-            System.out.print(new String(pagePropDB.get(handles.get(3), iterator.key())));
-            System.out.println();
-        }
+        try (PrintWriter writer = new PrintWriter("allPage.txt")) {
+            RocksIterator iterator = pagePropDB.newIterator();
+            for(iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
+                writer.print(new String(iterator.key())+": ");
+                writer.print(new String(pagePropDB.get(handles.get(0), iterator.key())));
+                writer.print("\t");
+                writer.print(new String(pagePropDB.get(handles.get(1), iterator.key())));
+                writer.print("\t");
+                writer.print(new String(pagePropDB.get(handles.get(2), iterator.key())));
+                writer.print("\t");
+                writer.print(new String(pagePropDB.get(handles.get(3), iterator.key())));
+                writer.println();
+            }
+        } catch (FileNotFoundException e) { e.printStackTrace(); }
+
     }
 
     private int getNumOfPageInDb() {
@@ -157,7 +166,6 @@ public class PageProperty {
 
     public static void main(String[] args) throws RocksDBException {
         PageProperty pageProperty = getInstance();
-        pageProperty.delEntry(7802);
         pageProperty.printAll();
     }
 }

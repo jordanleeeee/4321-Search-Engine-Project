@@ -55,11 +55,13 @@ class PostingListHandler {
 
     /**
      * remove record of a particular page in the posting list
-     * @param pageID page ID
+     * @param pageID page id
+     * @return true if the posting list become empty after remove a page
      */
-    void removeRecord(int pageID) {
+    boolean removeRecord(int pageID){
         frequencyRecord.remove(pageID);
         positionsRecord.remove(pageID);
+        return (frequencyRecord.size() == 0);
     }
 
     /**
@@ -110,14 +112,16 @@ class PostingListHandler {
 //        System.out.println(reader.toString());
 //        reader.addWord(25, 20);
 //        System.out.println(reader.toString());
-//        InvertedIndexHandler temp = new InvertedIndexHandler("20:2:5,6 25:2:6,20");
-//        System.out.println(temp.toString());
-//        temp.removeRecord(22);
-//        System.out.println(temp.toString());
-        PostingListHandler one = new PostingListHandler("");
-        one.addWord(23,20);
-        one.addWord(23,25);
-        one.addWord(25,23);
-        System.out.println(one);
+        PostingListHandler temp = new PostingListHandler("20:2:5,6 25:2:6,20");
+        System.out.println(temp.toString());
+        temp.removeRecord(22);
+        System.out.println(temp.toString());
+        temp.removeRecord(25);
+        System.out.println(temp.toString());
+//        PostingListHandler one = new PostingListHandler("");
+//        one.addWord(23,20);
+//        one.addWord(23,25);
+//        one.addWord(25,23);
+//        System.out.println(one);
     }
 }
