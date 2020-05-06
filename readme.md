@@ -6,6 +6,7 @@
 search. Fixed some bugs in inverted index. Make code cleaner</br>
 <br>Update(7/5): retriever has nearly complete function(calculate cosine similarity), support phrase
 search. Fixed some bugs. Pre-compute document length, make search faster. Page rank still not supported</br>
+<br>remember to download all the db at the drive</br>
 <br>possible useful function for retriever:</br>
 ```
 //in inverted index class *very useful*
