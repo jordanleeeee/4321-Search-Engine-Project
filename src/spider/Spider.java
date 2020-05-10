@@ -41,11 +41,8 @@ class Spider {
      * fetch n more page to the system, weather a page need to be fetch into the system
      * will be determine automatically.
      * n must not be too large, otherwise continuous access the same web server
-     * too much in a short time will make the web server treat you as hacker
+     * too much in a short time will make the web server block access from you temporarily.
      * (connect to UST vpn can solve this problem)
-     * Moreover, set n too large will cause stack overflow runtime error...
-     * just set n around 1000 is secure.
-     * and block access from you temporarily.
      * @param numOfPage n (required number of page to be fetch)
      */
     void BFS(int numOfPage){

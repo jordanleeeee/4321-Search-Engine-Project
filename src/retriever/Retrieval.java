@@ -1,11 +1,11 @@
 package retriever;
 
-
 import indexer.Indexer;
 import indexer.InvertedIndex;
 import util.Converter;
 import util.Word;
 
+import java.io.File;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,16 +16,22 @@ public class Retrieval {
     private Indexer indexer = Indexer.getInstance();
     private InvertedIndex invertedIndex = InvertedIndex.getInstance();
     private PreProcessor preProcessor = PreProcessor.getInstance();
+    private LinkedHashMap<Integer, Double> Top50Result = new LinkedHashMap<>();
 
     public Retrieval(String query) {
 
+        System.out.println(new File("").getAbsolutePath());
         Set<String> afterProcessQuery = processQuery(query);
 
         if (!afterProcessQuery.isEmpty()) {
             HashMap<Integer, Double> allResultList = cosineSimilarity(afterProcessQuery);
-            LinkedHashMap<Integer, Double> Top50Result = RetrievalTop50(allResultList);
+            RetrievalTop50(allResultList);
             printAll(Top50Result);
         }
+    }
+
+    public List<Integer> getResult() {
+        return new LinkedList<>(Top50Result.keySet());
     }
 
     private Set<String> processQuery(String query){
@@ -50,7 +56,6 @@ public class Retrieval {
         System.out.println("The query word: " + set);
         return set;
     }
-
 
     private HashMap<Integer, Double> cosineSimilarity(Set<String> afterProcessQuery){
         HashMap<Integer, Double> allResultList = new HashMap<>();
@@ -182,7 +187,7 @@ public class Retrieval {
         return result;
     }
 
-    private LinkedHashMap<Integer, Double> RetrievalTop50 (HashMap<Integer, Double> allResultList){
+    private void RetrievalTop50 (HashMap<Integer, Double> allResultList){
         //sort the related page by value
         LinkedHashMap<Integer, Double> sortedResultList =
                 allResultList.entrySet()
@@ -193,7 +198,6 @@ public class Retrieval {
                                 Map.Entry::getValue,
                                 (oldValue, newValue) -> oldValue, LinkedHashMap::new));
 
-        LinkedHashMap<Integer, Double> Top50Result = new LinkedHashMap<>();
         int num = 0;
         for (Map.Entry<Integer, Double> entry : sortedResultList.entrySet()) {
             if (++num > 50) {
@@ -201,10 +205,9 @@ public class Retrieval {
             }
             Top50Result.put(entry.getKey(), entry.getValue());
         }
-        return Top50Result;
     }
 
-    public void printAll(LinkedHashMap<Integer, Double> Top50Result){
+    private void printAll(LinkedHashMap<Integer, Double> Top50Result){
         System.out.println("Score" +" "+ "PageID");
         for (Integer docID: Top50Result.keySet()) {
             System.out.println(docID + ":  " +  Math.round(Top50Result.get(docID)*100000)/100000.00);
@@ -217,7 +220,8 @@ public class Retrieval {
             System.out.println("Enter query");
             String query = scanner.nextLine();  // Read user input
             long start = System.nanoTime();
-            retriever.Retrieval newQuery = new Retrieval(query);
+            Retrieval newQuery = new Retrieval(query);
+            System.out.println(newQuery.getResult());
             System.out.print("search take ");
             System.out.print((System.nanoTime()-start)/1000000000.0);
             System.out.println("s");

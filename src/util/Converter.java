@@ -3,6 +3,9 @@ package util;
 import java.io.*;
 import java.util.*;
 
+/**
+ * this class become some how useless after many date of the project
+ */
 public class Converter {
 
     /**

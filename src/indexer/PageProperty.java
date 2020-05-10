@@ -21,7 +21,7 @@ public class PageProperty {
      * open db file
      */
     private PageProperty(){
-        String PATH = "/Java/Spider/pagePropDB";
+        String PATH = "pagePropDB";
         try {
             List<ColumnFamilyDescriptor> colFamily = new Vector<>();
             colFamily.add(new ColumnFamilyDescriptor(RocksDB.DEFAULT_COLUMN_FAMILY));
@@ -36,7 +36,7 @@ public class PageProperty {
         numOfPageFetched = getNumOfPageInDb();
     }
 
-    int getNumOfPageFetched() {
+    public int getNumOfPageFetched() {
         return numOfPageFetched;
     }
 

@@ -1,0 +1,195 @@
+2020/05/09-23:06:48.874919 aa4 RocksDB version: 5.15.10
+2020/05/09-23:06:48.875023 aa4 Git sha rocksdb_build_git_sha:@7e1f37eb4fc711dbf3ecc9610178931f00754de8@
+2020/05/09-23:06:48.875056 aa4 Compile date Oct  9 2018
+2020/05/09-23:06:48.875079 aa4 DB SUMMARY
+2020/05/09-23:06:48.875308 aa4 CURRENT file:  CURRENT
+2020/05/09-23:06:48.875336 aa4 IDENTITY file:  IDENTITY
+2020/05/09-23:06:48.875383 aa4 MANIFEST file:  MANIFEST-013378 size: 175 Bytes
+2020/05/09-23:06:48.875408 aa4 SST files in wordFreqdb dir, Total Num: 3, files: 013301.sst 013303.sst 013305.sst 
+2020/05/09-23:06:48.875430 aa4 Write Ahead Log file in wordFreqdb: 013379.log size: 0 ; 
+2020/05/09-23:06:48.875455 aa4                         Options.error_if_exists: 0
+2020/05/09-23:06:48.875476 aa4                       Options.create_if_missing: 1
+2020/05/09-23:06:48.875829 aa4                         Options.paranoid_checks: 1
+2020/05/09-23:06:48.875846 aa4                                     Options.env: 00000248326D0E80
+2020/05/09-23:06:48.875854 aa4                                Options.info_log: 00000248521E0230
+2020/05/09-23:06:48.875863 aa4                Options.max_file_opening_threads: 16
+2020/05/09-23:06:48.875870 aa4                              Options.statistics: 0000000000000000
+2020/05/09-23:06:48.875878 aa4                               Options.use_fsync: 0
+2020/05/09-23:06:48.875886 aa4                       Options.max_log_file_size: 0
+2020/05/09-23:06:48.875894 aa4                  Options.max_manifest_file_size: 1073741824
+2020/05/09-23:06:48.875902 aa4                   Options.log_file_time_to_roll: 0
+2020/05/09-23:06:48.875909 aa4                       Options.keep_log_file_num: 1000
+2020/05/09-23:06:48.875917 aa4                    Options.recycle_log_file_num: 0
+2020/05/09-23:06:48.875925 aa4                         Options.allow_fallocate: 1
+2020/05/09-23:06:48.875932 aa4                        Options.allow_mmap_reads: 0
+2020/05/09-23:06:48.875940 aa4                       Options.allow_mmap_writes: 0
+2020/05/09-23:06:48.875948 aa4                        Options.use_direct_reads: 0
+2020/05/09-23:06:48.875956 aa4                        Options.use_direct_io_for_flush_and_compaction: 0
+2020/05/09-23:06:48.875964 aa4          Options.create_missing_column_families: 0
+2020/05/09-23:06:48.875972 aa4                              Options.db_log_dir: 
+2020/05/09-23:06:48.875980 aa4                                 Options.wal_dir: wordFreqdb
+2020/05/09-23:06:48.875988 aa4                Options.table_cache_numshardbits: 6
+2020/05/09-23:06:48.875996 aa4                      Options.max_subcompactions: 1
+2020/05/09-23:06:48.876004 aa4                  Options.max_background_flushes: -1
+2020/05/09-23:06:48.876013 aa4                         Options.WAL_ttl_seconds: 0
+2020/05/09-23:06:48.876022 aa4                       Options.WAL_size_limit_MB: 0
+2020/05/09-23:06:48.876031 aa4             Options.manifest_preallocation_size: 4194304
+2020/05/09-23:06:48.876040 aa4                     Options.is_fd_close_on_exec: 1
+2020/05/09-23:06:48.876047 aa4                   Options.advise_random_on_open: 1
+2020/05/09-23:06:48.876055 aa4                    Options.db_write_buffer_size: 0
+2020/05/09-23:06:48.876063 aa4                    Options.write_buffer_manager: 00000248526ED5C0
+2020/05/09-23:06:48.876071 aa4         Options.access_hint_on_compaction_start: 1
+2020/05/09-23:06:48.876079 aa4  Options.new_table_reader_for_compaction_inputs: 0
+2020/05/09-23:06:48.876086 aa4           Options.random_access_max_buffer_size: 1048576
+2020/05/09-23:06:48.876094 aa4                      Options.use_adaptive_mutex: 0
+2020/05/09-23:06:48.876102 aa4                            Options.rate_limiter: 0000000000000000
+2020/05/09-23:06:48.876111 aa4     Options.sst_file_manager.rate_bytes_per_sec: 0
+2020/05/09-23:06:48.876119 aa4                       Options.wal_recovery_mode: 2
+2020/05/09-23:06:48.876126 aa4                  Options.enable_thread_tracking: 0
+2020/05/09-23:06:48.876134 aa4                  Options.enable_pipelined_write: 0
+2020/05/09-23:06:48.876142 aa4         Options.allow_concurrent_memtable_write: 1
+2020/05/09-23:06:48.876156 aa4      Options.enable_write_thread_adaptive_yield: 1
+2020/05/09-23:06:48.876167 aa4             Options.write_thread_max_yield_usec: 100
+2020/05/09-23:06:48.876175 aa4            Options.write_thread_slow_yield_usec: 3
+2020/05/09-23:06:48.876183 aa4                               Options.row_cache: None
+2020/05/09-23:06:48.876191 aa4                              Options.wal_filter: None
+2020/05/09-23:06:48.876199 aa4             Options.avoid_flush_during_recovery: 0
+2020/05/09-23:06:48.876207 aa4             Options.allow_ingest_behind: 0
+2020/05/09-23:06:48.876215 aa4             Options.preserve_deletes: 0
+2020/05/09-23:06:48.876222 aa4             Options.two_write_queues: 0
+2020/05/09-23:06:48.876230 aa4             Options.manual_wal_flush: 0
+2020/05/09-23:06:48.876237 aa4             Options.max_background_jobs: 2
+2020/05/09-23:06:48.876245 aa4             Options.max_background_compactions: -1
+2020/05/09-23:06:48.876252 aa4             Options.avoid_flush_during_shutdown: 0
+2020/05/09-23:06:48.876260 aa4           Options.writable_file_max_buffer_size: 1048576
+2020/05/09-23:06:48.876268 aa4             Options.delayed_write_rate : 16777216
+2020/05/09-23:06:48.876276 aa4             Options.max_total_wal_size: 0
+2020/05/09-23:06:48.876284 aa4             Options.delete_obsolete_files_period_micros: 21600000000
+2020/05/09-23:06:48.876292 aa4                   Options.stats_dump_period_sec: 600
+2020/05/09-23:06:48.876300 aa4                          Options.max_open_files: -1
+2020/05/09-23:06:48.876308 aa4                          Options.bytes_per_sync: 0
+2020/05/09-23:06:48.876316 aa4                      Options.wal_bytes_per_sync: 0
+2020/05/09-23:06:48.876324 aa4       Options.compaction_readahead_size: 0
+2020/05/09-23:06:48.876331 aa4 Compression algorithms supported:
+2020/05/09-23:06:48.876339 aa4 	kZSTD supported: 0
+2020/05/09-23:06:48.876347 aa4 	kSnappyCompression supported: 0
+2020/05/09-23:06:48.876355 aa4 	kBZip2Compression supported: 0
+2020/05/09-23:06:48.876362 aa4 	kZlibCompression supported: 0
+2020/05/09-23:06:48.876369 aa4 	kLZ4Compression supported: 0
+2020/05/09-23:06:48.876377 aa4 	kXpressCompression supported: 0
+2020/05/09-23:06:48.876384 aa4 	kLZ4HCCompression supported: 0
+2020/05/09-23:06:48.876392 aa4 	kZSTDNotFinalCompression supported: 0
+2020/05/09-23:06:48.876403 aa4 Fast CRC32 supported: Supported on x86
+2020/05/09-23:06:48.877160 aa4 [c:\users\aretter\code\rocksdb\db\version_set.cc:3248] Recovering from manifest file: MANIFEST-013378
+2020/05/09-23:06:48.877293 aa4 [c:\users\aretter\code\rocksdb\db\column_family.cc:475] --------------- Options for column family [default]:
+2020/05/09-23:06:48.877320 aa4               Options.comparator: leveldb.BytewiseComparator
+2020/05/09-23:06:48.877329 aa4           Options.merge_operator: None
+2020/05/09-23:06:48.877338 aa4        Options.compaction_filter: None
+2020/05/09-23:06:48.877346 aa4        Options.compaction_filter_factory: None
+2020/05/09-23:06:48.877354 aa4         Options.memtable_factory: SkipListFactory
+2020/05/09-23:06:48.877362 aa4            Options.table_factory: BlockBasedTable
+2020/05/09-23:06:48.877410 aa4            table_factory options:   flush_block_policy_factory: FlushBlockBySizePolicyFactory (00000248520F6C80)
+  cache_index_and_filter_blocks: 0
+  cache_index_and_filter_blocks_with_high_priority: 0
+  pin_l0_filter_and_index_blocks_in_cache: 0
+  pin_top_level_index_and_filter: 1
+  index_type: 0
+  hash_index_allow_collision: 1
+  checksum: 1
+  no_block_cache: 0
+  block_cache: 0000024852101C40
+  block_cache_name: LRUCache
+  block_cache_options:
+    capacity : 8388608
+    num_shard_bits : 4
+    strict_capacity_limit : 0
+    high_pri_pool_ratio: 0.000
+  block_cache_compressed: 0000000000000000
+  persistent_cache: 0000000000000000
+  block_size: 4096
+  block_size_deviation: 10
+  block_restart_interval: 16
+  index_block_restart_interval: 1
+  metadata_block_size: 4096
+  partition_filters: 0
+  use_delta_encoding: 1
+  filter_policy: nullptr
+  whole_key_filtering: 1
+  verify_compression: 0
+  read_amp_bytes_per_bit: 0
+  format_version: 2
+  enable_index_compression: 1
+  block_align: 0
+2020/05/09-23:06:48.877424 aa4        Options.write_buffer_size: 67108864
+2020/05/09-23:06:48.877435 aa4  Options.max_write_buffer_number: 2
+2020/05/09-23:06:48.877454 aa4          Options.compression: NoCompression
+2020/05/09-23:06:48.877467 aa4                  Options.bottommost_compression: Disabled
+2020/05/09-23:06:48.877476 aa4       Options.prefix_extractor: nullptr
+2020/05/09-23:06:48.877484 aa4   Options.memtable_insert_with_hint_prefix_extractor: nullptr
+2020/05/09-23:06:48.877535 aa4             Options.num_levels: 7
+2020/05/09-23:06:48.877547 aa4        Options.min_write_buffer_number_to_merge: 1
+2020/05/09-23:06:48.877555 aa4     Options.max_write_buffer_number_to_maintain: 0
+2020/05/09-23:06:48.877563 aa4            Options.bottommost_compression_opts.window_bits: -14
+2020/05/09-23:06:48.877571 aa4                  Options.bottommost_compression_opts.level: 32767
+2020/05/09-23:06:48.877579 aa4               Options.bottommost_compression_opts.strategy: 0
+2020/05/09-23:06:48.877587 aa4         Options.bottommost_compression_opts.max_dict_bytes: 0
+2020/05/09-23:06:48.877595 aa4         Options.bottommost_compression_opts.zstd_max_train_bytes: 0
+2020/05/09-23:06:48.877632 aa4                  Options.bottommost_compression_opts.enabled: false
+2020/05/09-23:06:48.877640 aa4            Options.compression_opts.window_bits: -14
+2020/05/09-23:06:48.877648 aa4                  Options.compression_opts.level: 32767
+2020/05/09-23:06:48.877656 aa4               Options.compression_opts.strategy: 0
+2020/05/09-23:06:48.877664 aa4         Options.compression_opts.max_dict_bytes: 0
+2020/05/09-23:06:48.877672 aa4         Options.compression_opts.zstd_max_train_bytes: 0
+2020/05/09-23:06:48.877686 aa4                  Options.compression_opts.enabled: false
+2020/05/09-23:06:48.877694 aa4      Options.level0_file_num_compaction_trigger: 4
+2020/05/09-23:06:48.877703 aa4          Options.level0_slowdown_writes_trigger: 20
+2020/05/09-23:06:48.877711 aa4              Options.level0_stop_writes_trigger: 36
+2020/05/09-23:06:48.877718 aa4                   Options.target_file_size_base: 67108864
+2020/05/09-23:06:48.877727 aa4             Options.target_file_size_multiplier: 1
+2020/05/09-23:06:48.877734 aa4                Options.max_bytes_for_level_base: 268435456
+2020/05/09-23:06:48.877742 aa4 Options.level_compaction_dynamic_level_bytes: 0
+2020/05/09-23:06:48.877750 aa4          Options.max_bytes_for_level_multiplier: 10.000000
+2020/05/09-23:06:48.877760 aa4 Options.max_bytes_for_level_multiplier_addtl[0]: 1
+2020/05/09-23:06:48.877768 aa4 Options.max_bytes_for_level_multiplier_addtl[1]: 1
+2020/05/09-23:06:48.877776 aa4 Options.max_bytes_for_level_multiplier_addtl[2]: 1
+2020/05/09-23:06:48.877785 aa4 Options.max_bytes_for_level_multiplier_addtl[3]: 1
+2020/05/09-23:06:48.877793 aa4 Options.max_bytes_for_level_multiplier_addtl[4]: 1
+2020/05/09-23:06:48.877801 aa4 Options.max_bytes_for_level_multiplier_addtl[5]: 1
+2020/05/09-23:06:48.877808 aa4 Options.max_bytes_for_level_multiplier_addtl[6]: 1
+2020/05/09-23:06:48.877816 aa4       Options.max_sequential_skip_in_iterations: 8
+2020/05/09-23:06:48.877824 aa4                    Options.max_compaction_bytes: 1677721600
+2020/05/09-23:06:48.877833 aa4                        Options.arena_block_size: 8388608
+2020/05/09-23:06:48.877850 aa4   Options.soft_pending_compaction_bytes_limit: 68719476736
+2020/05/09-23:06:48.877858 aa4   Options.hard_pending_compaction_bytes_limit: 274877906944
+2020/05/09-23:06:48.877867 aa4       Options.rate_limit_delay_max_milliseconds: 100
+2020/05/09-23:06:48.877884 aa4                Options.disable_auto_compactions: 0
+2020/05/09-23:06:48.877912 aa4                        Options.compaction_style: kCompactionStyleLevel
+2020/05/09-23:06:48.877923 aa4                          Options.compaction_pri: kByCompensatedSize
+2020/05/09-23:06:48.877931 aa4 Options.compaction_options_universal.size_ratio: 1
+2020/05/09-23:06:48.877944 aa4 Options.compaction_options_universal.min_merge_width: 2
+2020/05/09-23:06:48.877955 aa4 Options.compaction_options_universal.max_merge_width: 4294967295
+2020/05/09-23:06:48.877965 aa4 Options.compaction_options_universal.max_size_amplification_percent: 200
+2020/05/09-23:06:48.877974 aa4 Options.compaction_options_universal.compression_size_percent: -1
+2020/05/09-23:06:48.877983 aa4 Options.compaction_options_universal.stop_style: kCompactionStopStyleTotalSize
+2020/05/09-23:06:48.877993 aa4 Options.compaction_options_fifo.max_table_files_size: 1073741824
+2020/05/09-23:06:48.878002 aa4 Options.compaction_options_fifo.allow_compaction: 0
+2020/05/09-23:06:48.878010 aa4 Options.compaction_options_fifo.ttl: 0
+2020/05/09-23:06:48.878018 aa4                   Options.table_properties_collectors: 
+2020/05/09-23:06:48.878026 aa4                   Options.inplace_update_support: 0
+2020/05/09-23:06:48.878034 aa4                 Options.inplace_update_num_locks: 10000
+2020/05/09-23:06:48.878043 aa4               Options.memtable_prefix_bloom_size_ratio: 0.000000
+2020/05/09-23:06:48.878052 aa4   Options.memtable_huge_page_size: 0
+2020/05/09-23:06:48.878060 aa4                           Options.bloom_locality: 0
+2020/05/09-23:06:48.878068 aa4                    Options.max_successive_merges: 0
+2020/05/09-23:06:48.878076 aa4                Options.optimize_filters_for_hits: 0
+2020/05/09-23:06:48.878084 aa4                Options.paranoid_file_checks: 0
+2020/05/09-23:06:48.878092 aa4                Options.force_consistency_checks: 0
+2020/05/09-23:06:48.878100 aa4                Options.report_bg_io_stats: 0
+2020/05/09-23:06:48.878108 aa4                               Options.ttl: 0
+2020/05/09-23:06:48.880154 aa4 [c:\users\aretter\code\rocksdb\db\version_set.cc:3529] Recovered from manifest file:wordFreqdb/MANIFEST-013378 succeeded,manifest_file_number is 13378, next_file_number is 13380, last_sequence is 8758026, log_number is 0,prev_log_number is 0,max_column_family is 0,min_log_number_to_keep is 0
+2020/05/09-23:06:48.880190 aa4 [c:\users\aretter\code\rocksdb\db\version_set.cc:3537] Column family [default] (ID 0), log number is 13377
+2020/05/09-23:06:48.880535 aa4 EVENT_LOG_v1 {"time_micros": 1589036808880519, "job": 1, "event": "recovery_started", "log_files": [13379]}
+2020/05/09-23:06:48.880553 aa4 [c:\users\aretter\code\rocksdb\db\db_impl_open.cc:552] Recovering log #13379 mode 2
+2020/05/09-23:06:48.880652 aa4 [c:\users\aretter\code\rocksdb\db\version_set.cc:2906] Creating manifest 13381
+2020/05/09-23:06:48.967350 aa4 EVENT_LOG_v1 {"time_micros": 1589036808967315, "job": 1, "event": "recovery_finished"}
+2020/05/09-23:06:49.023134 aa4 [c:\users\aretter\code\rocksdb\db\db_impl_open.cc:1221] DB pointer 0000024852D23220
