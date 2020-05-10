@@ -8,3 +8,4 @@ search. Fixed some bugs in inverted index. Make code cleaner</br>
 search. Fixed some bugs. Pre-compute document length, make search faster. Page rank still not supported</br>
 <br>Update(10/5): tomcat server was added</br>
 <br>remember to download all the db at the drive</br>
+<br>remember to place all db file and stopword.txt at: PATH TO TOMCAT\pache-tomcat-8.5.54-windows-x64\apache-tomcat-8.5.54\bin</br>
