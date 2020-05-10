@@ -6,20 +6,5 @@
 search. Fixed some bugs in inverted index. Make code cleaner</br>
 <br>Update(7/5): retriever has nearly complete function(calculate cosine similarity), support phrase
 search. Fixed some bugs. Pre-compute document length, make search faster. Page rank still not supported</br>
+<br>tomcat server was added</br>
 <br>remember to download all the db at the drive</br>
-<br>possible useful function for retriever:</br>
-```
-//in inverted index class *very useful*
-public Set<Integer> getRelatedPage(int wordID)
-public Set<String> getTitleWords(int pageID)
-public double getTermWeight(String word, int pageID) 
-
-//in converter class
-public static List<String> phraseString(String content)
-
-//in indexer class
-public Integer searchIdByWord(String word) 
-
-//any other function in other class
-...
-```
