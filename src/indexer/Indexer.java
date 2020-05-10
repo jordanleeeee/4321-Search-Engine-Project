@@ -7,7 +7,7 @@ import com.google.common.collect.HashBiMap;
 import java.util.*;
 
 public class Indexer {
-    enum IndexType {PageURLID, WordID, TitleID, ParentID}
+    enum IndexType {PageURLID, WordID, TitleID}
 
     private static Indexer INSTANCE = new Indexer();
     private RocksDB pageURLIDdb, wordIDdb, titleIDdb;
@@ -28,10 +28,9 @@ public class Indexer {
         options.setCreateIfMissing(true);
         //todo
         try {
-            pageURLIDdb = RocksDB.open(options, "/Java/Spider/pageURLIDdb");
-            wordIDdb = RocksDB.open(options, "/Java/Spider/wordIDdb");
-            titleIDdb = RocksDB.open(options, "/Java/Spider/titleIDdb");
-            //  parentIDdb = RocksDB.open(options, "/Java/Spider/parentIDdb");
+            pageURLIDdb = RocksDB.open(options, "pageURLIDdb");
+            wordIDdb = RocksDB.open(options, "wordIDdb");
+            titleIDdb = RocksDB.open(options, "titleIDdb");
         } catch (RocksDBException e) {
             e.printStackTrace();
         }

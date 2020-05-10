@@ -54,7 +54,7 @@ class PostingListHandler {
     }
 
     /**
-     * remove record of a particular page in the posting list
+     * remove record of a particular page in the posting list if that pageId is present
      * @param pageID page id
      * @return true if the posting list become empty after remove a page
      */
@@ -68,7 +68,7 @@ class PostingListHandler {
      * add a word
      * @param pageID page ID
      * @param pos position
-     * @return current term frequency
+     * @return current term frequency of the page after adding that word
      */
     int addWord(int pageID, int pos) {
         if (frequencyRecord.containsKey(pageID)) {
@@ -81,6 +81,11 @@ class PostingListHandler {
         }
         return positionsRecord.get(pageID).size();
     }
+
+    /**
+     * convert the two hashMap back to a posting list
+     * @return a String representation of posting list
+     */
     public String toString(){
         StringBuilder result = new StringBuilder();
         for (Map.Entry<Integer, Integer> entry : frequencyRecord.entrySet()) {
@@ -104,24 +109,22 @@ class PostingListHandler {
     }
 
     public static void main(String[] args) {
-//        InvertedIndexHandler reader = new InvertedIndexHandler(20, 5);
-//        System.out.println(reader.toString());
-//        reader.addWord(20, 6);
-//        System.out.println(reader.toString());
-//        reader.addWord(25, 6);
-//        System.out.println(reader.toString());
-//        reader.addWord(25, 20);
-//        System.out.println(reader.toString());
+        System.out.println("test case 1");
+        PostingListHandler reader = new PostingListHandler("");
+        System.out.println(reader.toString());
+        reader.addWord(20, 6);
+        System.out.println(reader.toString());
+        reader.addWord(25, 6);
+        System.out.println(reader.toString());
+        reader.addWord(25, 20);
+        System.out.println(reader.toString());
+
+        System.out.println("\ntest case 2");
         PostingListHandler temp = new PostingListHandler("20:2:5,6 25:2:6,20");
         System.out.println(temp.toString());
         temp.removeRecord(22);
         System.out.println(temp.toString());
         temp.removeRecord(25);
         System.out.println(temp.toString());
-//        PostingListHandler one = new PostingListHandler("");
-//        one.addWord(23,20);
-//        one.addWord(23,25);
-//        one.addWord(25,23);
-//        System.out.println(one);
     }
 }

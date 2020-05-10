@@ -15,7 +15,6 @@ Page-ID -> {ChildID}, {keywords}, {title words}, maxTF
 */
 
 public class InvertedIndex {
-    enum Type {Content, Child, Title, WordID, MaxTf}
 
     private static InvertedIndex INSTANCE = new InvertedIndex();
     private RocksDB pageDetailDb, wordIdDb;
@@ -29,14 +28,14 @@ public class InvertedIndex {
         Options options = new Options();
         options.setCreateIfMissing(true);
         try {
-            wordIdDb = RocksDB.open(options, "/Java/Spider/wordFreqdb");
+            wordIdDb = RocksDB.open(options, "wordFreqdb");
             List<ColumnFamilyDescriptor> colFamily = new Vector<>();
             colFamily.add(new ColumnFamilyDescriptor(RocksDB.DEFAULT_COLUMN_FAMILY));
             colFamily.add(new ColumnFamilyDescriptor("bodyWords".getBytes()));
             colFamily.add(new ColumnFamilyDescriptor("titleWords".getBytes()));
             colFamily.add(new ColumnFamilyDescriptor("maxTF".getBytes()));
             DBOptions options2 = new DBOptions().setCreateIfMissing(true).setCreateMissingColumnFamilies(true);
-            pageDetailDb = RocksDB.open(options2, "/Java/Spider/pageDetailDB", colFamily, handles);
+            pageDetailDb = RocksDB.open(options2, "pageDetailDB", colFamily, handles);
         } catch (RocksDBException e) {
             e.printStackTrace();
         }
@@ -210,6 +209,17 @@ public class InvertedIndex {
         }
     }
 
+    public String[] getChildIDs(int pageID) {
+        String listOfChild = null;
+        try {
+            listOfChild = new String(pageDetailDb.get(handles.get(0), String.valueOf(pageID).getBytes()));
+            return  Converter.readSeparateWords(listOfChild);
+        } catch (RocksDBException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public enum Status {WithinDB, OutsideDB, All}
     /**
      * get all children page by page ID
@@ -217,40 +227,34 @@ public class InvertedIndex {
      * @return list containing all the children link
      */
     public List<String> getAllChildPage(int pageID, Status status) {
-        try {
-            List<String> pages = new LinkedList<>();
-            String listOfChild = new String(pageDetailDb.get(handles.get(0), String.valueOf(pageID).getBytes()));
-            String[] childIDs = Converter.readSeparateWords(listOfChild);
+        List<String> pages = new LinkedList<>();
+        String[] childIDs = getChildIDs(pageID);
 
-            for (String childID : childIDs) {
-                if (childID.equals("")) {
-                    continue;
-                }
-                String l = Indexer.getInstance().searchURLByID(Integer.parseInt(childID));
-                boolean canIgnore = false;
-                switch (status) {
-                    case All:
-                        break;
-                    case WithinDB:
-                        if (PageProperty.getInstance().getUrl(Integer.parseInt(childID)) == null) {
-                            canIgnore = true;
-                        }
-                        break;
-                    case OutsideDB:
-                        if (PageProperty.getInstance().getUrl(Integer.parseInt(childID)) != null) {
-                            canIgnore = true;
-                        }
-                        break;
-                }
-                if(canIgnore) continue;
-                if (l == null) { throw new IllegalStateException(); }
-                pages.add(l);
+        for (String childID : childIDs) {
+            if (childID.equals("")) {
+                continue;
             }
-            return pages;
-        } catch (RocksDBException e) {
-            e.printStackTrace();
-            return null;
+            String l = Indexer.getInstance().searchURLByID(Integer.parseInt(childID));
+            boolean canIgnore = false;
+            switch (status) {
+                case All:
+                    break;
+                case WithinDB:
+                    if (PageProperty.getInstance().getUrl(Integer.parseInt(childID)) == null) {
+                        canIgnore = true;
+                    }
+                    break;
+                case OutsideDB:
+                    if (PageProperty.getInstance().getUrl(Integer.parseInt(childID)) != null) {
+                        canIgnore = true;
+                    }
+                    break;
+            }
+            if(canIgnore) continue;
+            if (l == null) { throw new IllegalStateException(); }
+            pages.add(l);
         }
+        return pages;
     }
 
      /**
@@ -260,26 +264,20 @@ public class InvertedIndex {
      * @return the string
      */
     public String getChildPages(int pageID) {
-        try {
-            StringBuilder result = new StringBuilder();
-            String listOfChild = new String(pageDetailDb.get(handles.get(0), String.valueOf(pageID).getBytes()));
-            String[] childIDs = Converter.readSeparateWords(listOfChild);
+        StringBuilder result = new StringBuilder();
+        String[] childIDs = getChildIDs(pageID);
 
-            for (String childID : childIDs) {
-                if (childID.equals("")) {
-                    continue;
-                }
-                String l = PageProperty.getInstance().getUrl(Integer.parseInt(childID));
-                if (l == null) {
-                    continue;
-                }
-                result.append(l).append("\n");
+        for (String childID : childIDs) {
+            if (childID.equals("")) {
+                continue;
             }
-            return String.valueOf(result);
-        } catch (RocksDBException e) {
-            e.printStackTrace();
-            return null;
+            String l = PageProperty.getInstance().getUrl(Integer.parseInt(childID));
+            if (l == null) {
+                continue;
+            }
+            result.append(l).append("\n");
         }
+        return String.valueOf(result);
     }
 
     private void storeWordFreq(int pageID, Vector<String> keywords) {
@@ -386,6 +384,8 @@ public class InvertedIndex {
         }
     }
 
+    private enum Type {Content, Child, Title, WordID, MaxTf}
+
     private void printAll(Type situation) throws RocksDBException {
         //Page-ID -> {keywords}
         if(situation == Type.Content) {
@@ -393,6 +393,7 @@ public class InvertedIndex {
             for (iter.seekToFirst(); iter.isValid(); iter.next()) {
                 System.out.println("page ID: " + new String(iter.key()) + '\n'
                         + new String(pageDetailDb.get(handles.get(1), iter.key())) + "\n");
+
             }
         }
 
@@ -439,6 +440,7 @@ public class InvertedIndex {
 //        System.out.println(invertedIndex.getMaxTf(17));
 //        System.out.println(invertedIndex.getTermWeight("minor",14080));
 //        System.out.println(invertedIndex.getRelatedPage(95));
+        invertedIndex.printAll(Type.Content);
 //
     }
 }

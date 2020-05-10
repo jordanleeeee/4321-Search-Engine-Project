@@ -8,6 +8,7 @@ import org.rocksdb.RocksDBException;
 
 
 public class PreProcessor {
+
     private static PreProcessor instance = new PreProcessor();
     private PageProperty pageProperty = PageProperty.getInstance();
     private InvertedIndex invertedIndex = InvertedIndex.getInstance();
@@ -31,7 +32,7 @@ public class PreProcessor {
 
     private PreProcessor() {
         try {
-            docLengthDB = RocksDB.open(new Options().setCreateIfMissing(true), "/Java/Spider/docLengthDB");
+            docLengthDB = RocksDB.open(new Options().setCreateIfMissing(true), "docLengthDB");
         } catch (RocksDBException e) {
             e.printStackTrace();
         }
