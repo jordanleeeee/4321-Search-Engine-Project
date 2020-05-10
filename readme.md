@@ -6,5 +6,5 @@
 search. Fixed some bugs in inverted index. Make code cleaner</br>
 <br>Update(7/5): retriever has nearly complete function(calculate cosine similarity), support phrase
 search. Fixed some bugs. Pre-compute document length, make search faster. Page rank still not supported</br>
-<br>tomcat server was added</br>
+<br>Update(10/5):tomcat server was added</br>
 <br>remember to download all the db at the drive</br>
