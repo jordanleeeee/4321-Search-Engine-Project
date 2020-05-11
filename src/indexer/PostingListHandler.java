@@ -1,7 +1,5 @@
 package indexer;
 
-import util.Converter;
-
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -21,7 +19,7 @@ class PostingListHandler {
     private HashMap<Integer, LinkedList<Integer>> positionsRecord = new HashMap<>();
 
     PostingListHandler(String invertedIndex) {
-        String[] details = Converter.readSeparateWords(invertedIndex);
+        String[] details = invertedIndex.split(" ");
         for (String detail : details) {
             if (detail.equals("")) {
                 continue;
@@ -73,12 +71,11 @@ class PostingListHandler {
     int addWord(int pageID, int pos) {
         if (frequencyRecord.containsKey(pageID)) {
             frequencyRecord.replace(pageID, frequencyRecord.get(pageID) + 1);
-            positionsRecord.get(pageID).addLast(pos);
         } else {
             frequencyRecord.put(pageID, 1);
             positionsRecord.put(pageID, new LinkedList<>());
-            positionsRecord.get(pageID).addLast(pos);
         }
+        positionsRecord.get(pageID).addLast(pos);
         return positionsRecord.get(pageID).size();
     }
 

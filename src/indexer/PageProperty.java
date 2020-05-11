@@ -36,7 +36,7 @@ public class PageProperty {
         numOfPageFetched = getNumOfPageInDb();
     }
 
-    public int getNumOfPageFetched() {
+    int getNumOfPageFetched() {
         return numOfPageFetched;
     }
 

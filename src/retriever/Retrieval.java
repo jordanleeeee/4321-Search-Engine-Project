@@ -1,11 +1,10 @@
 package retriever;
 
+
 import indexer.Indexer;
 import indexer.InvertedIndex;
-import util.Converter;
 import util.Word;
 
-import java.io.File;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,21 +17,21 @@ public class Retrieval {
     private PreProcessor preProcessor = PreProcessor.getInstance();
     private LinkedHashMap<Integer, Double> Top50Result = new LinkedHashMap<>();
 
-    public Retrieval(String query) {
+    public Retrieval(String query) { //pass value here
 
-        System.out.println(new File("").getAbsolutePath());
         Set<String> afterProcessQuery = processQuery(query);
 
         if (!afterProcessQuery.isEmpty()) {
             HashMap<Integer, Double> allResultList = cosineSimilarity(afterProcessQuery);
             RetrievalTop50(allResultList);
-            printAll(Top50Result);
+//            printAll(Top50Result);
         }
     }
 
     public List<Integer> getResult() {
         return new LinkedList<>(Top50Result.keySet());
-    }
+    } //get result here
+    public List<Double> getScore() {return new LinkedList<>(Top50Result.values());} // get score
 
     private Set<String> processQuery(String query){
         Set<String> set = new HashSet<>();
@@ -41,7 +40,7 @@ public class Retrieval {
             String modifiedWord = matcher.group(1).replace("\"", ""); // Add .replace("\"", "") to remove surrounding quotes.
             if (modifiedWord.contains(" ")) {
                 //process phrase
-                String[] phrase = Converter.readSeparateWords(modifiedWord);
+                String[] phrase = modifiedWord.split(" ");
                 StringBuilder modifiedPhrase = new StringBuilder();
                 for(String word: phrase){
                     modifiedPhrase.append(Word.porterAlgorithm(word));
@@ -64,7 +63,7 @@ public class Retrieval {
 //        System.out.println("calculate inner product");
         for (String queryWord : afterProcessQuery) {
             if (queryWord.contains(" ")) { //if phrase
-                String[] phrase = Converter.readSeparateWords(queryWord); //each word
+                String[] phrase = queryWord.split(" "); //each word
                 Integer[] wordID = new Integer[phrase.length]; // each word of their wordID
                 Set<Integer> commonDocID = null; // to store the common docID,eg hong, kong both store in [1, 129, 2, 130, 131, 4, 132,...]
                 boolean phraseInKeyword = true;  // all phrase words should appear in keyword, eg phrase "hkust abc", abc is not in keyword-> ignore it
@@ -124,9 +123,6 @@ public class Retrieval {
                 }
             }
         }
-//        System.out.println((System.nanoTime()-start)/1000000000.0);
-//        System.out.println("normalizing");
-//        start = System.nanoTime();
         double queryLength = Math.sqrt(numOfQueryWord);
 
         for (Integer pageID: allResultList.keySet()) {
@@ -138,7 +134,7 @@ public class Retrieval {
 
             for (String queryWord : afterProcessQuery) {
                 if (queryWord.contains(" ")) {
-                    String[] phrase = Converter.readSeparateWords(queryWord);
+                    String[] phrase = queryWord.split(" ");
                     foundQueryInTitle = true;
                     for(String word: phrase){               //if whole phrase in title-> + 0.2
                         if (!titleWord.contains(word)) {
@@ -160,8 +156,6 @@ public class Retrieval {
                 allResultList.put(pageID, afterNormalized);
             }
         }
-//        System.out.println((System.nanoTime()-start)/1000000000.0);
-//        System.out.println("done");
 
         return allResultList;
     }
@@ -208,7 +202,7 @@ public class Retrieval {
     }
 
     private void printAll(LinkedHashMap<Integer, Double> Top50Result){
-        System.out.println("Score" +" "+ "PageID");
+        System.out.println("PageID" +" "+ "Score");
         for (Integer docID: Top50Result.keySet()) {
             System.out.println(docID + ":  " +  Math.round(Top50Result.get(docID)*100000)/100000.00);
         }
@@ -220,8 +214,7 @@ public class Retrieval {
             System.out.println("Enter query");
             String query = scanner.nextLine();  // Read user input
             long start = System.nanoTime();
-            Retrieval newQuery = new Retrieval(query);
-            System.out.println(newQuery.getResult());
+            retriever.Retrieval newQuery = new Retrieval(query);
             System.out.print("search take ");
             System.out.print((System.nanoTime()-start)/1000000000.0);
             System.out.println("s");

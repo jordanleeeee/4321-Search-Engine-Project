@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="COMP4321_Ihopeitsfinal" target="14" />
+      <module name="COMP4321_Ihopeitsfinal" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

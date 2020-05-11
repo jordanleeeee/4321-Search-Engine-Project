@@ -16,8 +16,12 @@ public class PreProcessor {
      * store doc length of each page : pageID -> document length
      */
     private RocksDB docLengthDB;
+    /**
+     * store pageID -> {parentID}
+     */
+    private RocksDB pageParentDB;
 
-    static PreProcessor getInstance() {
+    public static PreProcessor getInstance() {
         return instance;
     }
 
@@ -33,10 +37,59 @@ public class PreProcessor {
     private PreProcessor() {
         try {
             docLengthDB = RocksDB.open(new Options().setCreateIfMissing(true), "docLengthDB");
+            pageParentDB = RocksDB.open(new Options().setCreateIfMissing(true), "pageParentDB");
         } catch (RocksDBException e) {
             e.printStackTrace();
         }
     }
+
+    /**
+     * get a string contain parent page of a page by pageID
+     * (only page that in the database will count), separate by \n
+     * @param pageID page of
+     * @return the string
+     */
+    public String getParentPages(int pageID) {
+        StringBuilder result = new StringBuilder();
+        try {
+            String[] parentIDs = new String(pageParentDB.get(String.valueOf(pageID).getBytes())).split(" ");
+            for (String parentID : parentIDs) {
+                if (parentID.equals("")) {
+                    continue;
+                }
+                String l = pageProperty.getUrl(Integer.parseInt(parentID));
+                result.append(l).append("\n");
+            }
+        } catch (RocksDBException e) {
+            e.printStackTrace();
+        }
+        return String.valueOf(result);
+    }
+
+    private void prepareParentPageRelationship() throws RocksDBException {
+        for (int parentID : pageProperty.getAllPageID()) {
+            String[] chilIDs = invertedIndex.getChildIDs(parentID);
+            for (String chilID : chilIDs) {
+                if (chilID.equals("")) {
+                    continue;
+                }
+                int childID = Integer.parseInt(chilID);
+                if (pageProperty.getUrl(childID) == null) {
+                    continue;
+                }
+                System.out.println(parentID + " have child " + childID);
+                byte[] content = null;
+                content = pageParentDB.get(String.valueOf(childID).getBytes());
+                if (content == null) {
+                    content = String.valueOf(parentID).getBytes();
+                } else {
+                    content = (new String(content) + " " + parentID).getBytes();
+                }
+                pageParentDB.put(String.valueOf(childID).getBytes(), content);
+            }
+        }
+    }
+
 
     /**
      * pre-compute all doc length
@@ -64,8 +117,10 @@ public class PreProcessor {
         }
     }
 
-    public static void main(String[] args) {
-        PreProcessor preProcessor = new PreProcessor();
-        preProcessor.preComputeDocumentLength();
+    public static void main(String[] args) throws RocksDBException {
+        PreProcessor preProcessor = getInstance();
+        //preProcessor.preComputeDocumentLength();
+        //preProcessor.prepareParentPageRelationship();
+        System.out.println(preProcessor.getParentPages(9956));
     }
 }
