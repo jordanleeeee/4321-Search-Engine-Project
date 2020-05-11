@@ -45,10 +45,7 @@ public class Word {
         if (word.length() < 2) {
             return false;
         }
-        // if word contain not only alphabet
         if (! word.matches("^[a-zA-Z]*$")) {
-            // if only the last char is not alphabet, we will accept this word because many word will stick
-            // together with a punctuation mark
             String temp = word.substring(0, word.length() - 1);
             if (!temp.matches("^[a-zA-Z]*$")) {
                 return false;
@@ -59,11 +56,12 @@ public class Word {
 
     /**
      * convert content to list of stem word and ignore stop word
+     * can use as converting title or query
      * @param content content
      * @return list of stem word
      */
     public static List<String> phraseString(String content) {
-        String[] titleWords = Converter.readSeparateWords(content);
+        String[] titleWords = content.split(" ");
         List<String> stemTitleWord = new ArrayList<>();
         for (String word : titleWords) {
             if (isMeaningfulWord(word)) {
@@ -71,5 +69,9 @@ public class Word {
             }
         }
         return stemTitleWord;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(phraseString("apples."));
     }
 }

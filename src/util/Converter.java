@@ -4,19 +4,9 @@ import java.io.*;
 import java.util.*;
 
 /**
- * this class become some how useless after many date of the project
+ * this class become somehow useless after many update of the project
  */
 public class Converter {
-
-    /**
-     * e.g. convert  "apple boy cat"  to  ["apple", "boy", "cat"]
-     * @param words a string contain words separate by a space
-     * @return a array contain those words
-     */
-    public static String[] readSeparateWords(String words) {
-        return words.split(" ");
-    }
-
     /**
      * load all url in the file into a list
      * @param path path to the txt file

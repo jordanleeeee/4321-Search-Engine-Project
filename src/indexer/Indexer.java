@@ -7,14 +7,13 @@ import com.google.common.collect.HashBiMap;
 import java.util.*;
 
 public class Indexer {
-    enum IndexType {PageURLID, WordID, TitleID}
+    private enum IndexType {PageURLID, WordID}
 
     private static Indexer INSTANCE = new Indexer();
-    private RocksDB pageURLIDdb, wordIDdb, titleIDdb;
-    private Integer wordCount = 0, titleCount = 0, URLCount = 0;
+    private RocksDB pageURLIDdb, wordIDdb;
+    private Integer wordCount = 0, URLCount = 0;
     private HashBiMap<Integer, String> pageIndexer = HashBiMap.create();
     private HashBiMap<Integer, String> wordIndexer = HashBiMap.create();
-    private HashBiMap<Integer, String> titleIndexer = HashBiMap.create();
 
     public static Indexer getInstance() {
         return INSTANCE;
@@ -30,11 +29,9 @@ public class Indexer {
         try {
             pageURLIDdb = RocksDB.open(options, "pageURLIDdb");
             wordIDdb = RocksDB.open(options, "wordIDdb");
-            titleIDdb = RocksDB.open(options, "titleIDdb");
         } catch (RocksDBException e) {
             e.printStackTrace();
         }
-        addTitleBiMap();
         addPageBiMap();
         addWordBiMap();
     }
@@ -87,42 +84,6 @@ public class Indexer {
 
     String searchURLByID(int pageID) {
         return pageIndexer.getOrDefault(pageID, null);
-    }
-
-      ///////Title////////
-     public void storeTitle(String title) {
-        try {
-            titleCount += 1;
-            titleIDdb.put(Integer.toString(titleCount).getBytes(), title.getBytes());
-            updateTitleBiMap(titleCount, title);
-        } catch (RocksDBException e) {
-            e.printStackTrace();
-            System.out.println("Fail to add title");
-        }
-    }
-
-    private void addTitleBiMap(){
-        RocksIterator iter = titleIDdb.newIterator();
-        for (iter.seekToFirst(); iter.isValid(); iter.next()) {
-            updateTitleBiMap(Integer.parseInt(new String(iter.key())), new String((iter.value())));
-            titleCount++;
-        }
-    }
-
-    private void updateTitleBiMap(int titleID, String title){
-        if (titleIndexer.containsValue(title)) {
-            titleCount--;
-        } else {
-            titleIndexer.put(titleID, title);
-        }
-    }
-
-    Integer searchIDByTitle(String title) {
-        return titleIndexer.inverse().get(title);
-    }
-
-    String searchTitleByID(int titleID) {
-        return titleIndexer.get(titleID);
     }
 
     ///////Word////////
@@ -208,13 +169,6 @@ public class Indexer {
             }
         }
 
-        if (situation == IndexType.TitleID) {
-            RocksIterator iter = titleIDdb.newIterator();
-            for (iter.seekToFirst(); iter.isValid(); iter.next()) {
-                System.out.println("Title ID: " + new String(iter.key()) + '\n' +
-                        "Title: " + new String(iter.value()) + "\n");
-            }
-        }
     }
 
     void deleteEntry(int wordID) {
@@ -226,7 +180,6 @@ public class Indexer {
     }
 
     public static void main(String[] args){
-
         Indexer indexer = getInstance();
         indexer.printAll(IndexType.WordID);
     }

@@ -10,21 +10,19 @@ import java.util.*;
 
 public class WebInfoSeeker {
     private String url;
-    private String words;
+    private String words = null;
 
     public WebInfoSeeker(String url) {
         this.url = url;
-        this.words = null;
     }
 
     boolean isCSEWebpage() {
         try {
             if (url.split("/")[2].contains("cse.ust.hk")) {
                 //ignore some rubbish page
-                //the following two site will produce many many many page with same content, I have no choice but ignore them
+                //the following two site will produce many many many page with same content
                 if (url.contains("/vislab_homepage/vislab_homepage/") || url.contains("comp151.cse.ust.hk/~dekai/content/")
                         //the following three site have many page but is useless and contain no useful info
-                        //I think you do not mind me to ignore those pages
                         || url.contains("labschedule.cse.ust.hk") || url.contains("booking.cse.ust.hk")
                                 || url.contains("stubooking.cse.ust.hk")) {
                     return false;
