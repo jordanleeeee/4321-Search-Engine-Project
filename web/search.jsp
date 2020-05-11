@@ -108,9 +108,11 @@
 			width:150px;
 			font-size: 16px;
 			border-radius: 15px;
+			transition: 0.8s;
 		}
 		.w3-button:hover{
 			color: mediumturquoise;
+			box-shadow: 5px 5px 5px grey;
 		}
 	</style>
 </head>
