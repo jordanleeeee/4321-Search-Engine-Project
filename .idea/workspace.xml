@@ -24,111 +24,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d08b563-9309-49a3-9884-bad9982528f7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/COMP4321_Ihopeitsfinal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/COMP4321_Ihopeitsfinal.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docLengthDB/000051.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docLengthDB/CURRENT" beforeDir="false" afterPath="$PROJECT_DIR$/docLengthDB/CURRENT" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docLengthDB/LOG" beforeDir="false" afterPath="$PROJECT_DIR$/docLengthDB/LOG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docLengthDB/MANIFEST-000050" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docLengthDB/OPTIONS-000050" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docLengthDB/OPTIONS-000053" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/Indexer$IndexType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/Indexer$IndexType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/Indexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/Indexer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/InvertedIndex$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/InvertedIndex$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/InvertedIndex$Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/InvertedIndex$Status.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/InvertedIndex$Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/InvertedIndex$Type.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/InvertedIndex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/InvertedIndex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/PageProperty.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/PageProperty.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/PostingListHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/indexer/PostingListHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/retriever/PreProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/retriever/PreProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/retriever/Retrieval.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/retriever/Retrieval.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/spider/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/spider/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/spider/Spider$PageType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/spider/Spider$PageType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/spider/Spider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/spider/Spider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/spider/WebInfoSeeker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/spider/WebInfoSeeker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/util/Converter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/util/Converter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/util/Porter$NewString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/util/Porter$NewString.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/util/Porter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/util/Porter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/util/Word.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/util/Word.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageDetailDB/000133.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageDetailDB/CURRENT" beforeDir="false" afterPath="$PROJECT_DIR$/pageDetailDB/CURRENT" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageDetailDB/LOG" beforeDir="false" afterPath="$PROJECT_DIR$/pageDetailDB/LOG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageDetailDB/MANIFEST-000132" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageDetailDB/OPTIONS-000132" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageDetailDB/OPTIONS-000135" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/000136.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/CURRENT" beforeDir="false" afterPath="$PROJECT_DIR$/pagePropDB/CURRENT" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG" beforeDir="false" afterPath="$PROJECT_DIR$/pagePropDB/LOG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/MANIFEST-000135" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/OPTIONS-000135" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagePropDB/OPTIONS-000138" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageURLIDdb/000097.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageURLIDdb/CURRENT" beforeDir="false" afterPath="$PROJECT_DIR$/pageURLIDdb/CURRENT" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageURLIDdb/LOG" beforeDir="false" afterPath="$PROJECT_DIR$/pageURLIDdb/LOG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageURLIDdb/MANIFEST-000096" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageURLIDdb/OPTIONS-000096" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageURLIDdb/OPTIONS-000099" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indexer/Indexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indexer/Indexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indexer/InvertedIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indexer/InvertedIndex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indexer/PageProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indexer/PageProperty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/indexer/PostingListHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/indexer/PostingListHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/retriever/PreProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/retriever/PreProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/retriever/Retrieval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/retriever/Retrieval.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spider/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spider/Spider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/Spider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/spider/WebInfoSeeker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/spider/WebInfoSeeker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Converter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Porter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Porter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/Word.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/COMP4321_Ihopeitsfinal.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/indexer/Indexer$IndexType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/indexer/Indexer$IndexType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/indexer/Indexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/indexer/Indexer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/indexer/InvertedIndex$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/indexer/InvertedIndex$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/indexer/InvertedIndex$Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/indexer/InvertedIndex$Status.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/indexer/InvertedIndex$Type.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/indexer/InvertedIndex$Type.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/indexer/InvertedIndex.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/indexer/InvertedIndex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/indexer/PageProperty.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/indexer/PageProperty.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/indexer/PostingListHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/indexer/PostingListHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/retriever/PreProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/retriever/PreProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/retriever/Retrieval.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/retriever/Retrieval.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spider/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spider/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spider/Spider$PageType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spider/Spider$PageType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spider/Spider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spider/Spider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spider/WebInfoSeeker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spider/WebInfoSeeker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/Converter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/Converter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/Porter$NewString.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/Porter$NewString.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/Porter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/Porter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/Word.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/Word.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/titleIDdb/000097.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/titleIDdb/CURRENT" beforeDir="false" afterPath="$PROJECT_DIR$/titleIDdb/CURRENT" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/titleIDdb/LOG" beforeDir="false" afterPath="$PROJECT_DIR$/titleIDdb/LOG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/titleIDdb/MANIFEST-000096" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/titleIDdb/OPTIONS-000096" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/titleIDdb/OPTIONS-000099" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/engine.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/engine.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/example2.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/result.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/search.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/search.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordFreqdb/013394.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordFreqdb/CURRENT" beforeDir="false" afterPath="$PROJECT_DIR$/wordFreqdb/CURRENT" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordFreqdb/LOG" beforeDir="false" afterPath="$PROJECT_DIR$/wordFreqdb/LOG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordFreqdb/MANIFEST-013393" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordFreqdb/OPTIONS-013393" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordFreqdb/OPTIONS-013396" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordIDdb/000093.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordIDdb/CURRENT" beforeDir="false" afterPath="$PROJECT_DIR$/wordIDdb/CURRENT" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordIDdb/LOG" beforeDir="false" afterPath="$PROJECT_DIR$/wordIDdb/LOG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordIDdb/MANIFEST-000092" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordIDdb/OPTIONS-000092" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordIDdb/OPTIONS-000095" beforeDir="false" />
-    </list>
+    <list default="true" id="9d08b563-9309-49a3-9884-bad9982528f7" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -362,7 +258,7 @@
       <workItem from="1589089492161" duration="17977000" />
       <workItem from="1589129427491" duration="51000" />
       <workItem from="1589129578882" duration="146000" />
-      <workItem from="1589172293080" duration="133000" />
+      <workItem from="1589172293080" duration="575000" />
     </task>
     <servers />
   </component>
@@ -399,81 +295,85 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588688946409" />
-    <state width="1321" height="183" key="GridCell.Tab.0.bottom" timestamp="1589129727415">
+    <state width="904" height="332" key="GridCell.Tab.0.bottom" timestamp="1589172459271">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1321" height="183" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589129727415" />
+    <state width="904" height="332" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589172459271" />
     <state width="1681" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560401" />
-    <state width="1321" height="183" key="GridCell.Tab.0.center" timestamp="1589129727415">
+    <state width="904" height="332" key="GridCell.Tab.0.center" timestamp="1589172459271">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1321" height="183" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1589129727415" />
+    <state width="904" height="332" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1589172459271" />
     <state width="1681" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560401" />
-    <state width="1321" height="183" key="GridCell.Tab.0.left" timestamp="1589129727415">
+    <state width="904" height="332" key="GridCell.Tab.0.left" timestamp="1589172459271">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1321" height="183" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1589129727415" />
+    <state width="904" height="332" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1589172459271" />
     <state width="1681" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560401" />
-    <state width="1321" height="183" key="GridCell.Tab.0.right" timestamp="1589129727415">
+    <state width="904" height="332" key="GridCell.Tab.0.right" timestamp="1589172459271">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1321" height="183" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1589129727415" />
+    <state width="904" height="332" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1589172459271" />
     <state width="1681" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560401" />
-    <state width="892" height="196" key="GridCell.Tab.1.bottom" timestamp="1589129209326">
+    <state width="904" height="332" key="GridCell.Tab.1.bottom" timestamp="1589172459070">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="892" height="196" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589129209326" />
+    <state width="904" height="332" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589172459070" />
     <state width="1681" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="892" height="196" key="GridCell.Tab.1.center" timestamp="1589129209326">
+    <state width="904" height="332" key="GridCell.Tab.1.center" timestamp="1589172459070">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="892" height="196" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1589129209326" />
+    <state width="904" height="332" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1589172459070" />
     <state width="1681" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560262" />
-    <state width="892" height="196" key="GridCell.Tab.1.left" timestamp="1589129209326">
+    <state width="904" height="332" key="GridCell.Tab.1.left" timestamp="1589172459070">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="892" height="196" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1589129209326" />
+    <state width="904" height="332" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1589172459070" />
     <state width="1681" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560262" />
-    <state width="892" height="196" key="GridCell.Tab.1.right" timestamp="1589129209326">
+    <state width="904" height="332" key="GridCell.Tab.1.right" timestamp="1589172459070">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="892" height="196" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1589129209326" />
+    <state width="904" height="332" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1589172459070" />
     <state width="1681" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="892" height="196" key="GridCell.Tab.2.bottom" timestamp="1589129209327">
+    <state width="904" height="332" key="GridCell.Tab.2.bottom" timestamp="1589172459071">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="892" height="196" key="GridCell.Tab.2.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589129209327" />
+    <state width="904" height="332" key="GridCell.Tab.2.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589172459071" />
     <state width="1681" height="348" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="892" height="196" key="GridCell.Tab.2.center" timestamp="1589129209327">
+    <state width="904" height="332" key="GridCell.Tab.2.center" timestamp="1589172459071">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="892" height="196" key="GridCell.Tab.2.center/0.0.1366.768@0.0.1366.768" timestamp="1589129209327" />
+    <state width="904" height="332" key="GridCell.Tab.2.center/0.0.1366.768@0.0.1366.768" timestamp="1589172459071" />
     <state width="1681" height="348" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="892" height="196" key="GridCell.Tab.2.left" timestamp="1589129209327">
+    <state width="904" height="332" key="GridCell.Tab.2.left" timestamp="1589172459071">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="892" height="196" key="GridCell.Tab.2.left/0.0.1366.768@0.0.1366.768" timestamp="1589129209327" />
+    <state width="904" height="332" key="GridCell.Tab.2.left/0.0.1366.768@0.0.1366.768" timestamp="1589172459071" />
     <state width="1681" height="348" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="892" height="196" key="GridCell.Tab.2.right" timestamp="1589129209327">
+    <state width="904" height="332" key="GridCell.Tab.2.right" timestamp="1589172459071">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="892" height="196" key="GridCell.Tab.2.right/0.0.1366.768@0.0.1366.768" timestamp="1589129209327" />
+    <state width="904" height="332" key="GridCell.Tab.2.right/0.0.1366.768@0.0.1366.768" timestamp="1589172459071" />
     <state width="1681" height="348" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="1217" height="257" key="GridCell.Tab.3.bottom" timestamp="1588821723748">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="904" height="332" key="GridCell.Tab.3.bottom" timestamp="1589172459072">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state width="904" height="332" key="GridCell.Tab.3.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589172459072" />
     <state width="1217" height="257" key="GridCell.Tab.3.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588821723748" />
-    <state width="1217" height="257" key="GridCell.Tab.3.center" timestamp="1588821723748">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="904" height="332" key="GridCell.Tab.3.center" timestamp="1589172459071">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state width="904" height="332" key="GridCell.Tab.3.center/0.0.1366.768@0.0.1366.768" timestamp="1589172459071" />
     <state width="1217" height="257" key="GridCell.Tab.3.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588821723748" />
-    <state width="1217" height="257" key="GridCell.Tab.3.left" timestamp="1588821723748">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="904" height="332" key="GridCell.Tab.3.left" timestamp="1589172459071">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state width="904" height="332" key="GridCell.Tab.3.left/0.0.1366.768@0.0.1366.768" timestamp="1589172459071" />
     <state width="1217" height="257" key="GridCell.Tab.3.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588821723748" />
-    <state width="1217" height="257" key="GridCell.Tab.3.right" timestamp="1588821723748">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="904" height="332" key="GridCell.Tab.3.right" timestamp="1589172459071">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
+    <state width="904" height="332" key="GridCell.Tab.3.right/0.0.1366.768@0.0.1366.768" timestamp="1589172459071" />
     <state width="1217" height="257" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588821723748" />
     <state x="196" y="0" width="1554" height="851" key="SettingsEditor" timestamp="1589129724054">
       <screen x="0" y="0" width="1366" height="768" />
