@@ -1,0 +1,195 @@
+2020/05/12-00:49:50.770755 3edc RocksDB version: 5.15.10
+2020/05/12-00:49:50.770881 3edc Git sha rocksdb_build_git_sha:@7e1f37eb4fc711dbf3ecc9610178931f00754de8@
+2020/05/12-00:49:50.770915 3edc Compile date Oct  9 2018
+2020/05/12-00:49:50.770952 3edc DB SUMMARY
+2020/05/12-00:49:50.771421 3edc CURRENT file:  CURRENT
+2020/05/12-00:49:50.771463 3edc IDENTITY file:  IDENTITY
+2020/05/12-00:49:50.771575 3edc MANIFEST file:  MANIFEST-013543 size: 175 Bytes
+2020/05/12-00:49:50.771605 3edc SST files in wordFreqdb dir, Total Num: 3, files: 013301.sst 013303.sst 013305.sst 
+2020/05/12-00:49:50.771631 3edc Write Ahead Log file in wordFreqdb: 013544.log size: 0 ; 
+2020/05/12-00:49:50.771661 3edc                         Options.error_if_exists: 0
+2020/05/12-00:49:50.771717 3edc                       Options.create_if_missing: 1
+2020/05/12-00:49:50.772304 3edc                         Options.paranoid_checks: 1
+2020/05/12-00:49:50.772324 3edc                                     Options.env: 000001851C1D9D00
+2020/05/12-00:49:50.772334 3edc                                Options.info_log: 000001851C804BB0
+2020/05/12-00:49:50.772343 3edc                Options.max_file_opening_threads: 16
+2020/05/12-00:49:50.772352 3edc                              Options.statistics: 0000000000000000
+2020/05/12-00:49:50.772360 3edc                               Options.use_fsync: 0
+2020/05/12-00:49:50.772371 3edc                       Options.max_log_file_size: 0
+2020/05/12-00:49:50.772381 3edc                  Options.max_manifest_file_size: 1073741824
+2020/05/12-00:49:50.772392 3edc                   Options.log_file_time_to_roll: 0
+2020/05/12-00:49:50.772401 3edc                       Options.keep_log_file_num: 1000
+2020/05/12-00:49:50.772409 3edc                    Options.recycle_log_file_num: 0
+2020/05/12-00:49:50.772417 3edc                         Options.allow_fallocate: 1
+2020/05/12-00:49:50.772468 3edc                        Options.allow_mmap_reads: 0
+2020/05/12-00:49:50.772483 3edc                       Options.allow_mmap_writes: 0
+2020/05/12-00:49:50.772492 3edc                        Options.use_direct_reads: 0
+2020/05/12-00:49:50.772503 3edc                        Options.use_direct_io_for_flush_and_compaction: 0
+2020/05/12-00:49:50.772516 3edc          Options.create_missing_column_families: 0
+2020/05/12-00:49:50.772526 3edc                              Options.db_log_dir: 
+2020/05/12-00:49:50.772535 3edc                                 Options.wal_dir: wordFreqdb
+2020/05/12-00:49:50.772543 3edc                Options.table_cache_numshardbits: 6
+2020/05/12-00:49:50.772552 3edc                      Options.max_subcompactions: 1
+2020/05/12-00:49:50.772560 3edc                  Options.max_background_flushes: -1
+2020/05/12-00:49:50.772569 3edc                         Options.WAL_ttl_seconds: 0
+2020/05/12-00:49:50.772578 3edc                       Options.WAL_size_limit_MB: 0
+2020/05/12-00:49:50.772586 3edc             Options.manifest_preallocation_size: 4194304
+2020/05/12-00:49:50.772594 3edc                     Options.is_fd_close_on_exec: 1
+2020/05/12-00:49:50.772602 3edc                   Options.advise_random_on_open: 1
+2020/05/12-00:49:50.772611 3edc                    Options.db_write_buffer_size: 0
+2020/05/12-00:49:50.772620 3edc                    Options.write_buffer_manager: 000001851C8DB0B0
+2020/05/12-00:49:50.772629 3edc         Options.access_hint_on_compaction_start: 1
+2020/05/12-00:49:50.772637 3edc  Options.new_table_reader_for_compaction_inputs: 0
+2020/05/12-00:49:50.772645 3edc           Options.random_access_max_buffer_size: 1048576
+2020/05/12-00:49:50.772653 3edc                      Options.use_adaptive_mutex: 0
+2020/05/12-00:49:50.772661 3edc                            Options.rate_limiter: 0000000000000000
+2020/05/12-00:49:50.772669 3edc     Options.sst_file_manager.rate_bytes_per_sec: 0
+2020/05/12-00:49:50.772677 3edc                       Options.wal_recovery_mode: 2
+2020/05/12-00:49:50.772685 3edc                  Options.enable_thread_tracking: 0
+2020/05/12-00:49:50.772693 3edc                  Options.enable_pipelined_write: 0
+2020/05/12-00:49:50.772706 3edc         Options.allow_concurrent_memtable_write: 1
+2020/05/12-00:49:50.772718 3edc      Options.enable_write_thread_adaptive_yield: 1
+2020/05/12-00:49:50.772726 3edc             Options.write_thread_max_yield_usec: 100
+2020/05/12-00:49:50.772734 3edc            Options.write_thread_slow_yield_usec: 3
+2020/05/12-00:49:50.772742 3edc                               Options.row_cache: None
+2020/05/12-00:49:50.772750 3edc                              Options.wal_filter: None
+2020/05/12-00:49:50.772758 3edc             Options.avoid_flush_during_recovery: 0
+2020/05/12-00:49:50.772766 3edc             Options.allow_ingest_behind: 0
+2020/05/12-00:49:50.772773 3edc             Options.preserve_deletes: 0
+2020/05/12-00:49:50.772781 3edc             Options.two_write_queues: 0
+2020/05/12-00:49:50.772789 3edc             Options.manual_wal_flush: 0
+2020/05/12-00:49:50.772797 3edc             Options.max_background_jobs: 2
+2020/05/12-00:49:50.772805 3edc             Options.max_background_compactions: -1
+2020/05/12-00:49:50.772813 3edc             Options.avoid_flush_during_shutdown: 0
+2020/05/12-00:49:50.772821 3edc           Options.writable_file_max_buffer_size: 1048576
+2020/05/12-00:49:50.772829 3edc             Options.delayed_write_rate : 16777216
+2020/05/12-00:49:50.772837 3edc             Options.max_total_wal_size: 0
+2020/05/12-00:49:50.772845 3edc             Options.delete_obsolete_files_period_micros: 21600000000
+2020/05/12-00:49:50.772853 3edc                   Options.stats_dump_period_sec: 600
+2020/05/12-00:49:50.772878 3edc                          Options.max_open_files: -1
+2020/05/12-00:49:50.772888 3edc                          Options.bytes_per_sync: 0
+2020/05/12-00:49:50.772897 3edc                      Options.wal_bytes_per_sync: 0
+2020/05/12-00:49:50.772905 3edc       Options.compaction_readahead_size: 0
+2020/05/12-00:49:50.772913 3edc Compression algorithms supported:
+2020/05/12-00:49:50.772934 3edc 	kZSTD supported: 0
+2020/05/12-00:49:50.772944 3edc 	kSnappyCompression supported: 0
+2020/05/12-00:49:50.772952 3edc 	kBZip2Compression supported: 0
+2020/05/12-00:49:50.772961 3edc 	kZlibCompression supported: 0
+2020/05/12-00:49:50.772969 3edc 	kLZ4Compression supported: 0
+2020/05/12-00:49:50.772978 3edc 	kXpressCompression supported: 0
+2020/05/12-00:49:50.772986 3edc 	kLZ4HCCompression supported: 0
+2020/05/12-00:49:50.772995 3edc 	kZSTDNotFinalCompression supported: 0
+2020/05/12-00:49:50.773017 3edc Fast CRC32 supported: Supported on x86
+2020/05/12-00:49:50.773728 3edc [c:\users\aretter\code\rocksdb\db\version_set.cc:3248] Recovering from manifest file: MANIFEST-013543
+2020/05/12-00:49:50.801213 3edc [c:\users\aretter\code\rocksdb\db\column_family.cc:475] --------------- Options for column family [default]:
+2020/05/12-00:49:50.801262 3edc               Options.comparator: leveldb.BytewiseComparator
+2020/05/12-00:49:50.801274 3edc           Options.merge_operator: None
+2020/05/12-00:49:50.801283 3edc        Options.compaction_filter: None
+2020/05/12-00:49:50.801291 3edc        Options.compaction_filter_factory: None
+2020/05/12-00:49:50.801300 3edc         Options.memtable_factory: SkipListFactory
+2020/05/12-00:49:50.801308 3edc            Options.table_factory: BlockBasedTable
+2020/05/12-00:49:50.801414 3edc            table_factory options:   flush_block_policy_factory: FlushBlockBySizePolicyFactory (000001851C1DBF50)
+  cache_index_and_filter_blocks: 0
+  cache_index_and_filter_blocks_with_high_priority: 0
+  pin_l0_filter_and_index_blocks_in_cache: 0
+  pin_top_level_index_and_filter: 1
+  index_type: 0
+  hash_index_allow_collision: 1
+  checksum: 1
+  no_block_cache: 0
+  block_cache: 000001851C72ACC0
+  block_cache_name: LRUCache
+  block_cache_options:
+    capacity : 8388608
+    num_shard_bits : 4
+    strict_capacity_limit : 0
+    high_pri_pool_ratio: 0.000
+  block_cache_compressed: 0000000000000000
+  persistent_cache: 0000000000000000
+  block_size: 4096
+  block_size_deviation: 10
+  block_restart_interval: 16
+  index_block_restart_interval: 1
+  metadata_block_size: 4096
+  partition_filters: 0
+  use_delta_encoding: 1
+  filter_policy: nullptr
+  whole_key_filtering: 1
+  verify_compression: 0
+  read_amp_bytes_per_bit: 0
+  format_version: 2
+  enable_index_compression: 1
+  block_align: 0
+2020/05/12-00:49:50.801431 3edc        Options.write_buffer_size: 67108864
+2020/05/12-00:49:50.801442 3edc  Options.max_write_buffer_number: 2
+2020/05/12-00:49:50.801451 3edc          Options.compression: NoCompression
+2020/05/12-00:49:50.801458 3edc                  Options.bottommost_compression: Disabled
+2020/05/12-00:49:50.801467 3edc       Options.prefix_extractor: nullptr
+2020/05/12-00:49:50.801475 3edc   Options.memtable_insert_with_hint_prefix_extractor: nullptr
+2020/05/12-00:49:50.801483 3edc             Options.num_levels: 7
+2020/05/12-00:49:50.801491 3edc        Options.min_write_buffer_number_to_merge: 1
+2020/05/12-00:49:50.801500 3edc     Options.max_write_buffer_number_to_maintain: 0
+2020/05/12-00:49:50.801508 3edc            Options.bottommost_compression_opts.window_bits: -14
+2020/05/12-00:49:50.801517 3edc                  Options.bottommost_compression_opts.level: 32767
+2020/05/12-00:49:50.801525 3edc               Options.bottommost_compression_opts.strategy: 0
+2020/05/12-00:49:50.801533 3edc         Options.bottommost_compression_opts.max_dict_bytes: 0
+2020/05/12-00:49:50.801542 3edc         Options.bottommost_compression_opts.zstd_max_train_bytes: 0
+2020/05/12-00:49:50.801550 3edc                  Options.bottommost_compression_opts.enabled: false
+2020/05/12-00:49:50.801559 3edc            Options.compression_opts.window_bits: -14
+2020/05/12-00:49:50.801567 3edc                  Options.compression_opts.level: 32767
+2020/05/12-00:49:50.801575 3edc               Options.compression_opts.strategy: 0
+2020/05/12-00:49:50.801583 3edc         Options.compression_opts.max_dict_bytes: 0
+2020/05/12-00:49:50.801592 3edc         Options.compression_opts.zstd_max_train_bytes: 0
+2020/05/12-00:49:50.801601 3edc                  Options.compression_opts.enabled: false
+2020/05/12-00:49:50.801609 3edc      Options.level0_file_num_compaction_trigger: 4
+2020/05/12-00:49:50.801617 3edc          Options.level0_slowdown_writes_trigger: 20
+2020/05/12-00:49:50.801625 3edc              Options.level0_stop_writes_trigger: 36
+2020/05/12-00:49:50.801633 3edc                   Options.target_file_size_base: 67108864
+2020/05/12-00:49:50.801642 3edc             Options.target_file_size_multiplier: 1
+2020/05/12-00:49:50.801650 3edc                Options.max_bytes_for_level_base: 268435456
+2020/05/12-00:49:50.801677 3edc Options.level_compaction_dynamic_level_bytes: 0
+2020/05/12-00:49:50.801686 3edc          Options.max_bytes_for_level_multiplier: 10.000000
+2020/05/12-00:49:50.801706 3edc Options.max_bytes_for_level_multiplier_addtl[0]: 1
+2020/05/12-00:49:50.801714 3edc Options.max_bytes_for_level_multiplier_addtl[1]: 1
+2020/05/12-00:49:50.801723 3edc Options.max_bytes_for_level_multiplier_addtl[2]: 1
+2020/05/12-00:49:50.801731 3edc Options.max_bytes_for_level_multiplier_addtl[3]: 1
+2020/05/12-00:49:50.801740 3edc Options.max_bytes_for_level_multiplier_addtl[4]: 1
+2020/05/12-00:49:50.801748 3edc Options.max_bytes_for_level_multiplier_addtl[5]: 1
+2020/05/12-00:49:50.801758 3edc Options.max_bytes_for_level_multiplier_addtl[6]: 1
+2020/05/12-00:49:50.801767 3edc       Options.max_sequential_skip_in_iterations: 8
+2020/05/12-00:49:50.801775 3edc                    Options.max_compaction_bytes: 1677721600
+2020/05/12-00:49:50.801784 3edc                        Options.arena_block_size: 8388608
+2020/05/12-00:49:50.801792 3edc   Options.soft_pending_compaction_bytes_limit: 68719476736
+2020/05/12-00:49:50.801800 3edc   Options.hard_pending_compaction_bytes_limit: 274877906944
+2020/05/12-00:49:50.801809 3edc       Options.rate_limit_delay_max_milliseconds: 100
+2020/05/12-00:49:50.801817 3edc                Options.disable_auto_compactions: 0
+2020/05/12-00:49:50.801828 3edc                        Options.compaction_style: kCompactionStyleLevel
+2020/05/12-00:49:50.801837 3edc                          Options.compaction_pri: kByCompensatedSize
+2020/05/12-00:49:50.801850 3edc Options.compaction_options_universal.size_ratio: 1
+2020/05/12-00:49:50.801862 3edc Options.compaction_options_universal.min_merge_width: 2
+2020/05/12-00:49:50.801870 3edc Options.compaction_options_universal.max_merge_width: 4294967295
+2020/05/12-00:49:50.801879 3edc Options.compaction_options_universal.max_size_amplification_percent: 200
+2020/05/12-00:49:50.801888 3edc Options.compaction_options_universal.compression_size_percent: -1
+2020/05/12-00:49:50.801897 3edc Options.compaction_options_universal.stop_style: kCompactionStopStyleTotalSize
+2020/05/12-00:49:50.801906 3edc Options.compaction_options_fifo.max_table_files_size: 1073741824
+2020/05/12-00:49:50.801915 3edc Options.compaction_options_fifo.allow_compaction: 0
+2020/05/12-00:49:50.801923 3edc Options.compaction_options_fifo.ttl: 0
+2020/05/12-00:49:50.801931 3edc                   Options.table_properties_collectors: 
+2020/05/12-00:49:50.801940 3edc                   Options.inplace_update_support: 0
+2020/05/12-00:49:50.801948 3edc                 Options.inplace_update_num_locks: 10000
+2020/05/12-00:49:50.801957 3edc               Options.memtable_prefix_bloom_size_ratio: 0.000000
+2020/05/12-00:49:50.801966 3edc   Options.memtable_huge_page_size: 0
+2020/05/12-00:49:50.801974 3edc                           Options.bloom_locality: 0
+2020/05/12-00:49:50.801982 3edc                    Options.max_successive_merges: 0
+2020/05/12-00:49:50.801991 3edc                Options.optimize_filters_for_hits: 0
+2020/05/12-00:49:50.801999 3edc                Options.paranoid_file_checks: 0
+2020/05/12-00:49:50.802007 3edc                Options.force_consistency_checks: 0
+2020/05/12-00:49:50.802015 3edc                Options.report_bg_io_stats: 0
+2020/05/12-00:49:50.802024 3edc                               Options.ttl: 0
+2020/05/12-00:49:50.906752 3edc [c:\users\aretter\code\rocksdb\db\version_set.cc:3529] Recovered from manifest file:wordFreqdb/MANIFEST-013543 succeeded,manifest_file_number is 13543, next_file_number is 13545, last_sequence is 8758026, log_number is 0,prev_log_number is 0,max_column_family is 0,min_log_number_to_keep is 0
+2020/05/12-00:49:50.906788 3edc [c:\users\aretter\code\rocksdb\db\version_set.cc:3537] Column family [default] (ID 0), log number is 13542
+2020/05/12-00:49:50.907243 3edc EVENT_LOG_v1 {"time_micros": 1589215790907183, "job": 1, "event": "recovery_started", "log_files": [13544]}
+2020/05/12-00:49:50.907259 3edc [c:\users\aretter\code\rocksdb\db\db_impl_open.cc:552] Recovering log #13544 mode 2
+2020/05/12-00:49:50.907384 3edc [c:\users\aretter\code\rocksdb\db\version_set.cc:2906] Creating manifest 13546
+2020/05/12-00:49:51.177198 3edc EVENT_LOG_v1 {"time_micros": 1589215791177167, "job": 1, "event": "recovery_finished"}
+2020/05/12-00:49:51.225387 3edc [c:\users\aretter\code\rocksdb\db\db_impl_open.cc:1221] DB pointer 000001851C8ED060

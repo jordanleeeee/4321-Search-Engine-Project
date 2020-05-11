@@ -24,7 +24,47 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d08b563-9309-49a3-9884-bad9982528f7" name="Default Changelist" comment="" />
+    <list default="true" id="9d08b563-9309-49a3-9884-bad9982528f7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docLengthDB/000087.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docLengthDB/CURRENT" beforeDir="false" afterPath="$PROJECT_DIR$/docLengthDB/CURRENT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docLengthDB/LOG" beforeDir="false" afterPath="$PROJECT_DIR$/docLengthDB/LOG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docLengthDB/MANIFEST-000086" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docLengthDB/OPTIONS-000086" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docLengthDB/OPTIONS-000089" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/retriever/PreProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/retriever/PreProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/retriever/Retrieval.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/COMP4321_Ihopeitsfinal_war_exploded/WEB-INF/classes/retriever/Retrieval.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageDetailDB/000169.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageDetailDB/CURRENT" beforeDir="false" afterPath="$PROJECT_DIR$/pageDetailDB/CURRENT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageDetailDB/LOG" beforeDir="false" afterPath="$PROJECT_DIR$/pageDetailDB/LOG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageDetailDB/MANIFEST-000168" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageDetailDB/OPTIONS-000168" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageDetailDB/OPTIONS-000171" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageParentDB/000082.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageParentDB/CURRENT" beforeDir="false" afterPath="$PROJECT_DIR$/pageParentDB/CURRENT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageParentDB/LOG" beforeDir="false" afterPath="$PROJECT_DIR$/pageParentDB/LOG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageParentDB/MANIFEST-000081" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageParentDB/OPTIONS-000081" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageParentDB/OPTIONS-000084" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/000172.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/CURRENT" beforeDir="false" afterPath="$PROJECT_DIR$/pagePropDB/CURRENT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/LOG" beforeDir="false" afterPath="$PROJECT_DIR$/pagePropDB/LOG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/MANIFEST-000171" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/OPTIONS-000171" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagePropDB/OPTIONS-000174" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/retriever/PreProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/retriever/PreProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/retriever/Retrieval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/retriever/Retrieval.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/retriever/PreProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/retriever/PreProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/retriever/Retrieval.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/retriever/Retrieval.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/search.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/search.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wordFreqdb/013430.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wordFreqdb/CURRENT" beforeDir="false" afterPath="$PROJECT_DIR$/wordFreqdb/CURRENT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wordFreqdb/LOG" beforeDir="false" afterPath="$PROJECT_DIR$/wordFreqdb/LOG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wordFreqdb/MANIFEST-013429" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wordFreqdb/OPTIONS-013429" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wordFreqdb/OPTIONS-013432" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,6 +75,7 @@
       <list>
         <option value="jsf" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -81,20 +122,7 @@
       <recent name="C:\Users\tsuiw\IdeaProjects\COMP4321_Ihopeitsfinal\web" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.54">
-    <configuration name="Indexer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="indexer.Indexer" />
-      <module name="COMP4321_Ihopeitsfinal" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="indexer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.PageRank">
     <configuration name="InvertedIndex" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="indexer.InvertedIndex" />
       <module name="COMP4321_Ihopeitsfinal" />
@@ -108,12 +136,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="spider.Main" />
+    <configuration name="Junk" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Junk" />
+      <module name="COMP4321_Ihopeitsfinal" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PageRank" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="retriever.PageRank" />
       <module name="COMP4321_Ihopeitsfinal" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="spider.*" />
+          <option name="PATTERN" value="retriever.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -220,20 +255,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Indexer" />
       <item itemvalue="Application.InvertedIndex" />
-      <item itemvalue="Application.Main" />
       <item itemvalue="Application.Retrieval" />
       <item itemvalue="Application.PreProcessor" />
       <item itemvalue="Tomcat Server.Tomcat 8.5.54" />
+      <item itemvalue="Application.PageRank" />
+      <item itemvalue="Application.Junk" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PageRank" />
+        <item itemvalue="Application.Junk" />
         <item itemvalue="Application.Retrieval" />
         <item itemvalue="Application.PreProcessor" />
         <item itemvalue="Application.InvertedIndex" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Indexer" />
       </list>
     </recent_temporary>
   </component>
@@ -258,7 +293,7 @@
       <workItem from="1589089492161" duration="17977000" />
       <workItem from="1589129427491" duration="51000" />
       <workItem from="1589129578882" duration="146000" />
-      <workItem from="1589172293080" duration="575000" />
+      <workItem from="1589172293080" duration="26577000" />
     </task>
     <servers />
   </component>
@@ -278,10 +313,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="272" y="76" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589172427300">
+    <state x="621" y="210" key="#Web_Browsers" timestamp="1589186630932">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="272" y="76" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1589172427300" />
+    <state x="621" y="210" key="#Web_Browsers/0.0.1366.768@0.0.1366.768" timestamp="1589186630932" />
+    <state x="272" y="76" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589186718302">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="272" y="76" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1589186718302" />
     <state x="492" y="267" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588821796004" />
     <state x="590" y="209" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1588821124107">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -295,65 +334,65 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588688946409" />
-    <state width="904" height="332" key="GridCell.Tab.0.bottom" timestamp="1589172459271">
+    <state width="904" height="181" key="GridCell.Tab.0.bottom" timestamp="1589217554073">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589172459271" />
+    <state width="904" height="181" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589217554073" />
     <state width="1681" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560401" />
-    <state width="904" height="332" key="GridCell.Tab.0.center" timestamp="1589172459271">
+    <state width="904" height="181" key="GridCell.Tab.0.center" timestamp="1589217554072">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1589172459271" />
+    <state width="904" height="181" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1589217554072" />
     <state width="1681" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560401" />
-    <state width="904" height="332" key="GridCell.Tab.0.left" timestamp="1589172459271">
+    <state width="904" height="181" key="GridCell.Tab.0.left" timestamp="1589217554072">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1589172459271" />
+    <state width="904" height="181" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1589217554072" />
     <state width="1681" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560401" />
-    <state width="904" height="332" key="GridCell.Tab.0.right" timestamp="1589172459271">
+    <state width="904" height="181" key="GridCell.Tab.0.right" timestamp="1589217554073">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1589172459271" />
+    <state width="904" height="181" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1589217554073" />
     <state width="1681" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560401" />
-    <state width="904" height="332" key="GridCell.Tab.1.bottom" timestamp="1589172459070">
+    <state width="904" height="181" key="GridCell.Tab.1.bottom" timestamp="1589217553912">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589172459070" />
+    <state width="904" height="181" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589217553912" />
     <state width="1681" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="904" height="332" key="GridCell.Tab.1.center" timestamp="1589172459070">
+    <state width="904" height="181" key="GridCell.Tab.1.center" timestamp="1589217553912">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1589172459070" />
+    <state width="904" height="181" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1589217553912" />
     <state width="1681" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560262" />
-    <state width="904" height="332" key="GridCell.Tab.1.left" timestamp="1589172459070">
+    <state width="904" height="181" key="GridCell.Tab.1.left" timestamp="1589217553912">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1589172459070" />
+    <state width="904" height="181" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1589217553912" />
     <state width="1681" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560262" />
-    <state width="904" height="332" key="GridCell.Tab.1.right" timestamp="1589172459070">
+    <state width="904" height="181" key="GridCell.Tab.1.right" timestamp="1589217553912">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1589172459070" />
+    <state width="904" height="181" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1589217553912" />
     <state width="1681" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="904" height="332" key="GridCell.Tab.2.bottom" timestamp="1589172459071">
+    <state width="904" height="181" key="GridCell.Tab.2.bottom" timestamp="1589217553913">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.2.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589172459071" />
+    <state width="904" height="181" key="GridCell.Tab.2.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589217553913" />
     <state width="1681" height="348" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="904" height="332" key="GridCell.Tab.2.center" timestamp="1589172459071">
+    <state width="904" height="181" key="GridCell.Tab.2.center" timestamp="1589217553912">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.2.center/0.0.1366.768@0.0.1366.768" timestamp="1589172459071" />
+    <state width="904" height="181" key="GridCell.Tab.2.center/0.0.1366.768@0.0.1366.768" timestamp="1589217553912" />
     <state width="1681" height="348" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="904" height="332" key="GridCell.Tab.2.left" timestamp="1589172459071">
+    <state width="904" height="181" key="GridCell.Tab.2.left" timestamp="1589217553912">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.2.left/0.0.1366.768@0.0.1366.768" timestamp="1589172459071" />
+    <state width="904" height="181" key="GridCell.Tab.2.left/0.0.1366.768@0.0.1366.768" timestamp="1589217553912" />
     <state width="1681" height="348" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="904" height="332" key="GridCell.Tab.2.right" timestamp="1589172459071">
+    <state width="904" height="181" key="GridCell.Tab.2.right" timestamp="1589217553913">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.2.right/0.0.1366.768@0.0.1366.768" timestamp="1589172459071" />
+    <state width="904" height="181" key="GridCell.Tab.2.right/0.0.1366.768@0.0.1366.768" timestamp="1589217553913" />
     <state width="1681" height="348" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
     <state width="904" height="332" key="GridCell.Tab.3.bottom" timestamp="1589172459072">
       <screen x="0" y="0" width="1366" height="768" />

@@ -15,14 +15,17 @@ public class Retrieval {
     private Indexer indexer = Indexer.getInstance();
     private InvertedIndex invertedIndex = InvertedIndex.getInstance();
     private PreProcessor preProcessor = PreProcessor.getInstance();
+    private PageRank pageRank = PageRank.getInstance();
     private LinkedHashMap<Integer, Double> Top50Result = new LinkedHashMap<>();
 
     public Retrieval(String query) { //pass value here
 
         Set<String> afterProcessQuery = processQuery(query);
 
-        if (!afterProcessQuery.isEmpty()) {
-            HashMap<Integer, Double> allResultList = cosineSimilarity(afterProcessQuery);
+        if (!afterProcessQuery.isEmpty()) {  //0.7*cosine sim + 0.3*page rank + 0.2(if title match)
+            HashMap<Integer, Double> cosineSimilarityResult = cosineSimilarity(afterProcessQuery);
+            HashMap<Integer, Double> cosinePlusPageRank = combineWithPageRank(cosineSimilarityResult);
+            HashMap<Integer, Double> allResultList = titleMatch(afterProcessQuery, cosinePlusPageRank);
             RetrievalTop50(allResultList);
 //            printAll(Top50Result);
         }
@@ -126,35 +129,11 @@ public class Retrieval {
         double queryLength = Math.sqrt(numOfQueryWord);
 
         for (Integer pageID: allResultList.keySet()) {
-            boolean foundQueryInTitle = false;
-            double documentLength = 0;
-            Set<String> titleWord = invertedIndex.getTitleWords(pageID);
-
-            documentLength = preProcessor.getDocLength(pageID);
-
-            for (String queryWord : afterProcessQuery) {
-                if (queryWord.contains(" ")) {
-                    String[] phrase = queryWord.split(" ");
-                    foundQueryInTitle = true;
-                    for(String word: phrase){               //if whole phrase in title-> + 0.2
-                        if (!titleWord.contains(word)) {
-                            foundQueryInTitle = false;
-                            break;
-                        }
-                    }
-                }
-                else if (titleWord.contains(queryWord)) {   //if one of the query word in title -> + 0.2
-                    foundQueryInTitle = true;
-                    break;
-                }
-            }
-
+            double documentLength = preProcessor.getDocLength(pageID);
             double afterNormalized = allResultList.get(pageID)/(documentLength*queryLength);
-            if (foundQueryInTitle) {
-                allResultList.put(pageID, afterNormalized + 0.2);
-            } else {
-                allResultList.put(pageID, afterNormalized);
-            }
+
+            allResultList.put(pageID, afterNormalized);
+
         }
 
         return allResultList;
@@ -180,6 +159,53 @@ public class Retrieval {
         }
         return result;
     }
+
+    private HashMap<Integer, Double> combineWithPageRank(HashMap<Integer, Double> cosineSimilarityResult){
+        HashMap<Integer, Double> cosinePlusPageRank = new LinkedHashMap<>();
+
+        for (Integer docID: cosineSimilarityResult.keySet()) {
+            double score = cosineSimilarityResult.get(docID) * 0.7 + pageRank.getPageRank(docID) * 0.3;
+            cosinePlusPageRank.put(docID, score);
+        }
+
+        return cosinePlusPageRank;
+    }
+
+    private HashMap<Integer, Double> titleMatch (Set<String> afterProcessQuery, HashMap<Integer, Double> cosineSimilarityResult){
+        HashMap<Integer, Double> allResultList = new LinkedHashMap<>();
+
+        for (Integer pageID: cosineSimilarityResult.keySet()) {
+            boolean foundQueryInTitle = false;
+            Set<String> titleWord = invertedIndex.getTitleWords(pageID);
+
+            for (String queryWord : afterProcessQuery) {
+                if (queryWord.contains(" ")) {
+                    String[] phrase = queryWord.split(" ");
+                    foundQueryInTitle = true;
+
+                    for(String word: phrase){               //if whole phrase in title-> + 0.2
+                        if (!titleWord.contains(word)) {
+                            foundQueryInTitle = false;
+                            break;
+                        }
+                    }
+                }
+                else if (titleWord.contains(queryWord)) {   //if one of the query word in title -> + 0.2
+                    foundQueryInTitle = true;
+                    break;
+                }
+            }
+
+            if (foundQueryInTitle) {
+                allResultList.put(pageID, cosineSimilarityResult.get(pageID) + 0.2);
+            } else{
+                allResultList.put(pageID, cosineSimilarityResult.get(pageID));
+            }
+        }
+
+        return allResultList;
+    }
+
 
     private void RetrievalTop50 (HashMap<Integer, Double> allResultList){
         //sort the related page by value
