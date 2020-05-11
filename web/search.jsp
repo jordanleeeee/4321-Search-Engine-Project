@@ -95,6 +95,8 @@
 		.link{
 			font-size: 12px;
 			color: #424142;
+			max-height: 200px;
+			overflow: auto;
 		}
 		#links{
 			font-size: 14px;
@@ -121,6 +123,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.LinkedHashMap" %>
+
 <%
 
 if(request.getParameter("input")!=null || request.getParameterValues("selectedWord")!=null)

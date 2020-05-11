@@ -1,0 +1,195 @@
+2020/05/11-17:54:06.972841 36a4 RocksDB version: 5.15.10
+2020/05/11-17:54:06.972982 36a4 Git sha rocksdb_build_git_sha:@7e1f37eb4fc711dbf3ecc9610178931f00754de8@
+2020/05/11-17:54:06.973017 36a4 Compile date Oct  9 2018
+2020/05/11-17:54:06.973040 36a4 DB SUMMARY
+2020/05/11-17:54:06.973272 36a4 CURRENT file:  CURRENT
+2020/05/11-17:54:06.973298 36a4 IDENTITY file:  IDENTITY
+2020/05/11-17:54:06.973348 36a4 MANIFEST file:  MANIFEST-000092 size: 94 Bytes
+2020/05/11-17:54:06.973373 36a4 SST files in docLengthDB dir, Total Num: 1, files: 000004.sst 
+2020/05/11-17:54:06.973396 36a4 Write Ahead Log file in docLengthDB: 000093.log size: 0 ; 
+2020/05/11-17:54:06.973420 36a4                         Options.error_if_exists: 0
+2020/05/11-17:54:06.973440 36a4                       Options.create_if_missing: 1
+2020/05/11-17:54:06.973876 36a4                         Options.paranoid_checks: 1
+2020/05/11-17:54:06.973894 36a4                                     Options.env: 0000022CFF0A6DD0
+2020/05/11-17:54:06.973904 36a4                                Options.info_log: 0000022CFF9D1BF0
+2020/05/11-17:54:06.973912 36a4                Options.max_file_opening_threads: 16
+2020/05/11-17:54:06.973920 36a4                              Options.statistics: 0000000000000000
+2020/05/11-17:54:06.973929 36a4                               Options.use_fsync: 0
+2020/05/11-17:54:06.973937 36a4                       Options.max_log_file_size: 0
+2020/05/11-17:54:06.973945 36a4                  Options.max_manifest_file_size: 1073741824
+2020/05/11-17:54:06.973953 36a4                   Options.log_file_time_to_roll: 0
+2020/05/11-17:54:06.973961 36a4                       Options.keep_log_file_num: 1000
+2020/05/11-17:54:06.973969 36a4                    Options.recycle_log_file_num: 0
+2020/05/11-17:54:06.973977 36a4                         Options.allow_fallocate: 1
+2020/05/11-17:54:06.973985 36a4                        Options.allow_mmap_reads: 0
+2020/05/11-17:54:06.973993 36a4                       Options.allow_mmap_writes: 0
+2020/05/11-17:54:06.974001 36a4                        Options.use_direct_reads: 0
+2020/05/11-17:54:06.974009 36a4                        Options.use_direct_io_for_flush_and_compaction: 0
+2020/05/11-17:54:06.974017 36a4          Options.create_missing_column_families: 0
+2020/05/11-17:54:06.974025 36a4                              Options.db_log_dir: 
+2020/05/11-17:54:06.974033 36a4                                 Options.wal_dir: docLengthDB
+2020/05/11-17:54:06.974041 36a4                Options.table_cache_numshardbits: 6
+2020/05/11-17:54:06.974049 36a4                      Options.max_subcompactions: 1
+2020/05/11-17:54:06.974057 36a4                  Options.max_background_flushes: -1
+2020/05/11-17:54:06.974065 36a4                         Options.WAL_ttl_seconds: 0
+2020/05/11-17:54:06.974073 36a4                       Options.WAL_size_limit_MB: 0
+2020/05/11-17:54:06.974081 36a4             Options.manifest_preallocation_size: 4194304
+2020/05/11-17:54:06.974089 36a4                     Options.is_fd_close_on_exec: 1
+2020/05/11-17:54:06.974097 36a4                   Options.advise_random_on_open: 1
+2020/05/11-17:54:06.974105 36a4                    Options.db_write_buffer_size: 0
+2020/05/11-17:54:06.974113 36a4                    Options.write_buffer_manager: 0000022CFF93EE10
+2020/05/11-17:54:06.974121 36a4         Options.access_hint_on_compaction_start: 1
+2020/05/11-17:54:06.974129 36a4  Options.new_table_reader_for_compaction_inputs: 0
+2020/05/11-17:54:06.974137 36a4           Options.random_access_max_buffer_size: 1048576
+2020/05/11-17:54:06.974145 36a4                      Options.use_adaptive_mutex: 0
+2020/05/11-17:54:06.974153 36a4                            Options.rate_limiter: 0000000000000000
+2020/05/11-17:54:06.974162 36a4     Options.sst_file_manager.rate_bytes_per_sec: 0
+2020/05/11-17:54:06.974170 36a4                       Options.wal_recovery_mode: 2
+2020/05/11-17:54:06.974178 36a4                  Options.enable_thread_tracking: 0
+2020/05/11-17:54:06.974186 36a4                  Options.enable_pipelined_write: 0
+2020/05/11-17:54:06.974194 36a4         Options.allow_concurrent_memtable_write: 1
+2020/05/11-17:54:06.974207 36a4      Options.enable_write_thread_adaptive_yield: 1
+2020/05/11-17:54:06.974217 36a4             Options.write_thread_max_yield_usec: 100
+2020/05/11-17:54:06.974225 36a4            Options.write_thread_slow_yield_usec: 3
+2020/05/11-17:54:06.974233 36a4                               Options.row_cache: None
+2020/05/11-17:54:06.974240 36a4                              Options.wal_filter: None
+2020/05/11-17:54:06.974248 36a4             Options.avoid_flush_during_recovery: 0
+2020/05/11-17:54:06.974256 36a4             Options.allow_ingest_behind: 0
+2020/05/11-17:54:06.974264 36a4             Options.preserve_deletes: 0
+2020/05/11-17:54:06.974272 36a4             Options.two_write_queues: 0
+2020/05/11-17:54:06.974279 36a4             Options.manual_wal_flush: 0
+2020/05/11-17:54:06.974286 36a4             Options.max_background_jobs: 2
+2020/05/11-17:54:06.974294 36a4             Options.max_background_compactions: -1
+2020/05/11-17:54:06.974302 36a4             Options.avoid_flush_during_shutdown: 0
+2020/05/11-17:54:06.974310 36a4           Options.writable_file_max_buffer_size: 1048576
+2020/05/11-17:54:06.974318 36a4             Options.delayed_write_rate : 16777216
+2020/05/11-17:54:06.974325 36a4             Options.max_total_wal_size: 0
+2020/05/11-17:54:06.974333 36a4             Options.delete_obsolete_files_period_micros: 21600000000
+2020/05/11-17:54:06.974341 36a4                   Options.stats_dump_period_sec: 600
+2020/05/11-17:54:06.974350 36a4                          Options.max_open_files: -1
+2020/05/11-17:54:06.974357 36a4                          Options.bytes_per_sync: 0
+2020/05/11-17:54:06.974365 36a4                      Options.wal_bytes_per_sync: 0
+2020/05/11-17:54:06.974373 36a4       Options.compaction_readahead_size: 0
+2020/05/11-17:54:06.974381 36a4 Compression algorithms supported:
+2020/05/11-17:54:06.974389 36a4 	kZSTD supported: 0
+2020/05/11-17:54:06.974397 36a4 	kSnappyCompression supported: 0
+2020/05/11-17:54:06.974405 36a4 	kBZip2Compression supported: 0
+2020/05/11-17:54:06.974412 36a4 	kZlibCompression supported: 0
+2020/05/11-17:54:06.974420 36a4 	kLZ4Compression supported: 0
+2020/05/11-17:54:06.974427 36a4 	kXpressCompression supported: 0
+2020/05/11-17:54:06.974435 36a4 	kLZ4HCCompression supported: 0
+2020/05/11-17:54:06.974442 36a4 	kZSTDNotFinalCompression supported: 0
+2020/05/11-17:54:06.974458 36a4 Fast CRC32 supported: Supported on x86
+2020/05/11-17:54:06.974944 36a4 [c:\users\aretter\code\rocksdb\db\version_set.cc:3248] Recovering from manifest file: MANIFEST-000092
+2020/05/11-17:54:06.975070 36a4 [c:\users\aretter\code\rocksdb\db\column_family.cc:475] --------------- Options for column family [default]:
+2020/05/11-17:54:06.975085 36a4               Options.comparator: leveldb.BytewiseComparator
+2020/05/11-17:54:06.975095 36a4           Options.merge_operator: None
+2020/05/11-17:54:06.975103 36a4        Options.compaction_filter: None
+2020/05/11-17:54:06.975111 36a4        Options.compaction_filter_factory: None
+2020/05/11-17:54:06.975119 36a4         Options.memtable_factory: SkipListFactory
+2020/05/11-17:54:06.975127 36a4            Options.table_factory: BlockBasedTable
+2020/05/11-17:54:06.975173 36a4            table_factory options:   flush_block_policy_factory: FlushBlockBySizePolicyFactory (0000022CFF8F84D0)
+  cache_index_and_filter_blocks: 0
+  cache_index_and_filter_blocks_with_high_priority: 0
+  pin_l0_filter_and_index_blocks_in_cache: 0
+  pin_top_level_index_and_filter: 1
+  index_type: 0
+  hash_index_allow_collision: 1
+  checksum: 1
+  no_block_cache: 0
+  block_cache: 0000022CFF93D910
+  block_cache_name: LRUCache
+  block_cache_options:
+    capacity : 8388608
+    num_shard_bits : 4
+    strict_capacity_limit : 0
+    high_pri_pool_ratio: 0.000
+  block_cache_compressed: 0000000000000000
+  persistent_cache: 0000000000000000
+  block_size: 4096
+  block_size_deviation: 10
+  block_restart_interval: 16
+  index_block_restart_interval: 1
+  metadata_block_size: 4096
+  partition_filters: 0
+  use_delta_encoding: 1
+  filter_policy: nullptr
+  whole_key_filtering: 1
+  verify_compression: 0
+  read_amp_bytes_per_bit: 0
+  format_version: 2
+  enable_index_compression: 1
+  block_align: 0
+2020/05/11-17:54:06.975189 36a4        Options.write_buffer_size: 67108864
+2020/05/11-17:54:06.975200 36a4  Options.max_write_buffer_number: 2
+2020/05/11-17:54:06.975208 36a4          Options.compression: NoCompression
+2020/05/11-17:54:06.975216 36a4                  Options.bottommost_compression: Disabled
+2020/05/11-17:54:06.975225 36a4       Options.prefix_extractor: nullptr
+2020/05/11-17:54:06.975232 36a4   Options.memtable_insert_with_hint_prefix_extractor: nullptr
+2020/05/11-17:54:06.975240 36a4             Options.num_levels: 7
+2020/05/11-17:54:06.975248 36a4        Options.min_write_buffer_number_to_merge: 1
+2020/05/11-17:54:06.975256 36a4     Options.max_write_buffer_number_to_maintain: 0
+2020/05/11-17:54:06.975264 36a4            Options.bottommost_compression_opts.window_bits: -14
+2020/05/11-17:54:06.975272 36a4                  Options.bottommost_compression_opts.level: 32767
+2020/05/11-17:54:06.975280 36a4               Options.bottommost_compression_opts.strategy: 0
+2020/05/11-17:54:06.975288 36a4         Options.bottommost_compression_opts.max_dict_bytes: 0
+2020/05/11-17:54:06.975297 36a4         Options.bottommost_compression_opts.zstd_max_train_bytes: 0
+2020/05/11-17:54:06.975305 36a4                  Options.bottommost_compression_opts.enabled: false
+2020/05/11-17:54:06.975313 36a4            Options.compression_opts.window_bits: -14
+2020/05/11-17:54:06.975321 36a4                  Options.compression_opts.level: 32767
+2020/05/11-17:54:06.975329 36a4               Options.compression_opts.strategy: 0
+2020/05/11-17:54:06.975337 36a4         Options.compression_opts.max_dict_bytes: 0
+2020/05/11-17:54:06.975345 36a4         Options.compression_opts.zstd_max_train_bytes: 0
+2020/05/11-17:54:06.975352 36a4                  Options.compression_opts.enabled: false
+2020/05/11-17:54:06.975360 36a4      Options.level0_file_num_compaction_trigger: 4
+2020/05/11-17:54:06.975368 36a4          Options.level0_slowdown_writes_trigger: 20
+2020/05/11-17:54:06.975376 36a4              Options.level0_stop_writes_trigger: 36
+2020/05/11-17:54:06.975384 36a4                   Options.target_file_size_base: 67108864
+2020/05/11-17:54:06.975392 36a4             Options.target_file_size_multiplier: 1
+2020/05/11-17:54:06.975400 36a4                Options.max_bytes_for_level_base: 268435456
+2020/05/11-17:54:06.975408 36a4 Options.level_compaction_dynamic_level_bytes: 0
+2020/05/11-17:54:06.975416 36a4          Options.max_bytes_for_level_multiplier: 10.000000
+2020/05/11-17:54:06.975426 36a4 Options.max_bytes_for_level_multiplier_addtl[0]: 1
+2020/05/11-17:54:06.975435 36a4 Options.max_bytes_for_level_multiplier_addtl[1]: 1
+2020/05/11-17:54:06.975443 36a4 Options.max_bytes_for_level_multiplier_addtl[2]: 1
+2020/05/11-17:54:06.975458 36a4 Options.max_bytes_for_level_multiplier_addtl[3]: 1
+2020/05/11-17:54:06.975467 36a4 Options.max_bytes_for_level_multiplier_addtl[4]: 1
+2020/05/11-17:54:06.975474 36a4 Options.max_bytes_for_level_multiplier_addtl[5]: 1
+2020/05/11-17:54:06.975482 36a4 Options.max_bytes_for_level_multiplier_addtl[6]: 1
+2020/05/11-17:54:06.975491 36a4       Options.max_sequential_skip_in_iterations: 8
+2020/05/11-17:54:06.975498 36a4                    Options.max_compaction_bytes: 1677721600
+2020/05/11-17:54:06.975507 36a4                        Options.arena_block_size: 8388608
+2020/05/11-17:54:06.975515 36a4   Options.soft_pending_compaction_bytes_limit: 68719476736
+2020/05/11-17:54:06.975523 36a4   Options.hard_pending_compaction_bytes_limit: 274877906944
+2020/05/11-17:54:06.975531 36a4       Options.rate_limit_delay_max_milliseconds: 100
+2020/05/11-17:54:06.975540 36a4                Options.disable_auto_compactions: 0
+2020/05/11-17:54:06.975553 36a4                        Options.compaction_style: kCompactionStyleLevel
+2020/05/11-17:54:06.975563 36a4                          Options.compaction_pri: kByCompensatedSize
+2020/05/11-17:54:06.975570 36a4 Options.compaction_options_universal.size_ratio: 1
+2020/05/11-17:54:06.975582 36a4 Options.compaction_options_universal.min_merge_width: 2
+2020/05/11-17:54:06.975592 36a4 Options.compaction_options_universal.max_merge_width: 4294967295
+2020/05/11-17:54:06.975602 36a4 Options.compaction_options_universal.max_size_amplification_percent: 200
+2020/05/11-17:54:06.975611 36a4 Options.compaction_options_universal.compression_size_percent: -1
+2020/05/11-17:54:06.975620 36a4 Options.compaction_options_universal.stop_style: kCompactionStopStyleTotalSize
+2020/05/11-17:54:06.975628 36a4 Options.compaction_options_fifo.max_table_files_size: 1073741824
+2020/05/11-17:54:06.975636 36a4 Options.compaction_options_fifo.allow_compaction: 0
+2020/05/11-17:54:06.975645 36a4 Options.compaction_options_fifo.ttl: 0
+2020/05/11-17:54:06.975652 36a4                   Options.table_properties_collectors: 
+2020/05/11-17:54:06.975661 36a4                   Options.inplace_update_support: 0
+2020/05/11-17:54:06.975669 36a4                 Options.inplace_update_num_locks: 10000
+2020/05/11-17:54:06.975677 36a4               Options.memtable_prefix_bloom_size_ratio: 0.000000
+2020/05/11-17:54:06.975686 36a4   Options.memtable_huge_page_size: 0
+2020/05/11-17:54:06.975693 36a4                           Options.bloom_locality: 0
+2020/05/11-17:54:06.975701 36a4                    Options.max_successive_merges: 0
+2020/05/11-17:54:06.975709 36a4                Options.optimize_filters_for_hits: 0
+2020/05/11-17:54:06.975717 36a4                Options.paranoid_file_checks: 0
+2020/05/11-17:54:06.975725 36a4                Options.force_consistency_checks: 0
+2020/05/11-17:54:06.975733 36a4                Options.report_bg_io_stats: 0
+2020/05/11-17:54:06.975741 36a4                               Options.ttl: 0
+2020/05/11-17:54:06.994490 36a4 [c:\users\aretter\code\rocksdb\db\version_set.cc:3529] Recovered from manifest file:docLengthDB/MANIFEST-000092 succeeded,manifest_file_number is 92, next_file_number is 94, last_sequence is 17600, log_number is 0,prev_log_number is 0,max_column_family is 0,min_log_number_to_keep is 0
+2020/05/11-17:54:06.995795 36a4 [c:\users\aretter\code\rocksdb\db\version_set.cc:3537] Column family [default] (ID 0), log number is 91
+2020/05/11-17:54:06.996183 36a4 EVENT_LOG_v1 {"time_micros": 1589190846996167, "job": 1, "event": "recovery_started", "log_files": [93]}
+2020/05/11-17:54:06.996213 36a4 [c:\users\aretter\code\rocksdb\db\db_impl_open.cc:552] Recovering log #93 mode 2
+2020/05/11-17:54:06.996350 36a4 [c:\users\aretter\code\rocksdb\db\version_set.cc:2906] Creating manifest 95
+2020/05/11-17:54:07.067114 36a4 EVENT_LOG_v1 {"time_micros": 1589190847067098, "job": 1, "event": "recovery_finished"}
+2020/05/11-17:54:07.100442 36a4 [c:\users\aretter\code\rocksdb\db\db_impl_open.cc:1221] DB pointer 0000022CFF141BB0

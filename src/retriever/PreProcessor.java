@@ -43,6 +43,15 @@ public class PreProcessor {
         }
     }
 
+    public String[] getParentIDs(int pageID) {
+        try {
+            return new String(pageParentDB.get(String.valueOf(pageID).getBytes())).split(" ");
+        } catch (RocksDBException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     /**
      * get a string contain parent page of a page by pageID
      * (only page that in the database will count), separate by \n
@@ -51,17 +60,13 @@ public class PreProcessor {
      */
     public String getParentPages(int pageID) {
         StringBuilder result = new StringBuilder();
-        try {
-            String[] parentIDs = new String(pageParentDB.get(String.valueOf(pageID).getBytes())).split(" ");
-            for (String parentID : parentIDs) {
-                if (parentID.equals("")) {
-                    continue;
-                }
-                String l = pageProperty.getUrl(Integer.parseInt(parentID));
-                result.append(l).append("\n");
+        String[] parentIDs = getParentIDs(pageID);
+        for (String parentID : parentIDs) {
+            if (parentID.equals("")) {
+                continue;
             }
-        } catch (RocksDBException e) {
-            e.printStackTrace();
+            String l = pageProperty.getUrl(Integer.parseInt(parentID));
+            result.append(l).append("\n");
         }
         return String.valueOf(result);
     }
