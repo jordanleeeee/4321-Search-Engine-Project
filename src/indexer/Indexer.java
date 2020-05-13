@@ -9,11 +9,11 @@ import java.util.*;
 public class Indexer {
     private enum IndexType {PageURLID, WordID}
 
-    private static Indexer INSTANCE = new Indexer();
+    private static final Indexer INSTANCE = new Indexer();
     private RocksDB pageURLIDdb, wordIDdb;
     private Integer wordCount = 0, URLCount = 0;
-    private HashBiMap<Integer, String> pageIndexer = HashBiMap.create();
-    private HashBiMap<Integer, String> wordIndexer = HashBiMap.create();
+    private final HashBiMap<Integer, String> pageIndexer = HashBiMap.create();
+    private final HashBiMap<Integer, String> wordIndexer = HashBiMap.create();
 
     public static Indexer getInstance() {
         return INSTANCE;
@@ -23,12 +23,10 @@ public class Indexer {
      * open all the database and place the record in hashBiMap and update the counters
      */
     private Indexer(){
-        Options options = new Options();
-        options.setCreateIfMissing(true);
-        //todo
+        Options options = new Options().setCreateIfMissing(true);
         try {
-            pageURLIDdb = RocksDB.open(options, "pageURLIDdb");
-            wordIDdb = RocksDB.open(options, "wordIDdb");
+            pageURLIDdb = RocksDB.open(options, "database/pageURLIDdb");
+            wordIDdb = RocksDB.open(options, "database/wordIDdb");
         } catch (RocksDBException e) {
             e.printStackTrace();
         }
@@ -51,7 +49,7 @@ public class Indexer {
 
     private void addPage(String url) {
         try {
-            URLCount += 1;
+            URLCount++;
             pageURLIDdb.put(Integer.toString(URLCount).getBytes(), url.getBytes());
             updatePageBiMap(URLCount, url);
         } catch (RocksDBException e) {

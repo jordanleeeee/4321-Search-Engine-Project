@@ -1,6 +1,5 @@
 package retriever;
 
-
 import indexer.Indexer;
 import indexer.InvertedIndex;
 import util.Word;
@@ -12,29 +11,27 @@ import java.util.stream.Collectors;
 
 public class Retrieval {
 
-    private Indexer indexer = Indexer.getInstance();
-    private InvertedIndex invertedIndex = InvertedIndex.getInstance();
-    private PreProcessor preProcessor = PreProcessor.getInstance();
-    private PageRank pageRank = PageRank.getInstance();
-    private LinkedHashMap<Integer, Double> Top50Result = new LinkedHashMap<>();
+    private final Indexer indexer = Indexer.getInstance();
+    private final InvertedIndex invertedIndex = InvertedIndex.getInstance();
+    private final PreProcessor preProcessor = PreProcessor.getInstance();
+    private final PageRank pageRank = PageRank.getInstance();
+    private final LinkedHashMap<Integer, Double> top50Result = new LinkedHashMap<>();
 
     public Retrieval(String query) { //pass value here
 
         Set<String> afterProcessQuery = processQuery(query);
 
         if (!afterProcessQuery.isEmpty()) {  //0.7*cosine sim + 0.3*page rank + 0.2(if title match)
-            HashMap<Integer, Double> cosineSimilarityResult = cosineSimilarity(afterProcessQuery);
-            HashMap<Integer, Double> cosinePlusPageRank = combineWithPageRank(cosineSimilarityResult);
-            HashMap<Integer, Double> allResultList = titleMatch(afterProcessQuery, cosinePlusPageRank);
-            RetrievalTop50(allResultList);
-//            printAll(Top50Result);
+            HashMap<Integer, Double> allResultList = cosineSimilarity(afterProcessQuery);
+            combineWithPageRank(allResultList);
+            titleMatch(afterProcessQuery, allResultList);
+            retrievalTop50(allResultList);
         }
     }
 
-    public List<Integer> getResult() {
-        return new LinkedList<>(Top50Result.keySet());
+    public LinkedHashMap<Integer, Double> getResult() {
+        return top50Result;
     } //get result here
-    public List<Double> getScore() {return new LinkedList<>(Top50Result.values());} // get score
 
     private Set<String> processQuery(String query){
         Set<String> set = new HashSet<>();
@@ -62,8 +59,7 @@ public class Retrieval {
     private HashMap<Integer, Double> cosineSimilarity(Set<String> afterProcessQuery){
         HashMap<Integer, Double> allResultList = new HashMap<>();
         int numOfQueryWord = afterProcessQuery.size();
-//        long start = System.nanoTime();
-//        System.out.println("calculate inner product");
+
         for (String queryWord : afterProcessQuery) {
             if (queryWord.contains(" ")) { //if phrase
                 String[] phrase = queryWord.split(" "); //each word
@@ -99,7 +95,7 @@ public class Retrieval {
 
                     boolean adjacencyConditionsFulfil = true;
                     for (int i = 0; i < wordPositions.size() - 1; i++) {
-                        if (findSmallestDiff(wordPositions.get(i), wordPositions.get(i + 1)) > 3) {
+                        if (findSmallestSeparation(wordPositions.get(i), wordPositions.get(i + 1)) > 3) {
                             adjacencyConditionsFulfil = false;
                             break;
                         }
@@ -139,7 +135,7 @@ public class Retrieval {
         return allResultList;
     }
 
-    private int findSmallestDiff(LinkedList<Integer> array1, LinkedList<Integer> array2) {
+    private int findSmallestSeparation(LinkedList<Integer> array1, LinkedList<Integer> array2) {
         int array1Length = array1.size(), array2Length = array2.size();
         int array1CurrentIndex = 0, array2CurrentIndex = 0;
 
@@ -160,21 +156,15 @@ public class Retrieval {
         return result;
     }
 
-    private HashMap<Integer, Double> combineWithPageRank(HashMap<Integer, Double> cosineSimilarityResult){
-        HashMap<Integer, Double> cosinePlusPageRank = new LinkedHashMap<>();
-
+    private void combineWithPageRank(HashMap<Integer, Double> cosineSimilarityResult){
         for (Integer docID: cosineSimilarityResult.keySet()) {
-            double score = cosineSimilarityResult.get(docID) * 0.7 + pageRank.getPageRank(docID) * 0.3;
-            cosinePlusPageRank.put(docID, score);
+            double updatedScore = cosineSimilarityResult.get(docID) * 0.7 + pageRank.getPageRank(docID) * 0.3;
+            cosineSimilarityResult.put(docID, updatedScore);
         }
-
-        return cosinePlusPageRank;
     }
 
-    private HashMap<Integer, Double> titleMatch (Set<String> afterProcessQuery, HashMap<Integer, Double> cosineSimilarityResult){
-        HashMap<Integer, Double> allResultList = new LinkedHashMap<>();
-
-        for (Integer pageID: cosineSimilarityResult.keySet()) {
+    private void titleMatch (Set<String> afterProcessQuery, HashMap<Integer, Double> cosineSimAddPageRankResult){
+        for (Integer pageID: cosineSimAddPageRankResult.keySet()) {
             boolean foundQueryInTitle = false;
             Set<String> titleWord = invertedIndex.getTitleWords(pageID);
 
@@ -189,6 +179,10 @@ public class Retrieval {
                             break;
                         }
                     }
+
+                    if (foundQueryInTitle) {
+                        break;
+                    }
                 }
                 else if (titleWord.contains(queryWord)) {   //if one of the query word in title -> + 0.2
                     foundQueryInTitle = true;
@@ -197,17 +191,14 @@ public class Retrieval {
             }
 
             if (foundQueryInTitle) {
-                allResultList.put(pageID, cosineSimilarityResult.get(pageID) + 0.2);
-            } else{
-                allResultList.put(pageID, cosineSimilarityResult.get(pageID));
+                cosineSimAddPageRankResult.put(pageID, cosineSimAddPageRankResult.get(pageID) + 0.2);
             }
         }
 
-        return allResultList;
     }
 
 
-    private void RetrievalTop50 (HashMap<Integer, Double> allResultList){
+    private void retrievalTop50(HashMap<Integer, Double> allResultList){
         //sort the related page by value
         LinkedHashMap<Integer, Double> sortedResultList =
                 allResultList.entrySet()
@@ -223,26 +214,30 @@ public class Retrieval {
             if (++num > 50) {
                 break;
             }
-            Top50Result.put(entry.getKey(), entry.getValue());
+            top50Result.put(entry.getKey(), entry.getValue());
         }
     }
 
-    private void printAll(LinkedHashMap<Integer, Double> Top50Result){
+    private void printAll(){
         System.out.println("PageID" +" "+ "Score");
-        for (Integer docID: Top50Result.keySet()) {
-            System.out.println(docID + ":  " +  Math.round(Top50Result.get(docID)*100000)/100000.00);
+        for (Map.Entry<Integer, Double> entry: top50Result.entrySet()) {
+            System.out.println(entry.getKey() + ":  " +  Math.round(entry.getValue()*100000)/100000.00);
         }
     }
 
     public static void main(String[] args) {
-        while (true) {
-            Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+        while (true){
             System.out.println("Enter query");
+            Scanner scanner = new Scanner(System.in);  // Create a Scanner object
             String query = scanner.nextLine();  // Read user input
+            if (query.length() < 1) {
+                break;
+            }
             long start = System.nanoTime();
-            retriever.Retrieval newQuery = new Retrieval(query);
+            Retrieval newQuery = new Retrieval(query);
+            newQuery.printAll();
             System.out.print("search take ");
-            System.out.print((System.nanoTime()-start)/1000000000.0);
+            System.out.print((System.nanoTime() - start) / 1000000000.0);
             System.out.println("s");
         }
     }

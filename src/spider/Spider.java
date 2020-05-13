@@ -9,10 +9,10 @@ import java.io.PrintWriter;
 import java.util.*;
 
 class Spider {
-    private Indexer indexer;
-    private InvertedIndex invertedIndex;
-    private PageProperty pageProperty;
-    private Queue<String> queue;
+    private final Indexer indexer;
+    private final InvertedIndex invertedIndex;
+    private final PageProperty pageProperty;
+    private final Queue<String> queue;
 
     /**
      * fetch one link (use for beginning)

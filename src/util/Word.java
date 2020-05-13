@@ -8,8 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Word {
-    private static Porter porter = new Porter();
-    private static HashSet<String> stopWordsList = new HashSet<>();
+    private static final Porter porter = new Porter();
+    private static final HashSet<String> stopWordsList = new HashSet<>();
 
     static {
         try (BufferedReader reader = new BufferedReader(new FileReader("stopwords.txt"))) {

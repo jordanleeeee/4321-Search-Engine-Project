@@ -9,9 +9,9 @@ import org.rocksdb.RocksDBException;
 
 public class PreProcessor {
 
-    private static PreProcessor instance = new PreProcessor();
-    private PageProperty pageProperty = PageProperty.getInstance();
-    private InvertedIndex invertedIndex = InvertedIndex.getInstance();
+    private static final PreProcessor instance = new PreProcessor();
+    private final PageProperty pageProperty = PageProperty.getInstance();
+    private final InvertedIndex invertedIndex = InvertedIndex.getInstance();
     /**
      * store doc length of each page : pageID -> document length
      */
@@ -36,8 +36,8 @@ public class PreProcessor {
 
     private PreProcessor() {
         try {
-            docLengthDB = RocksDB.open(new Options().setCreateIfMissing(true), "docLengthDB");
-            pageParentDB = RocksDB.open(new Options().setCreateIfMissing(true), "pageParentDB");
+            docLengthDB = RocksDB.open(new Options().setCreateIfMissing(true), "database/docLengthDB");
+            pageParentDB = RocksDB.open(new Options().setCreateIfMissing(true), "database/pageParentDB");
         } catch (RocksDBException e) {
             e.printStackTrace();
         }
@@ -83,7 +83,7 @@ public class PreProcessor {
                     continue;
                 }
                 System.out.println(parentID + " have child " + childID);
-                byte[] content = null;
+                byte[] content;
                 content = pageParentDB.get(String.valueOf(childID).getBytes());
                 if (content == null) {
                     content = String.valueOf(parentID).getBytes();

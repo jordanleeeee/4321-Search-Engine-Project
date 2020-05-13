@@ -18,6 +18,8 @@ Page-ID -> {ChildID}, {keywords}, {title words}, maxTF
 public class InvertedIndex {
 
     private static InvertedIndex INSTANCE = new InvertedIndex();
+    private Indexer indexer = Indexer.getInstance();
+    private PageProperty pageProperty = PageProperty.getInstance();
     private RocksDB pageDetailDb, wordIdDb;
     private List<ColumnFamilyHandle> handles = new Vector<>();
 
@@ -29,14 +31,14 @@ public class InvertedIndex {
         Options options = new Options();
         options.setCreateIfMissing(true);
         try {
-            wordIdDb = RocksDB.open(options, "wordFreqdb");
+            wordIdDb = RocksDB.open(options, "database/wordFreqdb");
             List<ColumnFamilyDescriptor> colFamily = new Vector<>();
             colFamily.add(new ColumnFamilyDescriptor(RocksDB.DEFAULT_COLUMN_FAMILY));
             colFamily.add(new ColumnFamilyDescriptor("bodyWords".getBytes()));
             colFamily.add(new ColumnFamilyDescriptor("titleWords".getBytes()));
             colFamily.add(new ColumnFamilyDescriptor("maxTF".getBytes()));
             DBOptions options2 = new DBOptions().setCreateIfMissing(true).setCreateMissingColumnFamilies(true);
-            pageDetailDb = RocksDB.open(options2, "pageDetailDB", colFamily, handles);
+            pageDetailDb = RocksDB.open(options2, "database/pageDetailDB", colFamily, handles);
         } catch (RocksDBException e) {
             e.printStackTrace();
         }
@@ -87,7 +89,7 @@ public class InvertedIndex {
      */
     private int getDocumentFrequency(String word) {
         try {
-            int wordID = Indexer.getInstance().searchIDByWord(word, false);
+            int wordID = indexer.searchIDByWord(word, false);
             String record = new String(wordIdDb.get(String.valueOf(wordID).getBytes()));
             return record.split(" ").length;
         } catch (RocksDBException e) {
@@ -104,7 +106,7 @@ public class InvertedIndex {
      * @return tf(i, j)
      */
     public int getFreqOfWordInParticularPage(String word, int pageID) {
-        int wordID = Indexer.getInstance().searchIDByWord(word, false);
+        int wordID = indexer.searchIDByWord(word, false);
         HashMap<Integer, Integer> recordDetails = getPostingList(wordID);
         assert recordDetails != null;
         return recordDetails.get(pageID);
@@ -116,7 +118,7 @@ public class InvertedIndex {
      * @return idf(j)
      */
     private double getIdf(String word) {
-        double N = PageProperty.getInstance().getNumOfPageFetched();
+        double N = pageProperty.getNumOfPageFetched();
         double df = getDocumentFrequency(word);
         return Math.log(N/df)/Math.log(2);
     }
@@ -205,13 +207,13 @@ public class InvertedIndex {
                 if (word.equals("")) {
                     continue;
                 }
-                int wordID = Indexer.getInstance().searchIDByWord(word,false);
+                int wordID = indexer.searchIDByWord(word,false);
                 byte[] postingList = wordIdDb.get(String.valueOf(wordID).getBytes());
                 PostingListHandler newRecord = new PostingListHandler(new String(postingList));
                 boolean resultInEmptyPostingList = newRecord.removeRecord(pageID);
                 if (resultInEmptyPostingList) {
                     wordIdDb.delete(String.valueOf(wordID).getBytes());
-                    Indexer.getInstance().deleteEntry(wordID);
+                    indexer.deleteEntry(wordID);
                 } else {
                     wordIdDb.put(String.valueOf(wordID).getBytes(), newRecord.toString().getBytes());
                 }
@@ -253,18 +255,18 @@ public class InvertedIndex {
             if (childID.equals("")) {
                 continue;
             }
-            String l = Indexer.getInstance().searchURLByID(Integer.parseInt(childID));
+            String l = indexer.searchURLByID(Integer.parseInt(childID));
             boolean canIgnore = false;
             switch (status) {
                 case All:
                     break;
                 case WithinDB:
-                    if (PageProperty.getInstance().getUrl(Integer.parseInt(childID)) == null) {
+                    if (pageProperty.getUrl(Integer.parseInt(childID)) == null) {
                         canIgnore = true;
                     }
                     break;
                 case OutsideDB:
-                    if (PageProperty.getInstance().getUrl(Integer.parseInt(childID)) != null) {
+                    if (pageProperty.getUrl(Integer.parseInt(childID)) != null) {
                         canIgnore = true;
                     }
                     break;
@@ -290,7 +292,7 @@ public class InvertedIndex {
             if (childID.equals("")) {
                 continue;
             }
-            String l = PageProperty.getInstance().getUrl(Integer.parseInt(childID));
+            String l = pageProperty.getUrl(Integer.parseInt(childID));
             if (l == null) {
                 continue;
             }
@@ -302,7 +304,7 @@ public class InvertedIndex {
     private void storeWordFreq(int pageID, Vector<String> keywords) {
         int maxFreq = 0;
         for (int i = 0; i < keywords.size(); i++) {
-            Integer wordID = Indexer.getInstance().searchIDByWord(keywords.get(i), true);
+            Integer wordID = indexer.searchIDByWord(keywords.get(i), true);
             byte[] content;
             try {
                 content = wordIdDb.get(String.valueOf(wordID).getBytes());
@@ -334,7 +336,7 @@ public class InvertedIndex {
             WebInfoSeeker seeker = new WebInfoSeeker(url);
             //separate title word and content word
             Vector<String> keyWords = seeker.getKeywords();
-            List<String> titleWord = Word.phraseString(PageProperty.getInstance().getTitle(pageID));
+            List<String> titleWord = Word.phraseString(pageProperty.getTitle(pageID));
             for (String s : titleWord) {
                 try {
                     if (s.equals(keyWords.get(0))) {
@@ -387,7 +389,7 @@ public class InvertedIndex {
                 if (link.equals(url)) {
                     continue;
                 }
-                int childID = Indexer.getInstance().searchIDByURL(link, true);
+                int childID = indexer.searchIDByURL(link, true);
                 if (content == null) {
                     content = Integer.toString(childID).getBytes();
                 } else {
@@ -451,8 +453,6 @@ public class InvertedIndex {
 
     public static void main(String[] args) throws RocksDBException{
         InvertedIndex invertedIndex = getInstance();
-//        invertedIndex.dangerous();
-        System.out.println(PageProperty.getInstance().getNumOfPageFetched());
 //        System.out.println(invertedIndex.getFreqOfWordInParticularPage("rainbow", 17));
 //        System.out.println(invertedIndex.getDocumentFrequency("rainbow"));
 //        System.out.println(invertedIndex.getIdf("rainbow"));

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/COMP4321_Ihopeitsfinal.iml" filepath="$PROJECT_DIR$/COMP4321_Ihopeitsfinal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/searchEngine.iml" filepath="$PROJECT_DIR$/searchEngine.iml" />
     </modules>
   </component>
 </project>
