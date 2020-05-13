@@ -11,6 +11,10 @@ public class Main {
         PageProperty.getInstance().delEntry(pageID);
     }
 
+    /**
+     * don't run it again as the db is already here
+     * @param args nothing
+     */
     public static void main(String[] args) {
         String url = "https://www.cse.ust.hk";;
         Spider spider1 = new Spider(url);

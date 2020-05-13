@@ -6,7 +6,6 @@ import org.rocksdb.Options;
 import org.rocksdb.RocksDB;
 import org.rocksdb.RocksDBException;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +23,7 @@ public class PageRank {
 
     private PageRank(){
         try {
-            pageRankDb = RocksDB.open(new Options().setCreateIfMissing(true), "pageRankDB");
+            pageRankDb = RocksDB.open(new Options().setCreateIfMissing(true), "database/pageRankDB");
         } catch (RocksDBException e) {
             e.printStackTrace();
         }
@@ -39,7 +38,7 @@ public class PageRank {
         }
     }
 
-    private void preCalculatePageRank(int max_iter, double dampingFactor){
+    private void preCalculatePageRank(int iteration, double dampingFactor){
         HashMap<Integer, Double> pastPageRankResult = new HashMap<>();
         HashMap<Integer, Double> currentPageRankResult = new HashMap<>();
         List<Integer> allPages = pageProperty.getAllPageID();
@@ -48,7 +47,7 @@ public class PageRank {
             currentPageRankResult.put(pageID, 0.0);
         }
 
-        for(int i = 0; i < max_iter; i++) {
+        for(int i = 0; i < iteration; i++) {
             for (Integer pageID : allPages) {
                 String[] parentIDs = PreProcessor.getInstance().getParentIDs(pageID);
 
@@ -68,8 +67,7 @@ public class PageRank {
                 }
 
             }
-            // perform the normalization at the final iteration
-            if (i == max_iter-1) {
+            if (i == iteration-1) {
                 for (Map.Entry<Integer, Double> entry: currentPageRankResult.entrySet()) {
                     try {
                         System.out.println(entry.getKey() +": "+entry.getValue());
@@ -89,8 +87,6 @@ public class PageRank {
                 System.out.println("in " + i + " iteration, diff = " + diff);
                 for (Integer pageID : allPages) {
                     pastPageRankResult.put(pageID, currentPageRankResult.get(pageID));
-                }
-                for (Integer pageID : allPages) {
                     currentPageRankResult.put(pageID, 0.0);
                 }
             }
@@ -101,16 +97,7 @@ public class PageRank {
         PageRank pageRank = PageRank.getInstance();
         //don't run it again as the db is already here
 //        pageRank.preCalculatePageRank(30, 0.85);
-        Integer[] count = new Integer[60];
-        for (int i = 0; i < 60; i++) {
-            count[i] = 0;
-        }
-        for (int pageID : PageProperty.getInstance().getAllPageID()) {
-            System.out.println(pageRank.getPageRank(pageID));
-            int c = (int) pageRank.getPageRank(pageID);
-            count[c] += 1;
-        }
-        System.out.println(Arrays.toString(count));
+        System.out.println(pageRank.getPageRank(1));
     }
 
 }

@@ -9,7 +9,7 @@ import java.net.*;
 import java.util.*;
 
 public class WebInfoSeeker {
-    private String url;
+    private final String url;
     private String words = null;
 
     public WebInfoSeeker(String url) {

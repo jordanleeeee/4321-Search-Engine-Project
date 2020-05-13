@@ -9,5 +9,6 @@ search. Fixed some bugs. Pre-compute document length, make search faster. Page r
 <br>Update(10/5): tomcat server was added</br>
 <br>Update(11/5): nearly project complete</br>
 <br>Update(11/5): added page rank</br>
+<br>Update(12/5): clean up code and upgrade CSS
 <br>remember to download all the db at the drive</br>
 <br>remember to place all db file and stopword.txt at: PATH TO TOMCAT\pache-tomcat-8.5.54-windows-x64\apache-tomcat-8.5.54\bin</br>

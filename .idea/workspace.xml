@@ -2,48 +2,15 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="COMP4321_Ihopeitsfinal:war exploded" />
+      <artifact name="searchEngine" />
     </artifacts-to-build>
   </component>
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d08b563-9309-49a3-9884-bad9982528f7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/search.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/search.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="c7587eea-c280-4541-be83-0f36c55f6f4a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="jsf" />
-        <option value="Jsp File" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -52,43 +19,29 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectId" id="1bUYA7bxJnHYjJRBbN78AGquIXd" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1bplM3lAjavXLR8p0X4hdahYMvP" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.33103448" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\desktop\COMP4321_Ihopeitsfinal\COMP4321_Ihopeitsfinal\web\WEB-INF\classes" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.dontfail.servlet" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\tsuiw\IdeaProjects\COMP4321_Ihopeitsfinal\web" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.PageRank">
-    <configuration name="InvertedIndex" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="indexer.InvertedIndex" />
-      <module name="COMP4321_Ihopeitsfinal" />
+  <component name="RunManager" selected="Application.Retrieval">
+    <configuration name="PageProperty" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="indexer.PageProperty" />
+      <module name="searchEngine" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="indexer.*" />
@@ -99,42 +52,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Junk" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Junk" />
-      <module name="COMP4321_Ihopeitsfinal" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PageRank" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="retriever.PageRank" />
-      <module name="COMP4321_Ihopeitsfinal" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="retriever.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PreProcessor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="retriever.PreProcessor" />
-      <module name="COMP4321_Ihopeitsfinal" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="retriever.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Retrieval" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="retriever.Retrieval" />
-      <module name="COMP4321_Ihopeitsfinal" />
+      <module name="searchEngine" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="retriever.*" />
@@ -146,16 +66,16 @@
       </method>
     </configuration>
     <configuration name="Tomcat 8.5.54" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.54" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/COMP4321_Ihopeitsfinal_war_exploded/index.html" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/searchEngine/index.html" />
       <deployment>
-        <artifact name="COMP4321_Ihopeitsfinal:war exploded">
+        <artifact name="searchEngine">
           <settings>
-            <option name="CONTEXT_PATH" value="/COMP4321_Ihopeitsfinal_war_exploded" />
+            <option name="CONTEXT_PATH" value="/searchEngine" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Tomcat_8_5_54_COMP4321_Ihopeitsfinal" />
+        <option name="BASE_DIRECTORY_NAME" value="Tomcat_8_5_54_searchEngine" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -163,7 +83,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50459" />
+        <option name="DEBUG_PORT" value="50091" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -213,25 +133,19 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="COMP4321_Ihopeitsfinal:war exploded" />
+          <artifact name="searchEngine" />
         </option>
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.InvertedIndex" />
+      <item itemvalue="Application.PageProperty" />
       <item itemvalue="Application.Retrieval" />
-      <item itemvalue="Application.PreProcessor" />
       <item itemvalue="Tomcat Server.Tomcat 8.5.54" />
-      <item itemvalue="Application.PageRank" />
-      <item itemvalue="Application.Junk" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PageRank" />
-        <item itemvalue="Application.Junk" />
         <item itemvalue="Application.Retrieval" />
-        <item itemvalue="Application.PreProcessor" />
-        <item itemvalue="Application.InvertedIndex" />
+        <item itemvalue="Application.PageProperty" />
       </list>
     </recent_temporary>
   </component>
@@ -240,165 +154,98 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9d08b563-9309-49a3-9884-bad9982528f7" name="Default Changelist" comment="" />
-      <created>1588687992056</created>
+      <changelist id="c7587eea-c280-4541-be83-0f36c55f6f4a" name="Default Changelist" comment="" />
+      <created>1589336864205</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1588687992056</updated>
-      <workItem from="1588688002389" duration="599000" />
-      <workItem from="1588688879766" duration="3540000" />
-      <workItem from="1588729774193" duration="3590000" />
-      <workItem from="1588774460802" duration="11684000" />
-      <workItem from="1588832833738" duration="1126000" />
-      <workItem from="1589022251157" duration="3464000" />
-      <workItem from="1589029993943" duration="8477000" />
-      <workItem from="1589085913156" duration="3350000" />
-      <workItem from="1589089492161" duration="17977000" />
-      <workItem from="1589129427491" duration="51000" />
-      <workItem from="1589129578882" duration="146000" />
-      <workItem from="1589172293080" duration="27666000" />
+      <updated>1589336864205</updated>
+      <workItem from="1589336869486" duration="10426000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
   <component name="WindowStateProjectService">
-    <state x="621" y="210" key="#Web_Browsers" timestamp="1589186630932">
+    <state x="162" y="0" key="#Project_Structure" timestamp="1589339447242">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="621" y="210" key="#Web_Browsers/0.0.1366.768@0.0.1366.768" timestamp="1589186630932" />
-    <state x="272" y="76" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589186718302">
+    <state x="162" y="0" key="#Project_Structure/0.0.1366.768@0.0.1366.768" timestamp="1589339447242" />
+    <state x="379" y="0" width="621" height="768" key="#Tomcat_8.5.54" timestamp="1589339585710">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="272" y="76" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1589186718302" />
-    <state x="492" y="267" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588821796004" />
-    <state x="590" y="209" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1588821124107">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="590" y="209" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588821124107" />
-    <state x="412" y="130" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589034662750">
+    <state x="379" y="0" width="621" height="768" key="#Tomcat_8.5.54/0.0.1366.768@0.0.1366.768" timestamp="1589339585710" />
+    <state x="136" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589338599023">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="412" y="130" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.768@0.0.1366.768" timestamp="1589034662750" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1588688946409">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1588688946409" />
-    <state width="904" height="181" key="GridCell.Tab.0.bottom" timestamp="1589218628541">
+    <state x="136" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1589338599023" />
+    <state x="419" y="22" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1589339585296">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="181" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589218628541" />
-    <state width="1681" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560401" />
-    <state width="904" height="181" key="GridCell.Tab.0.center" timestamp="1589218628541">
+    <state x="419" y="22" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.0.1366.768@0.0.1366.768" timestamp="1589339585296" />
+    <state x="388" y="124" key="FileChooserDialogImpl" timestamp="1589338048463">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="181" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1589218628541" />
-    <state width="1681" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560401" />
-    <state width="904" height="181" key="GridCell.Tab.0.left" timestamp="1589218628541">
+    <state x="388" y="124" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1589338048462" />
+    <state width="904" height="200" key="GridCell.Tab.0.bottom" timestamp="1589344629804">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="181" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1589218628541" />
-    <state width="1681" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560401" />
-    <state width="904" height="181" key="GridCell.Tab.0.right" timestamp="1589218628541">
+    <state width="904" height="200" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589344629804" />
+    <state width="904" height="200" key="GridCell.Tab.0.center" timestamp="1589344629804">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="181" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1589218628541" />
-    <state width="1681" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560401" />
-    <state width="904" height="181" key="GridCell.Tab.1.bottom" timestamp="1589218628417">
+    <state width="904" height="200" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1589344629804" />
+    <state width="904" height="200" key="GridCell.Tab.0.left" timestamp="1589344629803">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="181" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589218628417" />
-    <state width="1681" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="904" height="181" key="GridCell.Tab.1.center" timestamp="1589218628417">
+    <state width="904" height="200" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1589344629803" />
+    <state width="904" height="200" key="GridCell.Tab.0.right" timestamp="1589344629804">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="181" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1589218628417" />
-    <state width="1681" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560262" />
-    <state width="904" height="181" key="GridCell.Tab.1.left" timestamp="1589218628416">
+    <state width="904" height="200" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1589344629804" />
+    <state width="904" height="200" key="GridCell.Tab.1.bottom" timestamp="1589344629645">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="181" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1589218628416" />
-    <state width="1681" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560262" />
-    <state width="904" height="181" key="GridCell.Tab.1.right" timestamp="1589218628417">
+    <state width="904" height="200" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589344629645" />
+    <state width="904" height="200" key="GridCell.Tab.1.center" timestamp="1589344629645">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="181" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1589218628417" />
-    <state width="1681" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="904" height="181" key="GridCell.Tab.2.bottom" timestamp="1589218628417">
+    <state width="904" height="200" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1589344629645" />
+    <state width="904" height="200" key="GridCell.Tab.1.left" timestamp="1589344629645">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="181" key="GridCell.Tab.2.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589218628417" />
-    <state width="1681" height="348" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="904" height="181" key="GridCell.Tab.2.center" timestamp="1589218628417">
+    <state width="904" height="200" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1589344629645" />
+    <state width="904" height="200" key="GridCell.Tab.1.right" timestamp="1589344629645">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="181" key="GridCell.Tab.2.center/0.0.1366.768@0.0.1366.768" timestamp="1589218628417" />
-    <state width="1681" height="348" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="904" height="181" key="GridCell.Tab.2.left" timestamp="1589218628417">
+    <state width="904" height="200" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1589344629645" />
+    <state width="904" height="200" key="GridCell.Tab.2.bottom" timestamp="1589344629646">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="181" key="GridCell.Tab.2.left/0.0.1366.768@0.0.1366.768" timestamp="1589218628417" />
-    <state width="1681" height="348" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="904" height="181" key="GridCell.Tab.2.right" timestamp="1589218628417">
+    <state width="904" height="200" key="GridCell.Tab.2.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589344629646" />
+    <state width="904" height="200" key="GridCell.Tab.2.center" timestamp="1589344629646">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="181" key="GridCell.Tab.2.right/0.0.1366.768@0.0.1366.768" timestamp="1589218628417" />
-    <state width="1681" height="348" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589025560263" />
-    <state width="904" height="332" key="GridCell.Tab.3.bottom" timestamp="1589172459072">
+    <state width="904" height="200" key="GridCell.Tab.2.center/0.0.1366.768@0.0.1366.768" timestamp="1589344629646" />
+    <state width="904" height="200" key="GridCell.Tab.2.left" timestamp="1589344629646">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.3.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589172459072" />
-    <state width="1217" height="257" key="GridCell.Tab.3.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1588821723748" />
-    <state width="904" height="332" key="GridCell.Tab.3.center" timestamp="1589172459071">
+    <state width="904" height="200" key="GridCell.Tab.2.left/0.0.1366.768@0.0.1366.768" timestamp="1589344629646" />
+    <state width="904" height="200" key="GridCell.Tab.2.right" timestamp="1589344629646">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.3.center/0.0.1366.768@0.0.1366.768" timestamp="1589172459071" />
-    <state width="1217" height="257" key="GridCell.Tab.3.center/0.0.1920.1040@0.0.1920.1040" timestamp="1588821723748" />
-    <state width="904" height="332" key="GridCell.Tab.3.left" timestamp="1589172459071">
+    <state width="904" height="200" key="GridCell.Tab.2.right/0.0.1366.768@0.0.1366.768" timestamp="1589344629646" />
+    <state x="162" y="0" key="SettingsEditor" timestamp="1589342825454">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.3.left/0.0.1366.768@0.0.1366.768" timestamp="1589172459071" />
-    <state width="1217" height="257" key="GridCell.Tab.3.left/0.0.1920.1040@0.0.1920.1040" timestamp="1588821723748" />
-    <state width="904" height="332" key="GridCell.Tab.3.right" timestamp="1589172459071">
+    <state x="162" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1589342825454" />
+    <state x="386" y="275" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1589337310389">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="904" height="332" key="GridCell.Tab.3.right/0.0.1366.768@0.0.1366.768" timestamp="1589172459071" />
-    <state width="1217" height="257" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1588821723748" />
-    <state x="196" y="0" width="1554" height="851" key="SettingsEditor" timestamp="1589129724054">
+    <state x="386" y="275" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.768@0.0.1366.768" timestamp="1589337310389" />
+    <state x="388" y="130" key="refactoring.ChangeSignatureDialog" timestamp="1589341450903">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="196" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1589129724054" />
-    <state x="276" y="189" width="1554" height="851" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589025806003" />
-    <state x="472" y="304" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1589030042729">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="472" y="304" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.768@0.0.1366.768" timestamp="1589030042729" />
-    <state x="664" y="411" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1588832863380" />
-    <state x="1091" y="87" width="585" height="888" key="find.popup" timestamp="1589022348778">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1091" y="87" width="585" height="888" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589022348778" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1589024227027">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589024227027" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/COMP4321_Ihopeitsfinal$test_java_in_COMP4321_Ihopeitsfinal.ic" NAME="test.java in COMP4321_Ihopeitsfinal Coverage Results" MODIFIED="1588690298239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>test.java.*</FILTER>
-    </SUITE>
+    <state x="388" y="130" key="refactoring.ChangeSignatureDialog/0.0.1366.768@0.0.1366.768" timestamp="1589341450903" />
   </component>
 </project>

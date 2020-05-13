@@ -8,9 +8,9 @@ import java.io.PrintWriter;
 import java.util.*;
 
 public class PageProperty {
-    private static PageProperty INSTANCE = new PageProperty();
+    private static final PageProperty INSTANCE = new PageProperty();
     private RocksDB pagePropDB;
-    private List<ColumnFamilyHandle> handles = new Vector<>();
+    private final List<ColumnFamilyHandle> handles = new Vector<>();
     private int numOfPageFetched;
 
     static public PageProperty getInstance() {
@@ -21,7 +21,7 @@ public class PageProperty {
      * open db file
      */
     private PageProperty(){
-        String PATH = "pagePropDB";
+        String PATH = "database/pagePropDB";
         try {
             List<ColumnFamilyDescriptor> colFamily = new Vector<>();
             colFamily.add(new ColumnFamilyDescriptor(RocksDB.DEFAULT_COLUMN_FAMILY));
