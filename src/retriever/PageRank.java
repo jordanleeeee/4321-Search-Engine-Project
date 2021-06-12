@@ -13,9 +13,9 @@ import java.util.Map;
 public class PageRank {
 
     private static final PageRank INSTANCE = new PageRank();
-    InvertedIndex invertedIndex = InvertedIndex.getInstance();
-    PageProperty pageProperty = PageProperty.getInstance();
-    RocksDB pageRankDb;
+    private final InvertedIndex invertedIndex = InvertedIndex.getInstance();
+    private final PageProperty pageProperty = PageProperty.getInstance();
+    private RocksDB pageRankDb;
 
     public static PageRank getInstance() {
         return INSTANCE;

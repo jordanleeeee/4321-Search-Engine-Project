@@ -4,6 +4,7 @@ import org.rocksdb.*;
 
 import com.google.common.collect.HashBiMap;
 
+import java.io.File;
 import java.util.*;
 
 public class Indexer {
@@ -11,7 +12,7 @@ public class Indexer {
 
     private static final Indexer INSTANCE = new Indexer();
     private RocksDB pageURLIDdb, wordIDdb;
-    private Integer wordCount = 0, URLCount = 0;
+    private Integer wordCount, URLCount;
     private final HashBiMap<Integer, String> pageIndexer = HashBiMap.create();
     private final HashBiMap<Integer, String> wordIndexer = HashBiMap.create();
 
@@ -25,11 +26,15 @@ public class Indexer {
     private Indexer(){
         Options options = new Options().setCreateIfMissing(true);
         try {
+            System.out.println("remember to place database directory and stopword.txt in: "+
+                    new File("").getAbsolutePath());
             pageURLIDdb = RocksDB.open(options, "database/pageURLIDdb");
             wordIDdb = RocksDB.open(options, "database/wordIDdb");
         } catch (RocksDBException e) {
             e.printStackTrace();
         }
+        wordCount = 0;
+        URLCount = 0;
         addPageBiMap();
         addWordBiMap();
     }
@@ -68,16 +73,16 @@ public class Indexer {
      * @return page ID, -1 if no such page
      */
     public Integer searchIDByURL(String url, boolean addIfMissing) {
-        if (!(pageIndexer.containsValue(url))){
+        if (!(pageIndexer.containsValue(url))) {
             if (addIfMissing) {
                 addPage(url);
                 return URLCount;
-            }
-            else {
+            } else {
                 return -1;
             }
+        } else {
+            return pageIndexer.inverse().get(url);
         }
-        else return pageIndexer.inverse().get(url);
     }
 
     String searchURLByID(int pageID) {

@@ -4,6 +4,7 @@ import indexer.Indexer;
 import indexer.InvertedIndex;
 import util.Word;
 
+import java.io.File;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,10 +16,10 @@ public class Retrieval {
     private final InvertedIndex invertedIndex = InvertedIndex.getInstance();
     private final PreProcessor preProcessor = PreProcessor.getInstance();
     private final PageRank pageRank = PageRank.getInstance();
+
     private final LinkedHashMap<Integer, Double> top50Result = new LinkedHashMap<>();
 
     public Retrieval(String query) { //pass value here
-
         Set<String> afterProcessQuery = processQuery(query);
 
         if (!afterProcessQuery.isEmpty()) {  //0.7*cosine sim + 0.3*page rank + 0.2(if title match)

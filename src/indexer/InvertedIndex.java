@@ -3,6 +3,7 @@ package indexer;
 import org.rocksdb.*;
 
 import spider.WebInfoSeeker;
+import util.Converter;
 import util.Word;
 
 import java.util.*;
@@ -57,7 +58,7 @@ public class InvertedIndex {
 
     public LinkedList<Integer> getWordPositionsInPage(int wordID, int pageID) {
         try {
-            byte[] record = wordIdDb.get(String.valueOf(wordID).getBytes());
+            byte[] record = wordIdDb.get(Converter.idTobyteArray(wordID));
             HashMap<Integer, LinkedList<Integer>> pos = new PostingListHandler(new String(record)).getPositionsRecord();
             return pos.get(pageID);
         } catch (RocksDBException e) {
@@ -73,7 +74,7 @@ public class InvertedIndex {
      */
     public Set<String> getTitleWords(int pageID) {
         try {
-            byte[] content = pageDetailDb.get(handles.get(2), String.valueOf(pageID).getBytes());
+            byte[] content = pageDetailDb.get(handles.get(2), Converter.idTobyteArray(pageID));
             String[] words = new String(content).split(" ");
             return new HashSet<>(Arrays.asList(words));
         } catch (RocksDBException e) {
@@ -90,7 +91,7 @@ public class InvertedIndex {
     private int getDocumentFrequency(String word) {
         try {
             int wordID = indexer.searchIDByWord(word, false);
-            String record = new String(wordIdDb.get(String.valueOf(wordID).getBytes()));
+            String record = new String(wordIdDb.get(Converter.idTobyteArray(wordID)));
             return record.split(" ").length;
         } catch (RocksDBException e) {
             e.printStackTrace();
@@ -129,7 +130,7 @@ public class InvertedIndex {
      */
     private int getMaxTf(int pageID) {
         try {
-            byte[] content = pageDetailDb.get(handles.get(3), String.valueOf(pageID).getBytes());
+            byte[] content = pageDetailDb.get(handles.get(3), Converter.idTobyteArray(pageID));
             return Integer.parseInt(new String(content));
         } catch (RocksDBException e) {
             e.printStackTrace();
@@ -155,7 +156,7 @@ public class InvertedIndex {
      */
     public String[] getKeyWords(int pageID) {
         try {
-            byte[] content = pageDetailDb.get(handles.get(1), String.valueOf(pageID).getBytes());
+            byte[] content = pageDetailDb.get(handles.get(1), Converter.idTobyteArray(pageID));
             return new String(content).split(" ");
         } catch (RocksDBException e) {
             e.printStackTrace();
@@ -165,7 +166,7 @@ public class InvertedIndex {
 
     private HashMap<Integer, Integer> getPostingList(int wordID) {
         try {
-            byte[] record = wordIdDb.get(String.valueOf(wordID).getBytes());
+            byte[] record = wordIdDb.get(Converter.idTobyteArray(wordID));
             return new PostingListHandler(new String(record)).getFrequencyRecord();
         } catch (RocksDBException e) {
             e.printStackTrace();
@@ -208,14 +209,14 @@ public class InvertedIndex {
                     continue;
                 }
                 int wordID = indexer.searchIDByWord(word,false);
-                byte[] postingList = wordIdDb.get(String.valueOf(wordID).getBytes());
+                byte[] postingList = wordIdDb.get(Converter.idTobyteArray(wordID));
                 PostingListHandler newRecord = new PostingListHandler(new String(postingList));
                 boolean resultInEmptyPostingList = newRecord.removeRecord(pageID);
                 if (resultInEmptyPostingList) {
-                    wordIdDb.delete(String.valueOf(wordID).getBytes());
+                    wordIdDb.delete(Converter.idTobyteArray(wordID));
                     indexer.deleteEntry(wordID);
                 } else {
-                    wordIdDb.put(String.valueOf(wordID).getBytes(), newRecord.toString().getBytes());
+                    wordIdDb.put(Converter.idTobyteArray(wordID), newRecord.toString().getBytes());
                 }
             } catch (RocksDBException e) {
                 e.printStackTrace();
@@ -223,7 +224,7 @@ public class InvertedIndex {
         }
         for (ColumnFamilyHandle handle : handles) {
             try {
-                pageDetailDb.delete(handle, String.valueOf(pageID).getBytes());
+                pageDetailDb.delete(handle, Converter.idTobyteArray(pageID));
             } catch (RocksDBException e) {
                 e.printStackTrace();
             }
@@ -233,7 +234,7 @@ public class InvertedIndex {
     public String[] getChildIDs(int pageID) {
         String listOfChild;
         try {
-            listOfChild = new String(pageDetailDb.get(handles.get(0), String.valueOf(pageID).getBytes()));
+            listOfChild = new String(pageDetailDb.get(handles.get(0), Converter.idTobyteArray(pageID)));
             return  listOfChild.split(" ");
         } catch (RocksDBException e) {
             e.printStackTrace();
@@ -307,7 +308,7 @@ public class InvertedIndex {
             Integer wordID = indexer.searchIDByWord(keywords.get(i), true);
             byte[] content;
             try {
-                content = wordIdDb.get(String.valueOf(wordID).getBytes());
+                content = wordIdDb.get(Converter.idTobyteArray(wordID));
                 PostingListHandler temp;
                 if (content == null) {
                     temp = new PostingListHandler("");
@@ -316,7 +317,7 @@ public class InvertedIndex {
                 }
                 int tf = temp.addWord(pageID, i);
                 content = temp.toString().getBytes();
-                wordIdDb.put(String.valueOf(wordID).getBytes(), content);
+                wordIdDb.put(Converter.idTobyteArray(wordID), content);
                 if (tf > maxFreq) {
                     maxFreq = tf;
                 }
@@ -325,7 +326,7 @@ public class InvertedIndex {
             }
         }
         try {
-            pageDetailDb.put(handles.get(3), String.valueOf(pageID).getBytes(), String.valueOf(maxFreq).getBytes());
+            pageDetailDb.put(handles.get(3), Converter.idTobyteArray(pageID), String.valueOf(maxFreq).getBytes());
         } catch (RocksDBException e) {
             e.printStackTrace();
         }

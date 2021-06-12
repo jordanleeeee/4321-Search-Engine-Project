@@ -23,4 +23,8 @@ public class Converter {
         return queue;
     }
 
+    public static byte[] idTobyteArray(int id) {
+        return String.valueOf(id).getBytes();
+    }
+
 }

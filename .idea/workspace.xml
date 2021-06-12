@@ -1,60 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="searchEngine" />
-    </artifacts-to-build>
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7587eea-c280-4541-be83-0f36c55f6f4a" name="Default Changelist" comment="" />
+    <list default="true" id="4eb79ec3-26c2-4a91-8a2a-d78d095f8ccd" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="LogFilters">
-    <option name="FILTER_ERRORS" value="false" />
-    <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
-    <option name="CUSTOM_FILTER" />
-  </component>
-  <component name="ProjectId" id="1bplM3lAjavXLR8p0X4hdahYMvP" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
+  <component name="ProjectId" id="1brAtyT4aQiZDdHoB8QkyFFJFhT" />
   <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="true" />
-    <property name="Repository.Attach.Sources" value="false" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.33103448" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="com.poratu.idea.plugins.tomcat.setting.TomcatSettingConfigurable" />
   </component>
-  <component name="RunManager" selected="Application.Retrieval">
-    <configuration name="PageProperty" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="indexer.PageProperty" />
-      <module name="searchEngine" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="indexer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Smart Tomcat.Tomcat server">
     <configuration name="Retrieval" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="retriever.Retrieval" />
-      <module name="searchEngine" />
+      <module name="cseSearchEngine" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="retriever.*" />
@@ -65,87 +42,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 8.5.54" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.54" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/searchEngine/index.html" />
-      <deployment>
-        <artifact name="searchEngine">
-          <settings>
-            <option name="CONTEXT_PATH" value="/searchEngine" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Tomcat_8_5_54_searchEngine" />
-      </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50091" />
-      </RunnerSettings>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
+    <configuration name="Tomcat server" type="com.poratu.idea.plugins.tomcat" factoryName="SMART_TOMCAT_FACTORY" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="adminPort" value="8005" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="contextPath" value="/cseSearchEngine" />
+      <option name="docBase" value="$PROJECT_DIR$/web" />
+      <option name="envOptions" />
+      <option name="moduleName" value="cseSearchEngine" />
+      <option name="passParentEnvironmentVariables" value="true" />
+      <option name="port" value="8080" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat 8.5.54" />
+          <option name="number" value="0" />
+          <option name="path" value="D:\download\apache-tomcat-8.5.54-windows-x64\apache-tomcat-8.5.54" />
+          <option name="version" value="8.5.54.0" />
+        </TomcatInfo>
+      </option>
+      <option name="vmOptions" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="searchEngine" />
-        </option>
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.PageProperty" />
       <item itemvalue="Application.Retrieval" />
-      <item itemvalue="Tomcat Server.Tomcat 8.5.54" />
+      <item itemvalue="Smart Tomcat.Tomcat server" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Retrieval" />
-        <item itemvalue="Application.PageProperty" />
       </list>
     </recent_temporary>
   </component>
@@ -154,98 +79,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c7587eea-c280-4541-be83-0f36c55f6f4a" name="Default Changelist" comment="" />
-      <created>1589336864205</created>
+      <changelist id="4eb79ec3-26c2-4a91-8a2a-d78d095f8ccd" name="Default Changelist" comment="" />
+      <created>1589380056302</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1589336864205</updated>
-      <workItem from="1589336869486" duration="10426000" />
+      <updated>1589380056302</updated>
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="162" y="0" key="#Project_Structure" timestamp="1589339447242">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="162" y="0" key="#Project_Structure/0.0.1366.768@0.0.1366.768" timestamp="1589339447242" />
-    <state x="379" y="0" width="621" height="768" key="#Tomcat_8.5.54" timestamp="1589339585710">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="379" y="0" width="621" height="768" key="#Tomcat_8.5.54/0.0.1366.768@0.0.1366.768" timestamp="1589339585710" />
-    <state x="136" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589338599023">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="136" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1589338599023" />
-    <state x="419" y="22" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable" timestamp="1589339585296">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="419" y="22" key="#com.intellij.j2ee.appServerIntegrations.ApplicationServersConfigurable/0.0.1366.768@0.0.1366.768" timestamp="1589339585296" />
-    <state x="388" y="124" key="FileChooserDialogImpl" timestamp="1589338048463">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="388" y="124" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1589338048462" />
-    <state width="904" height="200" key="GridCell.Tab.0.bottom" timestamp="1589344629804">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="904" height="200" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589344629804" />
-    <state width="904" height="200" key="GridCell.Tab.0.center" timestamp="1589344629804">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="904" height="200" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1589344629804" />
-    <state width="904" height="200" key="GridCell.Tab.0.left" timestamp="1589344629803">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="904" height="200" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1589344629803" />
-    <state width="904" height="200" key="GridCell.Tab.0.right" timestamp="1589344629804">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="904" height="200" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1589344629804" />
-    <state width="904" height="200" key="GridCell.Tab.1.bottom" timestamp="1589344629645">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="904" height="200" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589344629645" />
-    <state width="904" height="200" key="GridCell.Tab.1.center" timestamp="1589344629645">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="904" height="200" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1589344629645" />
-    <state width="904" height="200" key="GridCell.Tab.1.left" timestamp="1589344629645">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="904" height="200" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1589344629645" />
-    <state width="904" height="200" key="GridCell.Tab.1.right" timestamp="1589344629645">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="904" height="200" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1589344629645" />
-    <state width="904" height="200" key="GridCell.Tab.2.bottom" timestamp="1589344629646">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="904" height="200" key="GridCell.Tab.2.bottom/0.0.1366.768@0.0.1366.768" timestamp="1589344629646" />
-    <state width="904" height="200" key="GridCell.Tab.2.center" timestamp="1589344629646">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="904" height="200" key="GridCell.Tab.2.center/0.0.1366.768@0.0.1366.768" timestamp="1589344629646" />
-    <state width="904" height="200" key="GridCell.Tab.2.left" timestamp="1589344629646">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="904" height="200" key="GridCell.Tab.2.left/0.0.1366.768@0.0.1366.768" timestamp="1589344629646" />
-    <state width="904" height="200" key="GridCell.Tab.2.right" timestamp="1589344629646">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state width="904" height="200" key="GridCell.Tab.2.right/0.0.1366.768@0.0.1366.768" timestamp="1589344629646" />
-    <state x="162" y="0" key="SettingsEditor" timestamp="1589342825454">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="162" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1589342825454" />
-    <state x="386" y="275" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1589337310389">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="386" y="275" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1366.768@0.0.1366.768" timestamp="1589337310389" />
-    <state x="388" y="130" key="refactoring.ChangeSignatureDialog" timestamp="1589341450903">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="388" y="130" key="refactoring.ChangeSignatureDialog/0.0.1366.768@0.0.1366.768" timestamp="1589341450903" />
   </component>
 </project>
